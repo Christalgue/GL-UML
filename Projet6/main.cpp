@@ -27,7 +27,6 @@ int main()
 
 	cout << "Hello world !" << endl;
 	cout << "Bonjour monde !" << endl;
-	cout << "adieu !" << endl;
 
 	return 0;
 }//----- Fin de main

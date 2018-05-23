@@ -26,6 +26,7 @@ int main()
 	cin >> bite;
 
 	cout << "Hello world !" << endl;
+	cout << "Bonjour monde !" << endl;
 
 	return 0;
 }//----- Fin de main

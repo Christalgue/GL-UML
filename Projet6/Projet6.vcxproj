@@ -112,13 +112,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Empreinte.cpp" />
-    <ClCompile Include="LectureLigne.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Maladie.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Empreinte.h" />
-    <ClInclude Include="LectureLigne.h" />
     <ClInclude Include="Maladie.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

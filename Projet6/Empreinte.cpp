@@ -33,10 +33,6 @@ Maladie* Empreinte::getMaladie() {
 	return maMaladie;
 }
 
-void Empreinte::remplirVecteurs(string mesAttributs, string maMaladieAttributs) {
-
-}
-
   //------------------------------------------------- Surcharge d'opérateurs
 
   //-------------------------------------------- Constructeurs - destructeur
@@ -66,18 +62,6 @@ Empreinte::~Empreinte()
 #endif
 } //----- Fin de ~Empreinte
 
-void Empreinte::remplirEmpreinte(string nomFichier)
-{
-	ifstream infile(nomFichier.c_str());
-	if (infile)
-	{
-		string ligne;
-		while (getline(infile, ligne))
-		{
-
-		}
-	}
-}
 
 
 //------------------------------------------------------------------ PRIVE

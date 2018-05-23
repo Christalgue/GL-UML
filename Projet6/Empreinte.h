@@ -15,6 +15,7 @@ e-mail               :
 
 #include <string>
 #include <vector>
+#include <map>
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
@@ -23,12 +24,12 @@ e-mail               :
 // Rôle de la classe <Empreinte>
 //------------------------------------------------------------------------
 
-union S
+/*union S
 {
 	int i;
 	double d;
 	string s;
-};
+};*/
 
 class Empreinte
 {
@@ -40,8 +41,6 @@ public:
 	int getID();
 
 	Maladie* getMaladie();
-
-	void remplirVecteurs(string mesAttributs, string maMaladieAttributs);
 
 	//------------------------------------------------- Surcharge d'opérateurs
 	Empreinte & operator = (const Empreinte & unEmpreinte) = delete;
@@ -69,17 +68,18 @@ public:
 
 	//------------------------------------------------------------------ PRIVE
 
+	static map<string, string> attributs;
+
 protected:
 	//----------------------------------------------------- Méthodes protégées
 
-	void remplirEmpreinte(string nomFichier);
 
 	//----------------------------------------------------- Attributs protégés
 
 	int ID;
 	Maladie *maMaladie;
-	vector<S> mesures;
-	static vector<string> attributs;
+	//vector<S> mesures;
+	
 
 };
 

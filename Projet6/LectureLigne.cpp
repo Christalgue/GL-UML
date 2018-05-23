@@ -2,8 +2,8 @@
 Empreinte  -  description
 -------------------
 début                : 10/01/2018
-copyright            : (C) 2018 par 
-e-mail               : 
+copyright            : (C) 2018 par
+e-mail               :
 ********************************************************************************************/
 
 
@@ -37,9 +37,9 @@ void Empreinte::remplirVecteurs(string mesAttributs, string maMaladieAttributs) 
 
 }
 
-  //------------------------------------------------- Surcharge d'opérateurs
+//------------------------------------------------- Surcharge d'opérateurs
 
-  //-------------------------------------------- Constructeurs - destructeur
+//-------------------------------------------- Constructeurs - destructeur
 
 Empreinte::Empreinte()
 // Algorithme : 
@@ -49,7 +49,7 @@ Empreinte::Empreinte()
 #endif
 } //----- Fin de Empreinte
 
-Empreinte::Empreinte(int id, Maladie * uneMaladie) 
+Empreinte::Empreinte(int id, Maladie * uneMaladie)
 // Algorithme : 
 {
 #ifdef MAP
@@ -81,6 +81,6 @@ void Empreinte::remplirEmpreinte(string nomFichier)
 }
 
 
-  //------------------------------------------------------------------ PRIVE
+//------------------------------------------------------------------ PRIVE
 
-  //----------------------------------------------------- Méthodes protégées
+//----------------------------------------------------- Méthodes protégées

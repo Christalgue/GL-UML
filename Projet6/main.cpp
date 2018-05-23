@@ -25,5 +25,7 @@ int main()
 	string bite;
 	cin >> bite;
 
+	cout << "Hello world !" << endl;
+
 	return 0;
 }//----- Fin de main

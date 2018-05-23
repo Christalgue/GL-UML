@@ -12,6 +12,7 @@ e-mail               : christophe.gibert@insa-lyon.fr
 using namespace std;
 #include <vector>
 #include <string>
+#include <map>
 //--------------------------------------------------- Interfaces utilisées
 
 //------------------------------------------------------------- Constantes
@@ -30,14 +31,6 @@ class LectureLigne
 
 public:
 	//----------------------------------------------------- Méthodes publiques
-	string GetID() const;
-	// Mode d'emploi : Renvoie le referer de la ligne lue dans le fichier .log.
-
-	string GetDestination() const;
-	// Mode d'emploi : Renvoie la requête de la ligne lue dans le fichier .log.
-
-	int GetHeure() const;
-	// Mode d'emploi : Renvoie l'heure de la requête de la ligne lue dans le fichier .log.
 
 	string ExtractionExtension(const string& page);
 	// Mode d'emploi : Renvoie l'extension du referer ou de la destination de la requête.
@@ -72,6 +65,9 @@ public:
 
 protected:
 	//----------------------------------------------------- Méthodes protégées
+
+
+
 	int extractionHeure(const string& date);
 	// Mode d'emploi :
 	// Permet d'extraire seulement l'entier correspondant à l'heure à partir de la date.
@@ -97,19 +93,14 @@ protected:
 	// Le caractère permettant de définir ce que l'on veut extraire doit être spécifié en paramètre.
 
 	//----------------------------------------------------- Attributs protégés
-	int ID;
+	union S {
+		int i;
+		double d;
+		string s;
+	};
 
-
-	string adresseSource;
-	string source;
-	string destination;
-	string date;
-	string adresseIP;
-	string requete;
-	int status;
-	int tailleOctet;
-	string idNavigateur;
-	int heure;
+	map < string, S > metadonnee;
+	
 
 };
 

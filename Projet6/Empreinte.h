@@ -23,6 +23,13 @@ e-mail               :
 // Rôle de la classe <Empreinte>
 //------------------------------------------------------------------------
 
+union S
+{
+	int i;
+	double d;
+	string s;
+};
+
 class Empreinte
 {
 	//----------------------------------------------------------------- PUBLIC
@@ -71,9 +78,8 @@ protected:
 
 	int ID;
 	Maladie *maMaladie;
-	vector <int> mesureI;
-	vector <double> mesureD;
-	vector <string> mesureS;
+	vector<S> mesures;
+	static vector<string> attributs;
 
 };
 

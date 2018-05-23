@@ -23,20 +23,7 @@ e-mail               : christophe.gibert@insa-lyon.fr - alexandra.verrier@insa-l
 
 //----------------------------------------------------- Méthodes publiques
 
-string LectureLigne::GetID() const
-{
-	return source;
-} //----- Fin de GetSource
 
-string LectureLigne::GetDestination() const
-{
-	return destination;
-}//----- Fin de GetDestination
-
-int LectureLigne::GetHeure() const
-{
-	return heure;
-} //----- Fin de GetHeure
 
 string LectureLigne::ExtractionExtension(const string& page)
 // Algorithme : On place un itérateur inversé sur le string passé en paramètre
@@ -55,16 +42,6 @@ LectureLigne::LectureLigne(const string& ligneLog)
 //		attributs en évocant éventuellement des méthodes.
 {
 	vector<string> ligne(spliter(ligneLog));
-	adresseIP = ligne[0];
-	date = ligne[3];
-	requete = ligne[4];
-	status = atoi(ligne[5].c_str());
-	tailleOctet = atoi(ligne[6].c_str());
-	adresseSource = ligne[7];
-	idNavigateur = ligne[8];
-	heure = extractionHeure(date);
-	destination = extractionDestination(requete);
-	source = extractionSource(adresseSource);
 }
 
 

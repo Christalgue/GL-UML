@@ -3,6 +3,7 @@ using namespace std;
 #include "Empreinte.h"
 #include <string>
 #include <iostream>
+#include <fstream>
 
 
 int main()
@@ -13,26 +14,59 @@ int main()
 	string monEmpreinteID = "562";
 	string monEmpreinteMaladie = "tamaman";
 	string monEmpreinteAttributs = "AA;152.522201822802;147.966461981174;132.340194347595";
-	char mesAttributs[] = "string;double;double;double";
+	string mesAttributs = "string;double;double; double";
+	string nomAttributs = "A1;A2;A3;A4";
 
-	string pch = strtok(mesAttributs, ";");
-	printf("%s\n", pch);
+	map<string, string> attr;
+	string monAttribut;
 
-	vector<string> mesAttributs;
 
-	//vector<string> Empreinte::attributs = mesAttributs;
+	string nomAttribut;
+	string typeAttribut;
 
+	string nomFichier = "HealthMeasurementDescription.txt";
+	ifstream infile(nomFichier);
+	if (infile)
+	{
+		while (getline(infile, nomAttribut, ';'))
+		{
+			getline(infile, typeAttribut);
+
+			Empreinte::attributs.insert(make_pair(nomAttribut, typeAttribut));
+
+			cout << nomAttribut << endl;
+			cout << typeAttribut << endl;
+		}
+	}
+
+
+
+	/*string fichierMesure = "HealthMeasurements.txt";
+	ifstream infile2(fichierMesure);
+	if (infile2)
+	{
+		while (getline(infile2))
+
+	}*/
+
+	string i;
+	cin >> i;
+
+	
+	
+	
+
+
+
+
+
+	/*
 	int id = stoi(monEmpreinteID);
 	Maladie uneMaladie(monEmpreinteMaladie);
-	vector<S> mesMesures;
-	/*
-	Empreinte monEmpreinte(id, &uneMaladie, mesMesures);
+	Empreinte monEmpreinte(id, &uneMaladie);
 
 	cout << monEmpreinte.getID() << endl;
-	cout << monEmpreinte.getMaladie()->getNom() << endl;
-	*/
-	string b;
-	cin >> b;
+	cout << monEmpreinte.getMaladie()->getNom() << endl;*/
 
 	return 0;
 }//----- Fin de main

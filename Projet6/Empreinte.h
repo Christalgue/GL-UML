@@ -15,6 +15,7 @@ e-mail               :
 
 #include <string>
 #include <vector>
+#include <map>
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
@@ -23,12 +24,12 @@ e-mail               :
 // Rôle de la classe <Empreinte>
 //------------------------------------------------------------------------
 
-union S
+/*union S
 {
 	int i;
 	double d;
 	string s;
-};
+};*/
 
 class Empreinte
 {
@@ -55,7 +56,7 @@ public:
 	// Contrat :
 	// déclaré mais non défini pour intercepter son éventuel appel.
 
-	Empreinte(int id, Maladie * maMaladie, vector<S> mesMesures);
+	Empreinte(int id, Maladie * maMaladie);
 
 	Empreinte();
 	// Mode d'emploi :
@@ -66,7 +67,8 @@ public:
 	// Il s'agit du destructeur des objets Empreinte.
 
 	//------------------------------------------------------------------ PRIVE
-	static vector<string> attributs;
+
+	static map<string, string> attributs;
 
 protected:
 	//----------------------------------------------------- Méthodes protégées
@@ -76,8 +78,9 @@ protected:
 
 	int ID;
 	Maladie *maMaladie;
-	vector<S> mesures;
+	//vector<S> mesures;
 	
+
 };
 
 //-------------------------------- Autres définitions dépendantes de <Empreinte>

@@ -13,20 +13,26 @@ int main()
 	string monEmpreinteID = "562";
 	string monEmpreinteMaladie = "tamaman";
 	string monEmpreinteAttributs = "AA;152.522201822802;147.966461981174;132.340194347595";
-	string mesAttributs = "string;double;double; double";
+	char mesAttributs[] = "string;double;double;double";
+
+	string pch = strtok(mesAttributs, ";");
+	printf("%s\n", pch);
+
+	vector<string> mesAttributs;
+
+	//vector<string> Empreinte::attributs = mesAttributs;
 
 	int id = stoi(monEmpreinteID);
 	Maladie uneMaladie(monEmpreinteMaladie);
-	Empreinte monEmpreinte(id, &uneMaladie);
+	vector<S> mesMesures;
+	/*
+	Empreinte monEmpreinte(id, &uneMaladie, mesMesures);
 
 	cout << monEmpreinte.getID() << endl;
 	cout << monEmpreinte.getMaladie()->getNom() << endl;
-
-	string bite;
-	cin >> bite;
-
-	cout << "Hello world !" << endl;
-	cout << "Bonjour monde !" << endl;
+	*/
+	string b;
+	cin >> b;
 
 	return 0;
 }//----- Fin de main

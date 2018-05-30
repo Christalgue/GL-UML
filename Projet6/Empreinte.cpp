@@ -33,10 +33,6 @@ Maladie* Empreinte::getMaladie() {
 	return maMaladie;
 }
 
-void Empreinte::remplirVecteurs(string mesAttributs, string maMaladieAttributs) {
-
-}
-
   //------------------------------------------------- Surcharge d'opérateurs
 
   //-------------------------------------------- Constructeurs - destructeur
@@ -49,7 +45,7 @@ Empreinte::Empreinte()
 #endif
 } //----- Fin de Empreinte
 
-Empreinte::Empreinte(int id, Maladie * uneMaladie) 
+Empreinte::Empreinte(int id, Maladie * uneMaladie, vector<S> mesMesures)
 // Algorithme : 
 {
 #ifdef MAP
@@ -57,6 +53,7 @@ Empreinte::Empreinte(int id, Maladie * uneMaladie)
 #endif
 	ID = id;
 	maMaladie = uneMaladie;
+	mesures = mesMesures;
 } //----- Fin de Empreinte
 
 Empreinte::~Empreinte()
@@ -66,18 +63,6 @@ Empreinte::~Empreinte()
 #endif
 } //----- Fin de ~Empreinte
 
-void Empreinte::remplirEmpreinte(string nomFichier)
-{
-	ifstream infile(nomFichier.c_str());
-	if (infile)
-	{
-		string ligne;
-		while (getline(infile, ligne))
-		{
-
-		}
-	}
-}
 
 
 //------------------------------------------------------------------ PRIVE

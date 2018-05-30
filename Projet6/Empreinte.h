@@ -41,8 +41,6 @@ public:
 
 	Maladie* getMaladie();
 
-	void remplirVecteurs(string mesAttributs, string maMaladieAttributs);
-
 	//------------------------------------------------- Surcharge d'opérateurs
 	Empreinte & operator = (const Empreinte & unEmpreinte) = delete;
 	// Mode d'emploi :
@@ -57,7 +55,7 @@ public:
 	// Contrat :
 	// déclaré mais non défini pour intercepter son éventuel appel.
 
-	Empreinte(int id, Maladie * maMaladie);
+	Empreinte(int id, Maladie * maMaladie, vector<S> mesMesures);
 
 	Empreinte();
 	// Mode d'emploi :
@@ -68,19 +66,18 @@ public:
 	// Il s'agit du destructeur des objets Empreinte.
 
 	//------------------------------------------------------------------ PRIVE
+	static vector<string> attributs;
 
 protected:
 	//----------------------------------------------------- Méthodes protégées
 
-	void remplirEmpreinte(string nomFichier);
 
 	//----------------------------------------------------- Attributs protégés
 
 	int ID;
 	Maladie *maMaladie;
 	vector<S> mesures;
-	static vector<string> attributs;
-
+	
 };
 
 //-------------------------------- Autres définitions dépendantes de <Empreinte>

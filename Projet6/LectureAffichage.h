@@ -33,6 +33,8 @@ public:
 
 	void LectureMetaDonnees();
 
+	void LectureDictionnaire();
+
 
 	//------------------------------------------------- Surcharge d'opérateurs
 	LectureAffichage & operator = (const LectureAffichage & unLectureAffichage) = delete;

@@ -54,6 +54,12 @@ void LectureAffichage::LectureMetaDonnees() {
 	}
 }
 
+public void LectureDictionnaire() 
+{
+
+
+}
+
 //------------------------------------------------- Surcharge d'opérateurs
 
 //-------------------------------------------- Constructeurs - destructeur

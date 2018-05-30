@@ -1,18 +1,17 @@
 /************************************************************************************
-EMPREINTE  -  description
+LectureAffichage  -  description
 -------------------
 début                : 10/01/2018
-copyright            : (C) 2018 par 
-e-mail               : 
+copyright            : (C) 2018 par
+e-mail               :
 *************************************************************************************/
 
-//---------- Interface de la classe <Empreinte> (fichier Empreinte.h) ----------------
-#if ! defined ( EMPREINTE_H )
-#define EMPREINTE_H
+//---------- Interface de la classe <LectureAffichage> (fichier LectureAffichage.h) ----------------
+#if ! defined ( LectureAffichage_H )
+#define LectureAffichage_H
 
 //--------------------------------------------------- Interfaces utilisées
 #include "Maladie.h"
-#include "Donnees.h"
 
 #include <string>
 #include <vector>
@@ -22,61 +21,54 @@ e-mail               :
 //------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
-// Rôle de la classe <Empreinte>
+// Rôle de la classe <LectureAffichage>
 //------------------------------------------------------------------------
 
-class Empreinte
+class LectureAffichage
 {
 	//----------------------------------------------------------------- PUBLIC
 
 public:
-	
-
 	//----------------------------------------------------- Méthodes publiques
 
-	int getID();
+	void LectureMetaDonnees();
 
-	Maladie* getMaladie();
 
 	//------------------------------------------------- Surcharge d'opérateurs
-	Empreinte & operator = (const Empreinte & unEmpreinte) = delete;
+	LectureAffichage & operator = (const LectureAffichage & unLectureAffichage) = delete;
 	// Mode d'emploi :
-	// Il s'agit de la surcharge de l'opérateur = pour des objets Empreinte.
+	// Il s'agit de la surcharge de l'opérateur = pour des objets LectureAffichage.
 	// Contrat :
 	// déclaré mais non défini pour intercepter son éventuel appel.
 
 	//-------------------------------------------- Constructeurs - destructeur
-	Empreinte(const Empreinte & unEmpreinte) = delete;
+	LectureAffichage(const LectureAffichage & unLectureAffichage) = delete;
 	// Mode d'emploi :
-	// Il s'agit du constructueur de copie du objet Empreinte.
+	// Il s'agit du constructueur de copie du objet LectureAffichage.
 	// Contrat :
 	// déclaré mais non défini pour intercepter son éventuel appel.
 
-	Empreinte(int id, Maladie * maMaladie, vector<string> mesValeurs);
-
-	Empreinte();
+	LectureAffichage();
 	// Mode d'emploi :
-	// Il s'agit du constructueur (sans paramètre) par défaut des objets Empreinte.
+	// Il s'agit du constructueur (sans paramètre) par défaut des objets LectureAffichage.
 
-	virtual ~Empreinte();
+	virtual ~LectureAffichage();
 	// Mode d'emploi :
-	// Il s'agit du destructeur des objets Empreinte.
+	// Il s'agit du destructeur des objets LectureAffichage.
 
 	//------------------------------------------------------------------ PRIVE
-
-
-	static map<string, string> attributs;
 
 protected:
 	//----------------------------------------------------- Méthodes protégées
 
+
 	//----------------------------------------------------- Attributs protégés
 
-	int ID;
-	Maladie *maMaladie;
-	vector<string> valeurs;	
+	
+
+
 };
 
-//-------------------------------- Autres définitions dépendantes de <Empreinte>
+//-------------------------------- Autres définitions dépendantes de <LectureAffichage>
 
-#endif // EMPREINTE_H
+#endif // LectureAffichage_H

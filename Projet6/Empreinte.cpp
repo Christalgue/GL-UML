@@ -45,7 +45,9 @@ Empreinte::Empreinte()
 #endif
 } //----- Fin de Empreinte
 
-Empreinte::Empreinte(int id, Maladie * uneMaladie, vector<S> mesMesures)
+
+
+Empreinte::Empreinte(int id, Maladie * uneMaladie, vector<string> mesValeurs)
 // Algorithme : 
 {
 #ifdef MAP
@@ -53,8 +55,10 @@ Empreinte::Empreinte(int id, Maladie * uneMaladie, vector<S> mesMesures)
 #endif
 	ID = id;
 	maMaladie = uneMaladie;
-	mesures = mesMesures;
+	valeurs = mesValeurs;
 } //----- Fin de Empreinte
+
+
 
 Empreinte::~Empreinte()
 {

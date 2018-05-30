@@ -114,9 +114,13 @@
     <ClCompile Include="Empreinte.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Maladie.cpp" />
+    <ClCompile Include="LectureAffichage.cpp" />
+    <ClCompile Include="Donnees.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Empreinte.h" />
+    <ClInclude Include="Donnees.h" />
+    <ClInclude Include="LectureAffichage.h" />
     <ClInclude Include="Maladie.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

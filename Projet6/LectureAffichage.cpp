@@ -36,14 +36,17 @@ void LectureAffichage::LectureMetaDonnees() {
 	if (infile)
 	{
 		map<string, string>::iterator it = infoSysteme.metaDonnees.begin();
+		getline(infile, nomAttribut);
 
 		while (getline(infile, nomAttribut, ';'))
 		{
 			getline(infile, typeAttribut);
 			infoSysteme.metaDonnees.insert(it, std::pair<string, string>(nomAttribut, typeAttribut));
 			cout << nomAttribut << " => " << typeAttribut << endl;
-			cout << it->first << " => " << it->second << endl;
-			it++;
+		}
+		for (map<string, string>::iterator ita = infoSysteme.metaDonnees.begin(); ita != infoSysteme.metaDonnees.end(); ++ita)
+		{
+			cout << ita->first << " => " << ita->second << endl;
 		}
 	}
 	else {

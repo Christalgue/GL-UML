@@ -11,11 +11,12 @@ int main()
 {
 	/*
 	string a = "nomDeMaladie";
-	Maladie cancer_du_sida (a);
-	cout << cancer_du_sida.getNom() << endl;*/
+	Maladie hoi (a);
+	cout << hoi.getNom() << endl;*/
+
+
 
 	LectureAffichage::LectureMetaDonnees();
-
 
 	/*
 	string monEmpreinteID = "562";

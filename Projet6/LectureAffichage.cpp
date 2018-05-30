@@ -17,6 +17,7 @@ using namespace std;
 
 //------------------------------------------------------ Include personnel
 #include "LectureAffichage.h"
+#include "Donnees.h"
 #include <fstream>
 #include <iostream>
 
@@ -33,12 +34,14 @@ void LectureAffichage::LectureMetaDonnees() {
 	ifstream infile(nomFichier);
 	if (infile)
 	{
+		map<string, string>::iterator it = Donnees::metaDonnees.begin();
 		while (getline(infile, nomAttribut, ';'))
 		{
 			getline(infile, typeAttribut);
-
-			cout << nomAttribut << endl;
-			cout << typeAttribut << endl;
+			//Donnees::metaDonnees.insert(it, std::pair<string, string>(nomAttribut, typeAttribut));
+			cout << nomAttribut << " => " << typeAttribut << endl;
+			//cout << it->first << " => " << it->second << endl;
+			//it++;
 		}
 	}
 	else {

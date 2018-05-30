@@ -46,7 +46,7 @@ int main()
 	if (infile2)
 	{
 		while (getline(infile2))
-
+		eeeeeeeeeeeee
 	}*/
 
 	string i;

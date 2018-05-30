@@ -31,7 +31,7 @@ class LectureAffichage
 public:
 	//----------------------------------------------------- Méthodes publiques
 
-	void LectureMetaDonnees();
+	static void LectureMetaDonnees();
 
 
 	//------------------------------------------------- Surcharge d'opérateurs
@@ -63,10 +63,6 @@ protected:
 
 
 	//----------------------------------------------------- Attributs protégés
-
-	
-
-
 };
 
 //-------------------------------- Autres définitions dépendantes de <LectureAffichage>

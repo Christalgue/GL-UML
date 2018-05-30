@@ -41,6 +41,9 @@ void LectureAffichage::LectureMetaDonnees() {
 			cout << typeAttribut << endl;
 		}
 	}
+	else {
+		cout << "Il n'y a pas de metadonnées" << endl;
+	}
 }
 
 //------------------------------------------------- Surcharge d'opérateurs

@@ -1,6 +1,7 @@
 using namespace std;
 #include "Maladie.h"
 #include "Empreinte.h"
+#include "LectureAffichage.h"
 #include <string>
 #include <iostream>
 #include <fstream>
@@ -8,9 +9,13 @@ using namespace std;
 
 int main()
 {
+	/*
 	string a = "nomDeMaladie";
 	Maladie cancer_du_sida (a);
-	cout << cancer_du_sida.getNom() << endl;
+	cout << cancer_du_sida.getNom() << endl;*/
+
+	LectureAffichage::LectureMetaDonnees();
+
 
 	/*
 	string monEmpreinteID = "562";

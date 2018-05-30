@@ -34,8 +34,6 @@ public:
 
 	//----------------------------------------------------- Méthodes publiques
 
-
-
 	//------------------------------------------------- Surcharge d'opérateurs
 	Donnees & operator = (const Donnees & unDonnees) = delete;
 	// Mode d'emploi :
@@ -63,7 +61,7 @@ public:
 	//------------------------------------------------------------------ PRIVE
 protected:
 	//----------------------------------------------------- Méthodes protégées
-
+	map<string, string> metaDonnees;
 
 	//----------------------------------------------------- Attributs protégés
 

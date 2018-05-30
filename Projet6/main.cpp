@@ -14,9 +14,14 @@ int main()
 	Maladie hoi (a);
 	cout << hoi.getNom() << endl;*/
 
+	LectureAffichage lA;
+
+	lA.LectureMetaDonnees();
 
 
-	LectureAffichage::LectureMetaDonnees();
+
+
+	//LectureAffichage::LectureMetaDonnees();
 
 	/*
 	string monEmpreinteID = "562";

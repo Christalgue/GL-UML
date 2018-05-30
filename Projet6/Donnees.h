@@ -57,13 +57,13 @@ public:
 	// Il s'agit du destructeur des objets Donnees.
 
 
-	static map<string, string> metaDonnees;
+	map<string, string> metaDonnees;
 	//------------------------------------------------------------------ PRIVE
 protected:
 	//----------------------------------------------------- Méthodes protégées
 
 	//----------------------------------------------------- Attributs protégés
-
+	
 };
 
 //-------------------------------- Autres définitions dépendantes de <Donnees>

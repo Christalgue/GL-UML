@@ -32,16 +32,18 @@ void LectureAffichage::LectureMetaDonnees() {
 	string typeAttribut;
 	string nomFichier = "HealthMeasurementDescription.txt";
 	ifstream infile(nomFichier);
+
 	if (infile)
 	{
-		map<string, string>::iterator it = Donnees::metaDonnees.begin();
+		map<string, string>::iterator it = infoSysteme.metaDonnees.begin();
+
 		while (getline(infile, nomAttribut, ';'))
 		{
 			getline(infile, typeAttribut);
-			//Donnees::metaDonnees.insert(it, std::pair<string, string>(nomAttribut, typeAttribut));
+			infoSysteme.metaDonnees.insert(it, std::pair<string, string>(nomAttribut, typeAttribut));
 			cout << nomAttribut << " => " << typeAttribut << endl;
-			//cout << it->first << " => " << it->second << endl;
-			//it++;
+			cout << it->first << " => " << it->second << endl;
+			it++;
 		}
 	}
 	else {
@@ -53,7 +55,7 @@ void LectureAffichage::LectureMetaDonnees() {
 
 //-------------------------------------------- Constructeurs - destructeur
 
-LectureAffichage::LectureAffichage()
+LectureAffichage::LectureAffichage() : infoSysteme()
 // Algorithme : 
 {
 #ifdef MAP

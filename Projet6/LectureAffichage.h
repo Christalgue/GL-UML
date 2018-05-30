@@ -12,7 +12,7 @@ e-mail               :
 
 //--------------------------------------------------- Interfaces utilisées
 #include "Maladie.h"
-
+#include "Donnees.h"
 #include <string>
 #include <vector>
 #include <map>
@@ -31,7 +31,7 @@ class LectureAffichage
 public:
 	//----------------------------------------------------- Méthodes publiques
 
-	static void LectureMetaDonnees();
+	void LectureMetaDonnees();
 
 
 	//------------------------------------------------- Surcharge d'opérateurs
@@ -63,6 +63,7 @@ protected:
 
 
 	//----------------------------------------------------- Attributs protégés
+	Donnees infoSysteme;
 };
 
 //-------------------------------- Autres définitions dépendantes de <LectureAffichage>

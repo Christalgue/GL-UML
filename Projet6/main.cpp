@@ -28,10 +28,16 @@ int main()
 	string nomFichierDico = "HealthMeasurementsWithLabels2.txt";
 
 	lA.LectureDictionnaire(nomFichierDico);
-        
-    //lA.AfficherMaladiesPrisesEnCompte();
+    
+	cout << "-------------------" << endl;
 
+    lA.AfficherMaladiesPrisesEnCompte();
 
+	cout << "-------------------" << endl;
+
+	string nomFichierEmpreintes = "HealthMeasurements.txt";
+
+	lA.LectureEmpreintes(nomFichierEmpreintes);
 
 
 	//LectureAffichage::LectureMetaDonnees();

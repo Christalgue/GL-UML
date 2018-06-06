@@ -23,9 +23,11 @@ int main()
 
 	// Test le chargement du dictionnaire
 
-	string nomFichierDico = "HealthMeasurementsWithLabels.txt";
+	string nomFichierDico = "HealthMeasurementsWithLabels2.txt";
 
-	lA.LectureDictionnaire("HealthMeasurementsWithLabels.txt");
+	lA.LectureDictionnaire(nomFichierDico);
+        
+        lA.AfficherMaladiesPrisesEnCompte();
 
 
 

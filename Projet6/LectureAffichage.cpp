@@ -115,6 +115,16 @@ void LectureAffichage::LectureDictionnaire(string nomFichier)
 	}
 }
 
+void LectureAffichage::AfficherMaladiesPrisesEnCompte()
+{
+    cout << "Liste des maladies prises en compte dans l'analyse des empreintes : " << endl;
+    vector<string> maladies;
+    for (multimap<string, Empreinte>::iterator itDico = infoSysteme.dictionnaire.begin(); itDico != infoSysteme.dictionnaire.end(); itDico = infoSysteme.dictionnaire.upper_bound(itDico->first))
+    {
+        cout << " - " << itDico->first << endl;
+    }
+}
+
 //------------------------------------------------- Surcharge d'op�rateurs
 
 //-------------------------------------------- Constructeurs - destructeur

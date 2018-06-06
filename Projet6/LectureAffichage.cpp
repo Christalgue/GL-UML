@@ -84,7 +84,7 @@ void LectureAffichage::LectureDictionnaire(string nomFichier)
 			string nomMaladie;
 			getline(fluxString, nomMaladie);
 
-			Maladie m(nomMaladie);
+			//Maladie m(nomMaladie);
 			
 			Empreinte e(stoi(id), valeurs);
 

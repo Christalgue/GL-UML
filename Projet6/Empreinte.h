@@ -42,7 +42,7 @@ public:
 	// déclaré mais non défini pour intercepter son éventuel appel.
 
 	//-------------------------------------------- Constructeurs - destructeur
-	Empreinte(const Empreinte & unEmpreinte) = delete;
+	Empreinte(const Empreinte & unEmpreinte) = default;
 	// Mode d'emploi :
 	// Il s'agit du constructueur de copie du objet Empreinte.
 	// Contrat :

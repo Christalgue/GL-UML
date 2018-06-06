@@ -82,37 +82,38 @@ void LectureAffichage::LectureDictionnaire(string nomFichier)
 		while (!infile.eof())
 		{
 			getline(infile, ligne);
+			if (!ligne.empty()) {
+				map <string, string> valeurs;
+				stringstream fluxString(ligne);
 
-			map <string, string> valeurs;
-			stringstream fluxString(ligne);
+				string id;
+				//getline(fluxString, ligne);
+				getline(fluxString, id, ';');
 
-			string id;
-			//getline(fluxString, ligne);
-			getline(fluxString, id, ';');
-
-			//cout << ligne << endl;
-			cout << id << endl;
-			vector<string>::iterator it = attributs.begin();
-			++it;
-			while (getline(fluxString, valeurAttribut, ';'))
-			{
-				// La maladie est stockée dans les valeurs
-				valeurs.insert(make_pair(*it, valeurAttribut));
-				//cout << "Valeur : " << *it << " => " << valeurAttribut << endl;
+				//cout << ligne << endl;
+				cout << id << endl;
+				vector<string>::iterator it = attributs.begin();
 				++it;
-			}
-			--it;
-			// effacer la maladie de la map
-			map<string,string>::iterator mal = valeurs.find(*it);
-			valeurs.erase(mal);
+				while (getline(fluxString, valeurAttribut, ';'))
+				{
+					// La maladie est stockée dans les valeurs
+					valeurs.insert(make_pair(*it, valeurAttribut));
+					//cout << "Valeur : " << *it << " => " << valeurAttribut << endl;
+					++it;
+				}
+				--it;
+				// effacer la maladie de la map
+				map<string, string>::iterator mal = valeurs.find(*it);
+				valeurs.erase(mal);
 
-			string nomMaladie = valeurAttribut;
-			//getline(fluxString, nomMaladie);
-			//cout << "Valeur M : " << nomMaladie << endl;
+				string nomMaladie = valeurAttribut;
+				//getline(fluxString, nomMaladie);
+				//cout << "Valeur M : " << nomMaladie << endl;
 
-			if (!nomMaladie.empty()) {
-				Empreinte e(stoi(id), valeurs);
-				infoSysteme.dictionnaire.insert(make_pair(nomMaladie, e));
+				if (!nomMaladie.empty()) {
+					Empreinte e(stoi(id), valeurs);
+					infoSysteme.dictionnaire.insert(make_pair(nomMaladie, e));
+				}
 			}
 		}
 	}

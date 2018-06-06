@@ -80,19 +80,21 @@ void LectureAffichage::LectureDictionnaire(string nomFichier)
 			getline(fluxString, id, ';');
 
 			//cout << ligne << endl;
-
-			cout << id << endl;
+			//cout << id << endl;
 
 			while (getline(fluxString, valeurAttribut, ';'))
 			{
+				// La maladie est stockée dans les valeurs
 				valeurs.push_back(valeurAttribut);
-				cout << "Valeur : " << valeurAttribut << endl;
+				//cout << "Valeur : " << valeurAttribut << endl;
 			}
 			string nomMaladie = valeurAttribut;
 			//getline(fluxString, nomMaladie);
-			cout << "Valeur M : " << nomMaladie << endl;
+			//cout << "Valeur M : " << nomMaladie << endl;
 
 			if (!nomMaladie.empty()) {
+				// Enlever la maladie du vecteur valeurs
+				valeurs.pop_back();
 				Empreinte e(stoi(id), valeurs);
 				infoSysteme.dictionnaire.insert(make_pair(nomMaladie, e));
 			}
@@ -101,7 +103,11 @@ void LectureAffichage::LectureDictionnaire(string nomFichier)
 
 	for (multimap<string, Empreinte>::iterator ita = infoSysteme.dictionnaire.begin(); ita != infoSysteme.dictionnaire.end(); ++ita)
 	{
+		vector <string> val = ita->second.getValeurEmpreinte();
 		cout << ita->first << " => " << ita->second.getID() << endl;
+		for (vector<string>::iterator itb = val.begin(); itb != val.end(); ++itb) {
+			cout << *itb << endl;
+		}
 	}
 }
 

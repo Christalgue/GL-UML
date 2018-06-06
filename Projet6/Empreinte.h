@@ -32,6 +32,7 @@ public:
 
 	int getID();
 
+	vector <string> getValeurEmpreinte();
 	//Maladie* getMaladie();
 
 	//------------------------------------------------- Surcharge d'opérateurs
@@ -39,14 +40,14 @@ public:
 	// Mode d'emploi :
 	// Il s'agit de la surcharge de l'opérateur = pour des objets Empreinte.
 	// Contrat :
-	// déclaré mais non défini pour intercepter son éventuel appel.
+	// déclarEmais non défini pour intercepter son éventuel appel.
 
 	//-------------------------------------------- Constructeurs - destructeur
 	Empreinte(const Empreinte & unEmpreinte) = default;
 	// Mode d'emploi :
 	// Il s'agit du constructueur de copie du objet Empreinte.
 	// Contrat :
-	// déclaré mais non défini pour intercepter son éventuel appel.
+	// déclarEmais non défini pour intercepter son éventuel appel.
 
 	Empreinte(int id, /*Maladie * maMaladie,*/ vector<string> mesValeurs);
 

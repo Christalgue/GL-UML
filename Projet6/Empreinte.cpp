@@ -29,6 +29,10 @@ int Empreinte::getID() {
 	return ID;
 }
 
+vector <string> Empreinte::getValeurEmpreinte() {
+	return valeursAttributsEmpreinte;
+}
+
 /*Maladie* Empreinte::getMaladie() {
 	return maMaladie;
 }*/
@@ -47,7 +51,7 @@ Empreinte::Empreinte()
 
 
 
-Empreinte::Empreinte(int id, /*Maladie * uneMaladie,*/ vector<string> mesValeursAttributsEmpreinte)
+Empreinte::Empreinte(int id, vector<string> mesValeursAttributsEmpreinte)
 // Algorithme : 
 {
 #ifdef MAP

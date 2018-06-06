@@ -16,10 +16,12 @@ int main()
 
 	LectureAffichage lA;
 	
-	// Test le chargement de la mï¿½ta donnï¿½e
+	// Test le chargement de la mE½ta donnE½e
 	string nomFichierMetaDonnee = "HealthMeasurementDescription.txt";
 
 	lA.LectureMetaDonnees(nomFichierMetaDonnee);
+
+	cout << "-------------------" << endl;
 
 	// Test le chargement du dictionnaire
 

@@ -29,7 +29,7 @@ int Empreinte::getID() {
 	return ID;
 }
 
-vector <string> Empreinte::getValeurEmpreinte() {
+map <string, string> Empreinte::getValeurEmpreinte() {
 	return valeursAttributsEmpreinte;
 }
 
@@ -51,7 +51,7 @@ Empreinte::Empreinte()
 
 
 
-Empreinte::Empreinte(int id, vector<string> mesValeursAttributsEmpreinte)
+Empreinte::Empreinte(int id, map <string, string> mesValeursAttributsEmpreinte)
 // Algorithme : 
 {
 #ifdef MAP

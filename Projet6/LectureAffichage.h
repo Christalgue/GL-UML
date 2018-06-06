@@ -35,6 +35,7 @@ public:
 
 	void LectureDictionnaire(string nomFichierDictionnaire);
 
+	void LectureEmpreintes(string nomFichierEmpreintes);
 
 	//------------------------------------------------- Surcharge d'opérateurs
 	LectureAffichage & operator = (const LectureAffichage & unLectureAffichage) = delete;

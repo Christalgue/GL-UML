@@ -12,7 +12,7 @@ e-mail               :
 
 //--------------------------------------------------- Interfaces utilisées
 #include <string>
-#include <vector>
+#include <map>
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
@@ -32,7 +32,7 @@ public:
 
 	int getID();
 
-	vector <string> getValeurEmpreinte();
+	map <string,string> getValeurEmpreinte();
 	//Maladie* getMaladie();
 
 	//------------------------------------------------- Surcharge d'opérateurs
@@ -49,7 +49,7 @@ public:
 	// Contrat :
 	// déclarEmais non défini pour intercepter son éventuel appel.
 
-	Empreinte(int id, /*Maladie * maMaladie,*/ vector<string> mesValeurs);
+	Empreinte(int id, /*Maladie * maMaladie,*/ map<string,string> mesValeurs);
 
 	Empreinte();
 	// Mode d'emploi :
@@ -68,7 +68,7 @@ protected:
 
 	int ID;
 	//Maladie *maMaladie;
-	vector <string> valeursAttributsEmpreinte;	
+	map <string,string> valeursAttributsEmpreinte;	
 };
 
 //-------------------------------- Autres définitions dépendantes de <Empreinte>

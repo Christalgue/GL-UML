@@ -63,11 +63,81 @@ void LectureAffichage::LectureDictionnaire(string nomFichier)
 
 	if (infile)
 	{
+		//multimap<string, Empreinte>::iterator itMultimap = infoSysteme.dictionnaire.begin();
+		string valeurAttribut;
+		string nomAttribut;
+		string ligne;
+
+		vector <string>  attributs; 
+
+		getline(infile,ligne);
+		stringstream fluxString(ligne);
+		
+		while (getline(fluxString, nomAttribut, ';'))
+		{
+			attributs.push_back(nomAttribut);
+			//cout << "Valeur : " << nomAttribut << endl;
+		}
+
+		while (!infile.eof())
+		{
+			getline(infile, ligne);
+
+			map <string, string> valeurs;
+			stringstream fluxString(ligne);
+
+			string id;
+			//getline(fluxString, ligne);
+			getline(fluxString, id, ';');
+
+			//cout << ligne << endl;
+			//cout << id << endl;
+			vector<string>::iterator it = attributs.begin();
+			++it;
+			while (getline(fluxString, valeurAttribut, ';'))
+			{
+				// La maladie est stockée dans les valeurs
+				valeurs.insert(make_pair(*it, valeurAttribut));
+				//cout << "Valeur : " << *it << " => " << valeurAttribut << endl;
+				++it;
+			}
+			--it;
+			// effacer la maladie de la map
+			map<string,string>::iterator mal = valeurs.find(*it);
+			valeurs.erase(mal);
+
+			string nomMaladie = valeurAttribut;
+			//getline(fluxString, nomMaladie);
+			//cout << "Valeur M : " << nomMaladie << endl;
+
+			if (!nomMaladie.empty()) {
+				Empreinte e(stoi(id), valeurs);
+				infoSysteme.dictionnaire.insert(make_pair(nomMaladie, e));
+			}
+		}
+	}
+	for (multimap<string, Empreinte>::iterator ita = infoSysteme.dictionnaire.begin(); ita != infoSysteme.dictionnaire.end(); ++ita)
+	{
+		// Maladie => id de l'empreinte
+		cout << ita->first << " => " << ita->second.getID() << endl;
+		map <string, string> val = ita->second.getValeurEmpreinte();
+		for (map <string, string>::iterator itb = val.begin(); itb != val.end(); ++itb) {
+			// nomAttribut => valeur
+			cout << itb->first << " => " << itb->second << endl;
+		}
+	}
+}
+
+void LectureAffichage::LectureEmpreintes(string nomFichier)
+{
+	ifstream infile(nomFichier);
+	if (infile)
+	{
 		multimap<string, Empreinte>::iterator itMultimap = infoSysteme.dictionnaire.begin();
 		string valeurAttribut;
 		string ligne;
-		getline(infile,ligne); // 1�re ligne inutile
-		
+		getline(infile, ligne); // 1�re ligne inutile
+
 		while (!infile.eof())
 		{
 			getline(infile, ligne);
@@ -95,22 +165,9 @@ void LectureAffichage::LectureDictionnaire(string nomFichier)
 			if (!nomMaladie.empty()) {
 				// Enlever la maladie du vecteur valeurs
 				valeurs.pop_back();
-				Empreinte e(stoi(id), valeurs);
-				infoSysteme.dictionnaire.insert(make_pair(nomMaladie, e));
+				//Empreinte e(stoi(id), valeurs);
+				//infoSysteme.dictionnaire.insert(make_pair(nomMaladie, e));
 			}
-		}
-	}
-
-	for (multimap<string, Empreinte>::iterator ita = infoSysteme.dictionnaire.begin(); ita != infoSysteme.dictionnaire.end(); ++ita)
-	{
-		vector <string> val = ita->second.getValeurEmpreinte();
-		cout << ita->first << " => " << ita->second.getID() << endl;
-
-		map<string, string>::iterator itc = infoSysteme.metaDonnees.begin();
-
-		for (vector<string>::iterator itb = val.begin(); itb != val.end(); ++itb) {
-			cout << itc->first << " => " << *itb << endl;
-			++itc;
 		}
 	}
 }

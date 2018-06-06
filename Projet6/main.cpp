@@ -14,12 +14,18 @@ int main()
 	Maladie hoi (a);
 	cout << hoi.getNom() << endl;*/
 
-
-	string nomFichier = "HealthMeasurementDescription.txt";
-
 	LectureAffichage lA;
+	
+	// Test le chargement de la méta donnée
+	string nomFichierMetaDonnee = "HealthMeasurementDescription.txt";
 
-	lA.LectureMetaDonnees(nomFichier);
+	lA.LectureMetaDonnees(nomFichierMetaDonnee);
+
+	// Test le chargement du dictionnaire
+
+	string nomFichierDico = "HealthMeasurementsWithLabels.txt";
+
+	lA.LectureDictionnaire("HealthMeasurementsWithLabels.txt");
 
 
 

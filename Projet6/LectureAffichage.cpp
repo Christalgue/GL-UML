@@ -65,32 +65,44 @@ void LectureAffichage::LectureDictionnaire(string nomFichier)
 	{
 		multimap<string, Empreinte>::iterator itMultimap = infoSysteme.dictionnaire.begin();
 		string valeurAttribut;
-
+		string ligne;
+		getline(infile,ligne); // 1ère ligne inutile
+		
 		while (!infile.eof())
 		{
-			string ligne;
 			getline(infile, ligne);
+
+			//cout << ligne << endl;
+
 			vector<string> valeurs;
-			vector<string>::iterator itVector = valeurs.begin();
 			stringstream fluxString(ligne);
 
 			string id;
+			getline(fluxString, ligne);
 			getline(fluxString, id, ';');
+
+			cout << id << endl;
 
 			while (getline(fluxString, valeurAttribut, ';'))
 			{
-				valeurs.insert(itVector, valeurAttribut);
+				valeurs.push_back(valeurAttribut);
+				cout << valeurAttribut << endl;
 			}
 			string nomMaladie;
 			getline(fluxString, nomMaladie);
 
-			//Maladie m(nomMaladie);
 			
-			Empreinte e(stoi(id), valeurs);
 
-			infoSysteme.dictionnaire.insert(make_pair(nomMaladie, e));
+			//Empreinte e(stoi(id), valeurs);
+
+			//infoSysteme.dictionnaire.insert(make_pair(nomMaladie, e));
 		}
 	}
+
+	/*for (multimap<string, Empreinte>::iterator ita = infoSysteme.dictionnaire.begin(); ita != infoSysteme.dictionnaire.end(); ++ita)
+	{
+		cout << ita->first << " => " << ita->second.getID() << endl;
+	}*/
 }
 
 //------------------------------------------------- Surcharge d'opérateurs

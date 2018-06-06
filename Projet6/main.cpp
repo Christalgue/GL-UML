@@ -16,7 +16,7 @@ int main()
 
 	LectureAffichage lA;
 	
-	// Test le chargement de la méta donnée
+	// Test le chargement de la mï¿½ta donnï¿½e
 	string nomFichierMetaDonnee = "HealthMeasurementDescription.txt";
 
 	lA.LectureMetaDonnees(nomFichierMetaDonnee);
@@ -62,3 +62,7 @@ int main()
 
 	return 0;
 }//----- Fin de main
+
+
+
+// TEST POUR GIT

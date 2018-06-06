@@ -88,14 +88,14 @@ void LectureAffichage::LectureDictionnaire(string nomFichier)
 				valeurs.push_back(valeurAttribut);
 				cout << "Valeur : " << valeurAttribut << endl;
 			}
-			string nomMaladie;
-			getline(fluxString, nomMaladie);
-
+			string nomMaladie = valeurAttribut;
+			//getline(fluxString, nomMaladie);
 			cout << "Valeur M : " << nomMaladie << endl;
 
-			Empreinte e(stoi(id), valeurs);
-
-			infoSysteme.dictionnaire.insert(make_pair(valeurAttribut, e));
+			if (!nomMaladie.empty()) {
+				Empreinte e(stoi(id), valeurs);
+				infoSysteme.dictionnaire.insert(make_pair(nomMaladie, e));
+			}
 		}
 	}
 

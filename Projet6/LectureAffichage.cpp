@@ -72,26 +72,22 @@ void LectureAffichage::LectureDictionnaire(string nomFichier)
 		{
 			getline(infile, ligne);
 
-			//cout << ligne << endl;
-
 			vector<string> valeurs;
 			stringstream fluxString(ligne);
 
 			string id;
-			getline(fluxString, ligne);
 			getline(fluxString, id, ';');
 
-			cout << id << endl;
+			cout << "string " << id << endl;
 
 			while (getline(fluxString, valeurAttribut, ';'))
 			{
 				valeurs.push_back(valeurAttribut);
-				cout << valeurAttribut << endl;
 			}
 			string nomMaladie;
 			getline(fluxString, nomMaladie);
 
-			
+			cout << "entier " << stoi(id) << endl;
 
 			//Empreinte e(stoi(id), valeurs);
 

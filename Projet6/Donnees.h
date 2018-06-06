@@ -41,14 +41,14 @@ public:
 	// Mode d'emploi :
 	// Il s'agit de la surcharge de l'opérateur = pour des objets Donnees.
 	// Contrat :
-	// déclaré mais non défini pour intercepter son éventuel appel.
+	// déclarEmais non défini pour intercepter son éventuel appel.
 
 	//-------------------------------------------- Constructeurs - destructeur
 	Donnees(const Donnees & unDonnees) = delete;
 	// Mode d'emploi :
 	// Il s'agit du constructueur de copie du objet Donnees.
 	// Contrat :
-	// déclaré mais non défini pour intercepter son éventuel appel.
+	// déclarEmais non défini pour intercepter son éventuel appel.
 
 	Donnees();
 	// Mode d'emploi :

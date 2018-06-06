@@ -1,17 +1,17 @@
-/*******************************************************************************************
+ï»¿/*******************************************************************************************
 LectureAffichage  -  description
 -------------------
-début                : 10/01/2018
+dï¿½but                : 10/01/2018
 copyright            : (C) 2018 par
 e-mail               :
 ********************************************************************************************/
 
 
-//---------- Réalisation de la classe <LectureAffichage> (fichier LectureAffichage.cpp) ------------
+//---------- Rï¿½alisation de la classe <LectureAffichage> (fichier LectureAffichage.cpp) ------------
 
 //---------------------------------------------------------------- INCLUDE
 
-//-------------------------------------------------------- Include système
+//-------------------------------------------------------- Include systï¿½me
 using namespace std;
 
 
@@ -27,7 +27,7 @@ using namespace std;
 
 //----------------------------------------------------------------- PUBLIC
 
-//----------------------------------------------------- Méthodes publiques
+//----------------------------------------------------- Mï¿½thodes publiques
 
 void LectureAffichage::LectureMetaDonnees(string nomFichier) 
 {	
@@ -38,7 +38,7 @@ void LectureAffichage::LectureMetaDonnees(string nomFichier)
 		string nomAttribut;
 		string typeAttribut;
 		map<string, string>::iterator it = infoSysteme.metaDonnees.begin();
-		getline(infile, nomAttribut); // Pour sauter la 1ère ligne qui ne nous intéresse pas
+		getline(infile, nomAttribut); // Pour sauter la 1ï¿½re ligne qui ne nous intï¿½resse pas
 
 		while (getline(infile, nomAttribut, ';'))
 		{
@@ -53,7 +53,7 @@ void LectureAffichage::LectureMetaDonnees(string nomFichier)
 		}*/
 	}
 	else {
-		cout << "Il n'y a pas de metadonnées" << endl;
+		cout << "Il n'y a pas de metadonnï¿½es" << endl;
 	}
 }
 
@@ -66,7 +66,7 @@ void LectureAffichage::LectureDictionnaire(string nomFichier)
 		multimap<string, Empreinte>::iterator itMultimap = infoSysteme.dictionnaire.begin();
 		string valeurAttribut;
 		string ligne;
-		getline(infile,ligne); // 1ère ligne inutile
+		getline(infile,ligne); // 1ï¿½re ligne inutile
 		
 		while (!infile.eof())
 		{
@@ -76,34 +76,36 @@ void LectureAffichage::LectureDictionnaire(string nomFichier)
 			stringstream fluxString(ligne);
 
 			string id;
+			//getline(fluxString, ligne);
 			getline(fluxString, id, ';');
 
-			cout << "string " << id << endl;
+			//cout << ligne << endl;
+
+			cout << id << endl;
 
 			while (getline(fluxString, valeurAttribut, ';'))
 			{
 				valeurs.push_back(valeurAttribut);
+				cout << "Valeur : " << valeurAttribut << endl;
 			}
 			string nomMaladie;
 			getline(fluxString, nomMaladie);
 
-			cout << "entier " << stoi(id) << endl;
+			cout << "Valeur M : " << nomMaladie << endl;
 
-			// TEST GIT
+			Empreinte e(stoi(id), valeurs);
 
-			//Empreinte e(stoi(id), valeurs);
-
-			//infoSysteme.dictionnaire.insert(make_pair(nomMaladie, e));
+			infoSysteme.dictionnaire.insert(make_pair(valeurAttribut, e));
 		}
 	}
 
-	/*for (multimap<string, Empreinte>::iterator ita = infoSysteme.dictionnaire.begin(); ita != infoSysteme.dictionnaire.end(); ++ita)
+	for (multimap<string, Empreinte>::iterator ita = infoSysteme.dictionnaire.begin(); ita != infoSysteme.dictionnaire.end(); ++ita)
 	{
 		cout << ita->first << " => " << ita->second.getID() << endl;
-	}*/
+	}
 }
 
-//------------------------------------------------- Surcharge d'opérateurs
+//------------------------------------------------- Surcharge d'opï¿½rateurs
 
 //-------------------------------------------- Constructeurs - destructeur
 
@@ -127,4 +129,4 @@ LectureAffichage::~LectureAffichage()
 
   //------------------------------------------------------------------ PRIVE
 
-  //----------------------------------------------------- Méthodes protégées
+  //----------------------------------------------------- Mï¿½thodes protï¿½gï¿½es

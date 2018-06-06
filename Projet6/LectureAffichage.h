@@ -41,14 +41,14 @@ public:
 	// Mode d'emploi :
 	// Il s'agit de la surcharge de l'opérateur = pour des objets LectureAffichage.
 	// Contrat :
-	// déclaré mais non défini pour intercepter son éventuel appel.
+	// déclarEmais non défini pour intercepter son éventuel appel.
 
 	//-------------------------------------------- Constructeurs - destructeur
 	LectureAffichage(const LectureAffichage & unLectureAffichage) = delete;
 	// Mode d'emploi :
 	// Il s'agit du constructueur de copie du objet LectureAffichage.
 	// Contrat :
-	// déclaré mais non défini pour intercepter son éventuel appel.
+	// déclarEmais non défini pour intercepter son éventuel appel.
 
 	LectureAffichage();
 	// Mode d'emploi :

@@ -31,7 +31,9 @@ class LectureAffichage
 public:
 	//----------------------------------------------------- Méthodes publiques
 
-	void LectureMetaDonnees();
+	void LectureMetaDonnees(string nomFichierMetaDonnee);
+
+	void LectureDictionnaire(string nomFichierDictionnaire);
 
 
 	//------------------------------------------------- Surcharge d'opérateurs

@@ -14,9 +14,12 @@ int main()
 	Maladie hoi (a);
 	cout << hoi.getNom() << endl;*/
 
+
+	string nomFichier = "HealthMeasurementDescription.txt";
+
 	LectureAffichage lA;
 
-	lA.LectureMetaDonnees();
+	lA.LectureMetaDonnees(nomFichier);
 
 
 

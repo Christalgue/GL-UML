@@ -29,9 +29,9 @@ int Empreinte::getID() {
 	return ID;
 }
 
-Maladie* Empreinte::getMaladie() {
+/*Maladie* Empreinte::getMaladie() {
 	return maMaladie;
-}
+}*/
 
   //------------------------------------------------- Surcharge d'opérateurs
 
@@ -47,15 +47,15 @@ Empreinte::Empreinte()
 
 
 
-Empreinte::Empreinte(int id, Maladie * uneMaladie, vector<string> mesValeurs)
+Empreinte::Empreinte(int id, /*Maladie * uneMaladie,*/ vector<string> mesValeursAttributsEmpreinte)
 // Algorithme : 
 {
 #ifdef MAP
 	cout << "Appel au constructeur de <Empreinte>" << endl;
 #endif
 	ID = id;
-	maMaladie = uneMaladie;
-	valeurs = mesValeurs;
+	//maMaladie = uneMaladie;
+	valeursAttributsEmpreinte = mesValeursAttributsEmpreinte;
 } //----- Fin de Empreinte
 
 

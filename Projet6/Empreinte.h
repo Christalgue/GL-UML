@@ -11,12 +11,8 @@ e-mail               :
 #define EMPREINTE_H
 
 //--------------------------------------------------- Interfaces utilisées
-#include "Maladie.h"
-#include "Donnees.h"
-
 #include <string>
 #include <vector>
-#include <map>
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
@@ -36,7 +32,7 @@ public:
 
 	int getID();
 
-	Maladie* getMaladie();
+	//Maladie* getMaladie();
 
 	//------------------------------------------------- Surcharge d'opérateurs
 	Empreinte & operator = (const Empreinte & unEmpreinte) = delete;
@@ -52,7 +48,7 @@ public:
 	// Contrat :
 	// déclaré mais non défini pour intercepter son éventuel appel.
 
-	Empreinte(int id, Maladie * maMaladie, vector<string> mesValeurs);
+	Empreinte(int id, /*Maladie * maMaladie,*/ vector<string> mesValeurs);
 
 	Empreinte();
 	// Mode d'emploi :
@@ -70,8 +66,8 @@ protected:
 	//----------------------------------------------------- Attributs protégés
 
 	int ID;
-	Maladie *maMaladie;
-	vector<string> valeurs;	
+	//Maladie *maMaladie;
+	vector <string> valeursAttributsEmpreinte;	
 };
 
 //-------------------------------- Autres définitions dépendantes de <Empreinte>

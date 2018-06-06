@@ -12,10 +12,12 @@ e-mail               :
 
 //--------------------------------------------------- Interfaces utilisées
 #include "Maladie.h"
-
+#include "Empreinte.h"
 #include <string>
 #include <vector>
 #include <map>
+#include <unordered_map>
+
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
@@ -58,6 +60,11 @@ public:
 
 
 	map<string, string> metaDonnees;
+
+	multimap<string, Empreinte> dictionnaire;
+
+	vector<Empreinte> ensembleEmpreinte;
+
 	//------------------------------------------------------------------ PRIVE
 protected:
 	//----------------------------------------------------- Méthodes protégées

@@ -1,7 +1,7 @@
 /************************************************************************************
 LectureAffichage  -  description
 -------------------
-début                : 10/01/2018
+dï¿½but                : 10/01/2018
 copyright            : (C) 2018 par
 e-mail               :
 *************************************************************************************/
@@ -10,7 +10,7 @@ e-mail               :
 #if ! defined ( LectureAffichage_H )
 #define LectureAffichage_H
 
-//--------------------------------------------------- Interfaces utilisées
+//--------------------------------------------------- Interfaces utilisï¿½es
 #include "Maladie.h"
 #include "Donnees.h"
 #include <string>
@@ -21,7 +21,7 @@ e-mail               :
 //------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
-// Rôle de la classe <LectureAffichage>
+// Rï¿½le de la classe <LectureAffichage>
 //------------------------------------------------------------------------
 
 class LectureAffichage
@@ -29,31 +29,32 @@ class LectureAffichage
 	//----------------------------------------------------------------- PUBLIC
 
 public:
-	//----------------------------------------------------- Méthodes publiques
+	//----------------------------------------------------- Mï¿½thodes publiques
 
 	void LectureMetaDonnees(string nomFichierMetaDonnee);
 
 	void LectureDictionnaire(string nomFichierDictionnaire);
 
-	void LectureEmpreintes(string nomFichierEmpreintes);
-
-	//------------------------------------------------- Surcharge d'opérateurs
+       void AfficherMaladiesPrisesEnCompte();
+        
+        
+	//------------------------------------------------- Surcharge d'opï¿½rateurs
 	LectureAffichage & operator = (const LectureAffichage & unLectureAffichage) = delete;
 	// Mode d'emploi :
-	// Il s'agit de la surcharge de l'opérateur = pour des objets LectureAffichage.
+	// Il s'agit de la surcharge de l'opï¿½rateur = pour des objets LectureAffichage.
 	// Contrat :
-	// déclarEmais non défini pour intercepter son éventuel appel.
+	// dï¿½clarï¿½Emais non dï¿½fini pour intercepter son ï¿½ventuel appel.
 
 	//-------------------------------------------- Constructeurs - destructeur
 	LectureAffichage(const LectureAffichage & unLectureAffichage) = delete;
 	// Mode d'emploi :
 	// Il s'agit du constructueur de copie du objet LectureAffichage.
 	// Contrat :
-	// déclarEmais non défini pour intercepter son éventuel appel.
+	// dï¿½clarï¿½Emais non dï¿½fini pour intercepter son ï¿½ventuel appel.
 
 	LectureAffichage();
 	// Mode d'emploi :
-	// Il s'agit du constructueur (sans paramètre) par défaut des objets LectureAffichage.
+	// Il s'agit du constructueur (sans paramï¿½tre) par dï¿½faut des objets LectureAffichage.
 
 	virtual ~LectureAffichage();
 	// Mode d'emploi :
@@ -62,13 +63,13 @@ public:
 	//------------------------------------------------------------------ PRIVE
 
 protected:
-	//----------------------------------------------------- Méthodes protégées
+	//----------------------------------------------------- Mï¿½thodes protï¿½gï¿½es
 
 
-	//----------------------------------------------------- Attributs protégés
+	//----------------------------------------------------- Attributs protï¿½gï¿½s
 	Donnees infoSysteme;
 };
 
-//-------------------------------- Autres définitions dépendantes de <LectureAffichage>
+//-------------------------------- Autres dï¿½finitions dï¿½pendantes de <LectureAffichage>
 
 #endif // LectureAffichage_H

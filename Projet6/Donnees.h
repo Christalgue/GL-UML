@@ -12,7 +12,7 @@ e-mail               :
 
 //--------------------------------------------------- Interfaces utilisées
 #include "Maladie.h"
-#include "Empreinte.h"
+
 #include <string>
 #include <vector>
 #include <map>
@@ -58,7 +58,6 @@ public:
 
 
 	map<string, string> metaDonnees;
-	multimap<Maladie, Empreinte> dictionnaire;
 	//------------------------------------------------------------------ PRIVE
 protected:
 	//----------------------------------------------------- Méthodes protégées

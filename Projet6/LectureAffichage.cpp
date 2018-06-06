@@ -44,13 +44,13 @@ void LectureAffichage::LectureMetaDonnees(string nomFichier)
 		{
 			getline(infile, typeAttribut);
 			infoSysteme.metaDonnees.insert(it, make_pair(nomAttribut, typeAttribut));
-			cout << nomAttribut << " => " << typeAttribut << endl;
+			//cout << nomAttribut << " => " << typeAttribut << endl;
 		}
 		// Pour regarder si la map est bien remplie
-		/*for (map<string, string>::iterator ita = infoSysteme.metaDonnees.begin(); ita != infoSysteme.metaDonnees.end(); ++ita)
+		for (map<string, string>::iterator ita = infoSysteme.metaDonnees.begin(); ita != infoSysteme.metaDonnees.end(); ++ita)
 		{
 			cout << ita->first << " => " << ita->second << endl;
-		}*/
+		}
 	}
 	else {
 		cout << "Il n'y a pas de metadonn�es" << endl;
@@ -105,8 +105,12 @@ void LectureAffichage::LectureDictionnaire(string nomFichier)
 	{
 		vector <string> val = ita->second.getValeurEmpreinte();
 		cout << ita->first << " => " << ita->second.getID() << endl;
+
+		map<string, string>::iterator itc = infoSysteme.metaDonnees.begin();
+
 		for (vector<string>::iterator itb = val.begin(); itb != val.end(); ++itb) {
-			cout << *itb << endl;
+			cout << itc->first << " => " << *itb << endl;
+			++itc;
 		}
 	}
 }

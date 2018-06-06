@@ -35,7 +35,9 @@ public:
 
 	void LectureDictionnaire(string nomFichierDictionnaire);
 
-       void AfficherMaladiesPrisesEnCompte();
+	void LectureEmpreintes(string nomFichierEmpreintes);
+	
+	void AfficherMaladiesPrisesEnCompte();
         
         
 	//------------------------------------------------- Surcharge d'op�rateurs

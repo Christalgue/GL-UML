@@ -34,14 +34,14 @@ public:
 	// Mode d'emploi :
 	// Il s'agit de la surcharge de l'opérateur = pour des objets Maladie.
 	// Contrat :
-	// déclaré mais non défini pour intersepter son éventuel appel.
+	// déclarEmais non défini pour intersepter son éventuel appel.
 
 	//-------------------------------------------- Constructeurs - destructeur
 	Maladie(const Maladie & unMaladie) = delete;
 	// Mode d'emploi :
 	// Il s'agit du constructueur de copie du objet Maladie.
 	// Contrat :
-	// déclaré mais non défini pour intersepter son éventuel appel.
+	// déclarEmais non défini pour intersepter son éventuel appel.
 
 	Maladie(string nomMaladie);
 

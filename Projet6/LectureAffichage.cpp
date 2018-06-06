@@ -68,7 +68,7 @@ void LectureAffichage::LectureDictionnaire(string nomFichier)
 		string ligne;
 
 		vector <string> attributs; 
-
+                
 		getline(infile,ligne); // 1ère ligne qu'on ne veut pas
                 
                 /* Ici, comme c'est compliqué de connaître quand on est à la fin de la ligne quand on lit le fichier, on récupère chaque ligne
@@ -187,6 +187,11 @@ void LectureAffichage::AfficherMaladiesPrisesEnCompte()
     {
         cout << " - " << itDico->first << endl;
     }
+}
+
+multimap<string, double> LectureAffichage::TrouverMaladie(vector<Empreinte>)
+{
+    
 }
 
 //------------------------------------------------- Surcharge d'op�rateurs

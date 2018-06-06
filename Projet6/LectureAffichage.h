@@ -39,6 +39,10 @@ public:
 	
 	void AfficherMaladiesPrisesEnCompte();
         
+        multimap<string, double> TrouverMaladie(vector<Empreinte>);
+        
+        void AfficherResultatAnalyse(vector<Empreinte>);
+        
         
 	//------------------------------------------------- Surcharge d'op�rateurs
 	LectureAffichage & operator = (const LectureAffichage & unLectureAffichage) = delete;

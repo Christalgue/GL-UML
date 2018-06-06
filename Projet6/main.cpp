@@ -9,62 +9,62 @@ using namespace std;
 
 int main()
 {
-	/*
-	string a = "nomDeMaladie";
-	Maladie hoi (a);
-	cout << hoi.getNom() << endl;*/
+    /*
+    string a = "nomDeMaladie";
+    Maladie hoi (a);
+    cout << hoi.getNom() << endl;*/
 
-	LectureAffichage lA;
-	
-	// Test le chargement de la mE½ta donnE½e
-	string nomFichierMetaDonnee = "HealthMeasurementDescription.txt";
+    LectureAffichage lA;
 
-	lA.LectureMetaDonnees(nomFichierMetaDonnee);
+    // Test le chargement de la mï¿½Eï¿½ta donnï¿½Eï¿½e
+    string nomFichierMetaDonnee = "HealthMeasurementDescription.txt";
 
-	cout << "-------------------" << endl;
+    lA.LectureMetaDonnees(nomFichierMetaDonnee);
 
-	// Test le chargement du dictionnaire
+    cout << "-------------------" << endl;
 
-	string nomFichierDico = "HealthMeasurementsWithLabels2.txt";
+    // Test le chargement du dictionnaire
 
-	lA.LectureDictionnaire(nomFichierDico);
-        
+    string nomFichierDico = "HealthMeasurementsWithLabels2.txt";
+
+    lA.LectureDictionnaire(nomFichierDico);
+
     //lA.AfficherMaladiesPrisesEnCompte();
 
 
 
 
-	//LectureAffichage::LectureMetaDonnees();
+    //LectureAffichage::LectureMetaDonnees();
 
-	/*
-	string monEmpreinteID = "562";
-	string monEmpreinteMaladie = "unemaladie";
-	string monEmpreinteAttributs = "AA;152.522201822802;147.966461981174;132.340194347595";
-	string mesAttributs = "string;double;double; double";
-	string nomAttributs = "A1;A2;A3;A4";
-	*/
+    /*
+    string monEmpreinteID = "562";
+    string monEmpreinteMaladie = "unemaladie";
+    string monEmpreinteAttributs = "AA;152.522201822802;147.966461981174;132.340194347595";
+    string mesAttributs = "string;double;double; double";
+    string nomAttributs = "A1;A2;A3;A4";
+    */
 
 
-	/*string fichierMesure = "HealthMeasurements.txt";
-	ifstream infile2(fichierMesure);
-	if (infile2)
-	{
-		while (getline(infile2))
-		eeeeeeeeeeeee
-	}*/
+    /*string fichierMesure = "HealthMeasurements.txt";
+    ifstream infile2(fichierMesure);
+    if (infile2)
+    {
+            while (getline(infile2))
+            eeeeeeeeeeeee
+    }*/
 
-	string i;
-	cin >> i;
+    string i;
+    cin >> i;
 
-	/*
-	int id = stoi(monEmpreinteID);
-	Maladie uneMaladie(monEmpreinteMaladie);
-	Empreinte monEmpreinte(id, &uneMaladie);
+    /*
+    int id = stoi(monEmpreinteID);
+    Maladie uneMaladie(monEmpreinteMaladie);
+    Empreinte monEmpreinte(id, &uneMaladie);
 
-	cout << monEmpreinte.getID() << endl;
-	cout << monEmpreinte.getMaladie()->getNom() << endl;*/
+    cout << monEmpreinte.getID() << endl;
+    cout << monEmpreinte.getMaladie()->getNom() << endl;*/
 
-	return 0;
+    return 0;
 }//----- Fin de main
 
 

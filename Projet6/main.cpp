@@ -29,7 +29,7 @@ int main()
 
 	lA.LectureDictionnaire(nomFichierDico);
         
-        lA.AfficherMaladiesPrisesEnCompte();
+    //lA.AfficherMaladiesPrisesEnCompte();
 
 
 

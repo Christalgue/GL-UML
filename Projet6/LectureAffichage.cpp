@@ -91,7 +91,7 @@ void LectureAffichage::LectureDictionnaire(string nomFichier)
 			getline(fluxString, id, ';');
 
 			//cout << ligne << endl;
-			//cout << id << endl;
+			cout << id << endl;
 			vector<string>::iterator it = attributs.begin();
 			++it;
 			while (getline(fluxString, valeurAttribut, ';'))

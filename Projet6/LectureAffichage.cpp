@@ -89,6 +89,8 @@ void LectureAffichage::LectureDictionnaire(string nomFichier)
 
 			cout << "entier " << stoi(id) << endl;
 
+			// TEST GIT
+
 			//Empreinte e(stoi(id), valeurs);
 
 			//infoSysteme.dictionnaire.insert(make_pair(nomMaladie, e));

@@ -47,11 +47,12 @@ void LectureAffichage::LectureMetaDonnees(string nomFichier)
 		while (getline(infile, nomAttribut, ';'))
 		{
 			getline(infile, typeAttribut);
-			infoSysteme.getMetaDonnees().insert(it, make_pair(nomAttribut, typeAttribut));
+			infoSysteme.addMetaDonnees(make_pair(nomAttribut, typeAttribut));
 			//cout << nomAttribut << " => " << typeAttribut << endl;
 		}
+		map<string, string> maMap = infoSysteme.getMetaDonnees();
 		// Pour regarder si la map est bien remplie
-		for (map<string, string>::iterator ita = infoSysteme.getMetaDonnees().begin(); ita != infoSysteme.getMetaDonnees().end(); ++ita)
+		for (map<string, string>::iterator ita = maMap.begin(); ita != maMap.end(); ++ita)
 		{
 			cout << ita->first << " => " << ita->second << endl;
 		}
@@ -123,15 +124,15 @@ void LectureAffichage::LectureDictionnaire(string nomFichier)
 
 				if (!nomMaladie.empty()) {
 					Empreinte e(stoi(id), valeurs);
-					infoSysteme.getDictionnaire().insert(make_pair(nomMaladie, e));
+					infoSysteme.addDictionnaire(make_pair(nomMaladie, e));
 				}
 			}
 		}
 	}
-
 	// AFFICHAGE (A METTRE DANS LE TEST)
 	/*
-	for (multimap<string, Empreinte>::iterator ita = infoSysteme.getDictionnaire().begin(); ita != infoSysteme.getDictionnaire().end(); ++ita)
+	multimap<string, Empreinte> monDictionnaire = infoSysteme.getDictionnaire();
+	for (multimap<string, Empreinte>::iterator ita = monDictionnaire.begin(); ita != monDictionnaire.end(); ++ita)
 	{
 		// Maladie => id de l'empreinte
 		cout << ita->first << " => " << ita->second.getID() << endl;
@@ -187,14 +188,15 @@ void LectureAffichage::LectureEmpreintes(string nomFichier)
 				}
 
 				Empreinte e(stoi(id), valeurs);
-				infoSysteme.getEnsembleEmpreinte().push_back(e);
+				infoSysteme.addEnsembleEmpreinte(e);
+				//infoSysteme.getEnsembleEmpreinte().push_back(e);
 			}
 		}
 	}
-
-	// AFFICHAGE (A METTRE DANS LE TEST)
 	/*
-	for (vector<Empreinte>::iterator ita = infoSysteme.getEnsembleEmpreinte().begin(); ita != infoSysteme.getEnsembleEmpreinte().end(); ++ita)
+	// AFFICHAGE (A METTRE DANS LE TEST)
+	vector<Empreinte> monEnsembleEmpreinte = infoSysteme.getEnsembleEmpreinte();
+	for (vector<Empreinte>::iterator ita = monEnsembleEmpreinte.begin(); ita != monEnsembleEmpreinte.end(); ++ita)
 	{
 		cout << "Id de l'empreinte : " << ita->getID() << endl;
 		map <string, string> uneEmpreinte = ita->getValeurEmpreinte();
@@ -202,14 +204,16 @@ void LectureAffichage::LectureEmpreintes(string nomFichier)
 			// nomAttribut => valeur
 			cout << itb->first << " => " << itb->second << endl;
 		}
-	}*/
+	}
+	*/
 }
 
 void LectureAffichage::AfficherMaladiesPrisesEnCompte()
 {
     cout << "Liste des maladies prises en compte dans l'analyse des empreintes : " << endl;
     vector<string> maladies;
-    for (multimap<string, Empreinte>::iterator itDico = infoSysteme.getDictionnaire().begin(); itDico != infoSysteme.getDictionnaire().end(); itDico = infoSysteme.getDictionnaire().upper_bound(itDico->first))
+	multimap<string, Empreinte> monDictionnaire = infoSysteme.getDictionnaire();
+    for (multimap<string, Empreinte>::iterator itDico = monDictionnaire.begin(); itDico != monDictionnaire.end(); itDico = monDictionnaire.upper_bound(itDico->first))
     {
         cout << " - " << itDico->first << endl;
     }
@@ -217,8 +221,9 @@ void LectureAffichage::AfficherMaladiesPrisesEnCompte()
 
 void LectureAffichage::AfficherCaracteristiquesMaladie(string maladie, bool affichage) 
 {
-	multimap<string,Empreinte>::iterator it1 = infoSysteme.getDictionnaire().find(maladie);
-	if (it1==infoSysteme.getDictionnaire().end()) {
+	multimap<string, Empreinte> monDictionnaire = infoSysteme.getDictionnaire();
+	multimap<string,Empreinte>::iterator it1 = monDictionnaire.find(maladie);
+	if (it1== monDictionnaire.end()) {
 		cout << "La maladie que vous recherchez n'existe pas!" << endl;
 	}
 	else {
@@ -230,17 +235,18 @@ void LectureAffichage::AfficherCaracteristiquesMaladie(string maladie, bool affi
 		//map <string, string> uneEmpreinte = it1->second.getValeurEmpreinte();
 		//map <string, string>::iterator itb = uneEmpreinte.begin(); itb != uneEmpreinte.end(); ++itb
 
-		cout << types[0] << " - " << types[1] << " - " << types[2] << endl;
+		//cout << types[0] << " - " << types[1] << " - " << types[2] << endl;
 
 		// Parcours selon les attributs de la métadonné : on prend un attribut et on regarde la valeur
 		// de chaque empreinte correspondant à la maladie sur cet attribut
-		for (map <string, string>::iterator itb = infoSysteme.getMetaDonnees().begin(); itb != infoSysteme.getMetaDonnees().end(); ++itb) {
+		map<string, string> maMap = infoSysteme.getMetaDonnees();
+		for (map <string, string>::iterator itb = maMap.begin(); itb != maMap.end(); ++itb) {
 			// Affichage de l'attribut : nomAttribut => type
 			cout << "----------" << endl;
 			cout << itb->first << " => " << itb->second << endl;
 			string type = itb->second;
 			
-			for (multimap<string, Empreinte>::iterator it2 = it1; it2 != (infoSysteme.getMetaDonnees().upper_bound(it1->first)); ++it2) {
+			for (multimap<string, Empreinte>::iterator it2 = it1; it2 != (monDictionnaire.upper_bound(it1->first)); ++it2) {
 				cout << "Empreinte : " << it2->second.getID() << endl;
 				//cout << "recherche sur : " << itb->first << endl;
 				//Pour chaque empreinte de la maladie, on récupère ses données

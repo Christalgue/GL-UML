@@ -24,28 +24,28 @@ int main()
 	cout << "-------------------" << endl;
 
 	// Test le chargement du dictionnaire
-
+	
 	string nomFichierDico = "HealthMeasurementsWithLabels.txt";
 
 	lA.LectureDictionnaire(nomFichierDico);
     
 	cout << "-------------------" << endl;
-
+	
     lA.AfficherMaladiesPrisesEnCompte();
 
 	cout << "-------------------" << endl;
-
+	
 	string nomFichierEmpreintes = "HealthMeasurements.txt";
 
 	lA.LectureEmpreintes(nomFichierEmpreintes);
 
 	cout << "-------------------" << endl;
-
+	
 	string maladie1 = "Nevrose du pancreas";
 	string maladie2 = "M1";
 	string maladie3 = "Maladie1";
 	lA.AfficherCaracteristiquesMaladie(maladie3,true);
-
+	
 	//LectureAffichage::LectureMetaDonnees();
 
 	/*

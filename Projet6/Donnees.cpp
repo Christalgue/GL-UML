@@ -24,6 +24,21 @@ using namespace std;
 
 //----------------------------------------------------- M�thodes publiques
 
+void Donnees::addMetaDonnees(pair<string, string> paire) 
+{
+	metaDonnees.insert(paire);
+}
+
+void Donnees::addDictionnaire(pair<string, Empreinte> paire) 
+{
+	dictionnaire.insert(paire);
+}
+
+void Donnees::addEnsembleEmpreinte(Empreinte e)
+{
+	ensembleEmpreinte.push_back(e);
+}
+
 map<string, string> Donnees::getMetaDonnees()
 {
     return metaDonnees;

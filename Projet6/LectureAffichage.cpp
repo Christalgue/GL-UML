@@ -232,11 +232,6 @@ void LectureAffichage::AfficherCaracteristiquesMaladie(string maladie, bool affi
 		// <nomAttribut,<Esperance,EcartType>>
 		map<string,pair<string,string>> attributsImportants;
 
-		//map <string, string> uneEmpreinte = it1->second.getValeurEmpreinte();
-		//map <string, string>::iterator itb = uneEmpreinte.begin(); itb != uneEmpreinte.end(); ++itb
-
-		//cout << types[0] << " - " << types[1] << " - " << types[2] << endl;
-
 		// Parcours selon les attributs de la métadonné : on prend un attribut et on regarde la valeur
 		// de chaque empreinte correspondant à la maladie sur cet attribut
 		map<string, string> maMap = infoSysteme.getMetaDonnees();
@@ -249,6 +244,9 @@ void LectureAffichage::AfficherCaracteristiquesMaladie(string maladie, bool affi
 			double Esperance = 0;
 			int nbEmpreintesConsiderees = 0;
 			double Variance = 0;
+
+			// conteneur pour stocker chaque nom d'attribut et lui associer son nombre d'apparition
+			map<string, int> stringAttributs;
 
 			// calcul de l'index correspondant au type dans le tableau
 			int index = distance(types, std::find(types, types + 3, type));
@@ -266,6 +264,14 @@ void LectureAffichage::AfficherCaracteristiquesMaladie(string maladie, bool affi
 					switch (index) {
 					case 0:
 						// cas string
+						if (stringAttributs.find(itValeur->second)!=stringAttributs.end()) {
+							// l'attribut existe deja dans stringAttributs
+							stringAttributs.find(itValeur->second)->second++;
+						}
+						else {
+							// l'attribut n'existe pas encore dans stringAttributs
+							stringAttributs.insert(make_pair(itValeur->second,1));
+						}
 						break;
 					case 1:
 						// cas double
@@ -282,14 +288,26 @@ void LectureAffichage::AfficherCaracteristiquesMaladie(string maladie, bool affi
 					}
 				}
 			}
+			map<string, int>::iterator itSA;
+			map<string, int>::iterator plusGrandeValeur;
 			switch (index) {
 			case 0:
 				// cas string
+				plusGrandeValeur = stringAttributs.begin();
+				for (itSA = stringAttributs.begin(); itSA != stringAttributs.end(); ++itSA) {
+					cout << itSA->first << " - - - - " << itSA->second << endl;
+					if (itSA->second>plusGrandeValeur->second) {
+						plusGrandeValeur = itSA;
+					}
+				}
+				//cout << itb->first << " - - - - - - - - " << plusGrandeValeur->first << " - - - - - - - - " << plusGrandeValeur->second << endl;
+				attributsImportants.insert(make_pair(itb->first,make_pair(plusGrandeValeur->first, to_string(plusGrandeValeur->second))));
 				break;
 			case 1:
 				// cas double
 				Esperance = Esperance / nbEmpreintesConsiderees;
 				Variance = Variance / nbEmpreintesConsiderees - pow(Esperance,2);
+				attributsImportants.insert(make_pair(itb->first,make_pair(to_string(Esperance),to_string(sqrt(Variance)))));
 				cout << "Esperance (D): " << Esperance << endl;
 				cout << "Ecart Type (D): " << sqrt(Variance) << endl;
 				break;
@@ -297,15 +315,21 @@ void LectureAffichage::AfficherCaracteristiquesMaladie(string maladie, bool affi
 				// cas int
 				Esperance = Esperance / nbEmpreintesConsiderees;
 				Variance = Variance / nbEmpreintesConsiderees - pow(Esperance, 2);
+				attributsImportants.insert(make_pair(itb->first, make_pair(to_string(Esperance), to_string(sqrt(Variance)))));
 				cout << "Esperance (I): " << Esperance << endl;
 				cout << "Ecart Type (I): " << sqrt(Variance) << endl;
 				break;
 			}
 		}
-	}
-	// Affichage des caractéristiques
-	if (affichage) {
-		cout << "Affichage des caractéristiques de la maladie suivante : " << maladie << endl;
+		map<string, pair<string, string>>::iterator iComplet;
+		for (iComplet = attributsImportants.begin(); iComplet != attributsImportants.end();++iComplet) {
+			cout << "ALORS CA ALORS : " << iComplet->first << " => ( " << iComplet->second.first << " , " << iComplet->second.second << " )" << endl;
+		}
+		// Affichage des caractéristiques
+		if (affichage) {
+			cout << "Affichage des caractéristiques de la maladie suivante : " << maladie << endl;
+		}
+
 	}
 }
 

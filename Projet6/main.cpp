@@ -102,6 +102,8 @@ static void choixDonneesEntrees(LectureAffichage &lA)
             lA.LectureDictionnaire(entreeNomFichier());
             break;
         case 2:
+            cout << "Les fichiers par défaut sont \"HealthMeasurementDescription.txt\" pour les métadonnées "
+                    "et \"HealthMeasurementsWithLabels.txt\" pour le dictionnaire des maladies." << endl;
             lA.LectureMetaDonnees("HealthMeasurementDescription.txt");
             lA.LectureDictionnaire("HealthMeasurementsWithLabels.txt");
             break;

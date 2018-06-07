@@ -140,7 +140,8 @@ int main()
 	Maladie hoi (a);
 	cout << hoi.getNom() << endl;*/
         
-    Executer();
+        // Lance le menu
+        //Executer();
     
     
     

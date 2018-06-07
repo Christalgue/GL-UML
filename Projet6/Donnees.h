@@ -34,6 +34,12 @@ public:
 
 	//----------------------------------------------------- M・ｽE・ｽthodes publiques
 
+	map<string, string> getMetaDonnees();
+
+	multimap<string, Empreinte> getDictionnaire();
+
+	vector<Empreinte> getEnsembleEmpreinte();
+
 	//------------------------------------------------- Surcharge d'op・ｽE・ｽrateurs
 	Donnees & operator = (const Donnees & unDonnees) = delete;
 	// Mode d'emploi :

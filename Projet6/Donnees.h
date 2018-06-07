@@ -1,7 +1,7 @@
 /************************************************************************************
 Donnees  -  description
 -------------------
-début                : 10/01/2018
+dï¿½but                : 10/01/2018
 copyright            : (C) 2018 par
 e-mail               :
 *************************************************************************************/
@@ -10,7 +10,7 @@ e-mail               :
 #if ! defined ( Donnees_H )
 #define Donnees_H
 
-//--------------------------------------------------- Interfaces utilisées
+//--------------------------------------------------- Interfaces utilisï¿½es
 #include "Maladie.h"
 #include "Empreinte.h"
 #include <string>
@@ -23,7 +23,7 @@ e-mail               :
 //------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
-// Rôle de la classe <Donnees>
+// Rï¿½le de la classe <Donnees>
 //------------------------------------------------------------------------
 
 
@@ -34,25 +34,25 @@ class Donnees
 
 public:
 
-	//----------------------------------------------------- Méthodes publiques
+	//----------------------------------------------------- Mï¿½thodes publiques
 
-	//------------------------------------------------- Surcharge d'opérateurs
+	//------------------------------------------------- Surcharge d'opï¿½rateurs
 	Donnees & operator = (const Donnees & unDonnees) = delete;
 	// Mode d'emploi :
-	// Il s'agit de la surcharge de l'opérateur = pour des objets Donnees.
+	// Il s'agit de la surcharge de l'opï¿½rateur = pour des objets Donnees.
 	// Contrat :
-	// déclarEmais non défini pour intercepter son éventuel appel.
+	// dï¿½clarï¿½Emais non dï¿½fini pour intercepter son ï¿½ventuel appel.
 
 	//-------------------------------------------- Constructeurs - destructeur
 	Donnees(const Donnees & unDonnees) = delete;
 	// Mode d'emploi :
 	// Il s'agit du constructueur de copie du objet Donnees.
 	// Contrat :
-	// déclarEmais non défini pour intercepter son éventuel appel.
+	// dï¿½clarï¿½Emais non dï¿½fini pour intercepter son ï¿½ventuel appel.
 
 	Donnees();
 	// Mode d'emploi :
-	// Il s'agit du constructueur (sans paramètre) par défaut des objets Donnees.
+	// Il s'agit du constructueur (sans paramï¿½tre) par dï¿½faut des objets Donnees.
 
 	virtual ~Donnees();
 	// Mode d'emploi :
@@ -67,12 +67,13 @@ public:
 
 	//------------------------------------------------------------------ PRIVE
 protected:
-	//----------------------------------------------------- Méthodes protégées
+	//----------------------------------------------------- Mï¿½thodes protï¿½gï¿½es
 
-	//----------------------------------------------------- Attributs protégés
+	//----------------------------------------------------- Attributs protï¿½gï¿½s
+    
 	
 };
 
-//-------------------------------- Autres définitions dépendantes de <Donnees>
+//-------------------------------- Autres dï¿½finitions dï¿½pendantes de <Donnees>
 
 #endif // Donnees_H

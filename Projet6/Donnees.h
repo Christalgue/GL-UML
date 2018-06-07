@@ -1,7 +1,7 @@
 /************************************************************************************
 Donnees  -  description
 -------------------
-dE½but                : 10/01/2018
+dï¿½Eï¿½but                : 10/01/2018
 copyright            : (C) 2018 par
 e-mail               :
 *************************************************************************************/
@@ -10,20 +10,18 @@ e-mail               :
 #if ! defined ( Donnees_H )
 #define Donnees_H
 
-//--------------------------------------------------- Interfaces utilisE½es
-#include "Maladie.h"
+//--------------------------------------------------- Interfaces utilisï¿½Eï¿½es
 #include "Empreinte.h"
 #include <string>
 #include <vector>
 #include <map>
-#include <unordered_map>
 
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
-// RE½le de la classe <Donnees>
+// Rï¿½Eï¿½le de la classe <Donnees>
 //------------------------------------------------------------------------
 
 
@@ -34,46 +32,44 @@ class Donnees
 
 public:
 
-	//----------------------------------------------------- ME½thodes publiques
+	//----------------------------------------------------- Mï¿½Eï¿½thodes publiques
 
-	//------------------------------------------------- Surcharge d'opE½rateurs
+	//------------------------------------------------- Surcharge d'opï¿½Eï¿½rateurs
 	Donnees & operator = (const Donnees & unDonnees) = delete;
 	// Mode d'emploi :
-	// Il s'agit de la surcharge de l'opE½rateur = pour des objets Donnees.
+	// Il s'agit de la surcharge de l'opï¿½Eï¿½rateur = pour des objets Donnees.
 	// Contrat :
-	// dE½clarE½Emais non dE½fini pour intercepter son E½ventuel appel.
+	// dï¿½Eï¿½clarï¿½Eï¿½Emais non dï¿½Eï¿½fini pour intercepter son ï¿½Eï¿½ventuel appel.
 
 	//-------------------------------------------- Constructeurs - destructeur
 	Donnees(const Donnees & unDonnees) = delete;
 	// Mode d'emploi :
 	// Il s'agit du constructueur de copie du objet Donnees.
 	// Contrat :
-	// dE½clarE½Emais non dE½fini pour intercepter son E½ventuel appel.
+	// dï¿½Eï¿½clarï¿½Eï¿½Emais non dï¿½Eï¿½fini pour intercepter son ï¿½Eï¿½ventuel appel.
 
 	Donnees();
 	// Mode d'emploi :
-	// Il s'agit du constructueur (sans paramE½tre) par dE½faut des objets Donnees.
+	// Il s'agit du constructueur (sans paramï¿½Eï¿½tre) par dï¿½Eï¿½faut des objets Donnees.
 
 	virtual ~Donnees();
 	// Mode d'emploi :
 	// Il s'agit du destructeur des objets Donnees.
+        
 
+	//------------------------------------------------------------------ PRIVE
+protected:
+	//----------------------------------------------------- Mï¿½Eï¿½thodes protï¿½Eï¿½gï¿½Eï¿½es
 
-	map<string, string> metaDonnees;
+	//----------------------------------------------------- Attributs protï¿½Eï¿½gï¿½Eï¿½s
+        map<string, string> metaDonnees;
 
 	multimap<string, Empreinte> dictionnaire;
 
 	vector<Empreinte> ensembleEmpreinte;
-
-	//------------------------------------------------------------------ PRIVE
-protected:
-	//----------------------------------------------------- ME½thodes protE½gE½es
-
-	//----------------------------------------------------- Attributs protE½gE½s
-    
 	
 };
 
-//-------------------------------- Autres dE½finitions dE½pendantes de <Donnees>
+//-------------------------------- Autres dï¿½Eï¿½finitions dï¿½Eï¿½pendantes de <Donnees>
 
 #endif // Donnees_H

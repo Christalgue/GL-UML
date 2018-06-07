@@ -24,7 +24,20 @@ using namespace std;
 
 //----------------------------------------------------- M�thodes publiques
 
+map<string, string> getMetaDonnees()
+{
+    return metaDonnees;
+}
 
+multimap<string, Empreinte> getDictionnaire()
+{
+    return dictionnaire;
+}
+
+vector<Empreinte> getEnsembleEmpreinte()
+{
+    return ensembleEmpreinte;
+}
 
 
 //------------------------------------------------- Surcharge d'op�rateurs

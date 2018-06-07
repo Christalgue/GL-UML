@@ -23,6 +23,8 @@ using namespace std;
 #include <fstream>
 #include <iostream>
 #include <sstream>
+
+using std::string;
 //------------------------------------------------------------- Constantes
 
 //----------------------------------------------------------------- PUBLIC
@@ -81,12 +83,14 @@ void LectureAffichage::LectureDictionnaire(string nomFichier)
                 
 		stringstream fluxString(ligne);
 		
+                // On récupère d'abord le nom de tous les attributs via la 1ère ligne du fichier
 		while (getline(fluxString, nomAttribut, ';'))
 		{
 			attributs.push_back(nomAttribut);
 			//cout << "Valeur : " << nomAttribut << endl;
 		}
-
+                
+                // On récupère maintenant les valeurs des attributs
 		while (!infile.eof())
 		{
 			getline(infile, ligne);
@@ -95,7 +99,6 @@ void LectureAffichage::LectureDictionnaire(string nomFichier)
 				stringstream fluxString(ligne);
 
 				string id;
-				//getline(fluxString, ligne);
 				getline(fluxString, id, ';');
 
 				//cout << ligne << endl;
@@ -110,7 +113,7 @@ void LectureAffichage::LectureDictionnaire(string nomFichier)
 					++it;
 				}
 				--it;
-				// effacer la maladie de la map
+				// Effacer la maladie de la map
 				map<string, string>::iterator mal = valeurs.find(*it);
 				valeurs.erase(mal);
 

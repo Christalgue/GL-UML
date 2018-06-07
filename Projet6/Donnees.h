@@ -32,15 +32,15 @@ class Donnees
 
 public:
 
-	//----------------------------------------------------- M�E�E�E�thodes publiques
-    
-        map<string, string> getMetaDonnees();
+	//----------------------------------------------------- M・ｽE・ｽthodes publiques
 
-        multimap<string, Empreinte> getDictionnaire();
+	map<string, string> getMetaDonnees();
 
-        vector<Empreinte> getEnsembleEmpreinte();
+	multimap<string, Empreinte> getDictionnaire();
 
-	//------------------------------------------------- Surcharge d'op�E�E�E�rateurs
+	vector<Empreinte> getEnsembleEmpreinte();
+
+	//------------------------------------------------- Surcharge d'op・ｽE・ｽrateurs
 	Donnees & operator = (const Donnees & unDonnees) = delete;
 	// Mode d'emploi :
 	// Il s'agit de la surcharge de l'op�E�E�E�rateur = pour des objets Donnees.

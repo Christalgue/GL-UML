@@ -1,7 +1,7 @@
 /************************************************************************************
 Donnees  -  description
 -------------------
-dE½EE½but                : 10/01/2018
+dï¿½Eï¿½Eï¿½Eï¿½but                : 10/01/2018
 copyright            : (C) 2018 par
 e-mail               :
 *************************************************************************************/
@@ -10,7 +10,7 @@ e-mail               :
 #if ! defined ( Donnees_H )
 #define Donnees_H
 
-//--------------------------------------------------- Interfaces utilisE½EE½es
+//--------------------------------------------------- Interfaces utilisï¿½Eï¿½Eï¿½Eï¿½es
 #include "Empreinte.h"
 #include <string>
 #include <vector>
@@ -21,7 +21,7 @@ e-mail               :
 //------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
-// RE½EE½le de la classe <Donnees>
+// Rï¿½Eï¿½Eï¿½Eï¿½le de la classe <Donnees>
 //------------------------------------------------------------------------
 
 
@@ -32,25 +32,31 @@ class Donnees
 
 public:
 
-	//----------------------------------------------------- ME½EE½thodes publiques
+	//----------------------------------------------------- Mï¿½Eï¿½Eï¿½Eï¿½thodes publiques
+    
+        map<string, string> getMetaDonnees();
 
-	//------------------------------------------------- Surcharge d'opE½EE½rateurs
+        multimap<string, Empreinte> getDictionnaire();
+
+        vector<Empreinte> getEnsembleEmpreinte();
+
+	//------------------------------------------------- Surcharge d'opï¿½Eï¿½Eï¿½Eï¿½rateurs
 	Donnees & operator = (const Donnees & unDonnees) = delete;
 	// Mode d'emploi :
-	// Il s'agit de la surcharge de l'opE½EE½rateur = pour des objets Donnees.
+	// Il s'agit de la surcharge de l'opï¿½Eï¿½Eï¿½Eï¿½rateur = pour des objets Donnees.
 	// Contrat :
-	// dE½EE½clarE½EE½Emais non dE½EE½fini pour intercepter son E½EE½ventuel appel.
+	// dï¿½Eï¿½Eï¿½Eï¿½clarï¿½Eï¿½Eï¿½Eï¿½Emais non dï¿½Eï¿½Eï¿½Eï¿½fini pour intercepter son ï¿½Eï¿½Eï¿½Eï¿½ventuel appel.
 
 	//-------------------------------------------- Constructeurs - destructeur
 	Donnees(const Donnees & unDonnees) = delete;
 	// Mode d'emploi :
 	// Il s'agit du constructueur de copie du objet Donnees.
 	// Contrat :
-	// dE½EE½clarE½EE½Emais non dE½EE½fini pour intercepter son E½EE½ventuel appel.
+	// dï¿½Eï¿½Eï¿½Eï¿½clarï¿½Eï¿½Eï¿½Eï¿½Emais non dï¿½Eï¿½Eï¿½Eï¿½fini pour intercepter son ï¿½Eï¿½Eï¿½Eï¿½ventuel appel.
 
 	Donnees();
 	// Mode d'emploi :
-	// Il s'agit du constructueur (sans paramE½EE½tre) par dE½EE½faut des objets Donnees.
+	// Il s'agit du constructueur (sans paramï¿½Eï¿½Eï¿½Eï¿½tre) par dï¿½Eï¿½Eï¿½Eï¿½faut des objets Donnees.
 
 	virtual ~Donnees();
 	// Mode d'emploi :
@@ -59,9 +65,9 @@ public:
 
 	//------------------------------------------------------------------ PRIVE
 protected:
-	//----------------------------------------------------- ME½EE½thodes protE½EE½gE½EE½es
+	//----------------------------------------------------- Mï¿½Eï¿½Eï¿½Eï¿½thodes protï¿½Eï¿½Eï¿½Eï¿½gï¿½Eï¿½Eï¿½Eï¿½es
 
-	//----------------------------------------------------- Attributs protE½EE½gE½EE½s
+	//----------------------------------------------------- Attributs protï¿½Eï¿½Eï¿½Eï¿½gï¿½Eï¿½Eï¿½Eï¿½s
         map<string, string> metaDonnees;
 
 	multimap<string, Empreinte> dictionnaire;
@@ -70,6 +76,6 @@ protected:
 	
 };
 
-//-------------------------------- Autres dE½EE½finitions dE½EE½pendantes de <Donnees>
+//-------------------------------- Autres dï¿½Eï¿½Eï¿½Eï¿½finitions dï¿½Eï¿½Eï¿½Eï¿½pendantes de <Donnees>
 
 #endif // Donnees_H

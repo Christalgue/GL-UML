@@ -247,7 +247,7 @@ void LectureAffichage::AfficherCaracteristiquesMaladie(string maladie, bool affi
 				map<string, string> mapValeur = it2->second.getValeurEmpreinte();
 				// On cherche l'attribut (nom+valeur) dans l'empreinte
 				map <string, string>::iterator itValeur = mapValeur.find(itb->first);
-				// Si on trouve l'attribut, alors....
+				// Si on trouve l'attribut, alors...
 				if (itValeur != mapValeur.end()) {
 					cout << itValeur->first << " =>> " << itValeur->second << endl;
 				}

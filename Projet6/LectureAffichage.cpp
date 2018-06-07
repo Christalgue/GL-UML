@@ -73,6 +73,12 @@ void LectureAffichage::LectureDictionnaire(string nomFichier)
 		vector <string>  attributs; 
 
 		getline(infile,ligne);
+                
+                /* Comme c'est compliqué d'obtenir les valeurs d'attributs et de savoir en même temps si on est au niveau de la lecture du nom de
+                 la maladie, on lit la ligne du fichier, on transforme cette ligne en un flux pour le lire avec getline et comme on sait qu'après 
+                 le dernier ';' c'est la maladie, on récupère toute la ligne facilement. Le problème qui était posé par la lecture direct du fichier
+                 était que le dernier caractère était le retour à la ligne. Bref, ça marche bien comme ça :D*/
+                
 		stringstream fluxString(ligne);
 		
 		while (getline(fluxString, nomAttribut, ';'))

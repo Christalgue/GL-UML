@@ -227,6 +227,8 @@ void LectureAffichage::AfficherCaracteristiquesMaladie(string maladie, bool affi
 		//map <string, string> uneEmpreinte = it1->second.getValeurEmpreinte();
 		//map <string, string>::iterator itb = uneEmpreinte.begin(); itb != uneEmpreinte.end(); ++itb
 
+		cout << types[0] << " - " << types[1] << " - " << types[2] << endl;
+
 		// Parcours selon les attributs de la métadonné : on prend un attribut et on regarde la valeur
 		// de chaque empreinte correspondant à la maladie sur cet attribut
 		for (map <string, string>::iterator itb = infoSysteme.metaDonnees.begin(); itb != infoSysteme.metaDonnees.end(); ++itb) {
@@ -234,7 +236,7 @@ void LectureAffichage::AfficherCaracteristiquesMaladie(string maladie, bool affi
 			cout << "----------" << endl;
 			cout << itb->first << " => " << itb->second << endl;
 			string type = itb->second;
-
+			
 			for (multimap<string, Empreinte>::iterator it2 = it1; it2 != (infoSysteme.dictionnaire.upper_bound(it1->first)); ++it2) {
 				cout << "Empreinte : " << it2->second.getID() << endl;
 				//cout << "recherche sur : " << itb->first << endl;

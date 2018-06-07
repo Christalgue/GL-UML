@@ -71,6 +71,8 @@ protected:
 
 	//----------------------------------------------------- Attributs prot�g�s
 	Donnees infoSysteme;
+
+	string types[3] = {"string", "double", "int"};
 };
 
 //-------------------------------- Autres d�finitions d�pendantes de <LectureAffichage>

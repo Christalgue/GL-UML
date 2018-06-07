@@ -245,9 +245,16 @@ void LectureAffichage::AfficherCaracteristiquesMaladie(string maladie, bool affi
 			cout << "----------" << endl;
 			cout << itb->first << " => " << itb->second << endl;
 			string type = itb->second;
-			
+
+			double Esperance = 0;
+			int nbEmpreintesConsiderees = 0;
+			double Variance = 0;
+
+			// calcul de l'index correspondant au type dans le tableau
+			int index = distance(types, std::find(types, types + 3, type));
+			//cout << "ind : " << index << endl;
 			for (multimap<string, Empreinte>::iterator it2 = it1; it2 != (monDictionnaire.upper_bound(it1->first)); ++it2) {
-				cout << "Empreinte : " << it2->second.getID() << endl;
+				//cout << "Empreinte : " << it2->second.getID() << endl;
 				//cout << "recherche sur : " << itb->first << endl;
 				//Pour chaque empreinte de la maladie, on récupère ses données
 				map<string, string> mapValeur = it2->second.getValeurEmpreinte();
@@ -256,7 +263,43 @@ void LectureAffichage::AfficherCaracteristiquesMaladie(string maladie, bool affi
 				// Si on trouve l'attribut, alors...
 				if (itValeur != mapValeur.end()) {
 					cout << itValeur->first << " =>> " << itValeur->second << endl;
+					switch (index) {
+					case 0:
+						// cas string
+						break;
+					case 1:
+						// cas double
+						Esperance += stoi(itValeur->second);
+						Variance += pow(stoi(itValeur->second),2);
+						nbEmpreintesConsiderees++;
+						break;
+					case 2:
+						// cas int
+						Esperance += stoi(itValeur->second);
+						Variance += pow(stoi(itValeur->second), 2);
+						nbEmpreintesConsiderees++;
+						break;
+					}
 				}
+			}
+			switch (index) {
+			case 0:
+				// cas string
+				break;
+			case 1:
+				// cas double
+				Esperance = Esperance / nbEmpreintesConsiderees;
+				Variance = Variance / nbEmpreintesConsiderees - pow(Esperance,2);
+				cout << "Esperance (D): " << Esperance << endl;
+				cout << "Ecart Type (D): " << sqrt(Variance) << endl;
+				break;
+			case 2:
+				// cas int
+				Esperance = Esperance / nbEmpreintesConsiderees;
+				Variance = Variance / nbEmpreintesConsiderees - pow(Esperance, 2);
+				cout << "Esperance (I): " << Esperance << endl;
+				cout << "Ecart Type (I): " << sqrt(Variance) << endl;
+				break;
 			}
 		}
 	}

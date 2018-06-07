@@ -215,7 +215,7 @@ void LectureAffichage::LectureEmpreintes(string nomFichier)
 void LectureAffichage::AfficherMaladiesPrisesEnCompte()
 {
     cout << "Liste des maladies prises en compte dans l'analyse des empreintes : " << endl;
-    vector<string> maladies;
+    //vector<string> maladies;
 	multimap<string, Empreinte> monDictionnaire = infoSysteme.getDictionnaire();
     for (multimap<string, Empreinte>::iterator itDico = monDictionnaire.begin(); itDico != monDictionnaire.end(); itDico = monDictionnaire.upper_bound(itDico->first))
     {
@@ -223,19 +223,21 @@ void LectureAffichage::AfficherMaladiesPrisesEnCompte()
     }
 }
 
-void LectureAffichage::AfficherCaracteristiquesMaladie(string maladie, bool affichage) 
+map<string, pair<string, string>> LectureAffichage::AfficherCaracteristiquesMaladie(string maladie, bool affichage)
 {
+	map<string, pair<string, string>> attributsImportants;
+
 	multimap<string, Empreinte> monDictionnaire = infoSysteme.getDictionnaire();
 	multimap<string,Empreinte>::iterator it1 = monDictionnaire.find(maladie);
 	if (it1== monDictionnaire.end()) {
 		cout << "La maladie que vous recherchez n'existe pas!" << endl;
+		return attributsImportants;
 	}
 	else {
-		cout << "Recherche des caractéristiques de : " << maladie << endl;
+		cout << "Recherche des caractéristiques de " << maladie << "..." << endl;
 		// Map contenant uniquement les attributs caractéristiques de la maladie
 		// <nomAttribut,<Esperance,EcartType>>
-		map<string,pair<string,string>> attributsImportants;
-
+		
 		// Parcours selon les attributs de la métadonné : on prend un attribut et on regarde la valeur
 		// de chaque empreinte correspondant à la maladie sur cet attribut
 		map<string, string> maMap = infoSysteme.getMetaDonnees();
@@ -327,7 +329,6 @@ void LectureAffichage::AfficherCaracteristiquesMaladie(string maladie, bool affi
 		}
 		// Affichage des caractéristiques
 		if (affichage) {
-			cout << "Affichage des caractéristiques de la maladie suivante : " << maladie << endl;
 			cout << endl;
 			map<string, pair<string, string>>::iterator iComplet;
 			for (iComplet = attributsImportants.begin(); iComplet != attributsImportants.end(); ++iComplet) {
@@ -337,7 +338,28 @@ void LectureAffichage::AfficherCaracteristiquesMaladie(string maladie, bool affi
 				cout << endl;
 			}
 		}
-		//return;
+		return attributsImportants;
+	}
+}
+
+void LectureAffichage::DemandeAnalyse() {
+	if (infoSysteme.getEnsembleEmpreinte().empty()) {
+		cout << "Il n'y a pas d'empreintes à analyser!" << endl;
+	}
+	else {
+		vector<Empreinte> mesEmpreintes = infoSysteme.getEnsembleEmpreinte();
+		multimap<string, Empreinte> monDictionnaire = infoSysteme.getDictionnaire();
+		// On analyse une à une les empreintes
+		for (vector < Empreinte>::iterator monEmpreinte = mesEmpreintes.begin(); monEmpreinte != mesEmpreintes.end(); ++monEmpreinte) {
+			cout << "Diagnostic de l'empreinte : "  << monEmpreinte->getID() << "(ID)" << endl;
+			for (multimap<string, Empreinte>::iterator itDico = monDictionnaire.begin(); itDico != monDictionnaire.end(); itDico = monDictionnaire.upper_bound(itDico->first))
+			{
+				cout << "" << endl;
+				// récupération des valeurs caractéristiques de chaque attribut (pour une maladie à la fois)
+				map<string, pair<string, string>> diagnosticUneMaladie = AfficherCaracteristiquesMaladie(itDico->first, false);
+				
+			}
+		}
 	}
 }
 

@@ -39,7 +39,9 @@ public:
 	
 	void AfficherMaladiesPrisesEnCompte();
     
-	void AfficherCaracteristiquesMaladie(string maladie, bool affichage);
+	map<string, pair<string, string>> AfficherCaracteristiquesMaladie(string maladie, bool affichage);
+
+	void DemandeAnalyse();
         
 	//------------------------------------------------- Surcharge d'op�rateurs
 	LectureAffichage & operator = (const LectureAffichage & unLectureAffichage) = delete;

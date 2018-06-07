@@ -352,6 +352,7 @@ void LectureAffichage::DemandeAnalyse() {
 		map<string, string> valeursEmpreinte;
 		vector<Empreinte> mesEmpreintes = infoSysteme.getEnsembleEmpreinte();
 		multimap<string, Empreinte> monDictionnaire = infoSysteme.getDictionnaire();
+        map<string, string> maMetadonnee = infoSysteme.getMetaDonnees();
 		// On analyse une à une les empreintes
 		for (vector<Empreinte>::iterator monEmpreinte = mesEmpreintes.begin(); monEmpreinte != mesEmpreintes.end(); ++monEmpreinte) {
 			// Réinitialisation du diagnostic
@@ -365,16 +366,50 @@ void LectureAffichage::DemandeAnalyse() {
 				// récupération des valeurs caractéristiques de chaque attribut (pour une maladie à la fois)
 				map<string, pair<string, string>> diagnosticUneMaladie = AfficherCaracteristiquesMaladie(itDico->first, false);
 				
+                // nombre d'attributs à traiter
+                int nbAttr = 0;
+                double note=0;
+
 				map<string, pair<string, string>>::iterator itMaladie=diagnosticUneMaladie.begin();
 				for (map<string, string>::iterator itValEmp = valeursEmpreinte.begin(); itMaladie!=diagnosticUneMaladie.end() && itValEmp != valeursEmpreinte.end();++itValEmp) {
+                    // Trouver le type de l'attribut
+                    map<string,string>::iterator itMeta = maMetadonnee.find(itValEmp->first);
+                    int index = distance(types, find(std::begin(types), std::end(types), itMeta->second));
+
+                    cout << "Type : " << itMeta->second << " : " << index << endl;
 					cout << "Val " << itValEmp->first << " - " << itValEmp->second << endl;
 					cout << "Maladie " << itMaladie->first << " : {" << itMaladie->second.first << "," << itMaladie->second.second << "}" << endl;
+
+                    switch (index) {
+                    case 0:
+                        // cas string
+
+                        break;
+                    case 1:
+                        // cas double
+                        if (stoi(itMaladie->second.second)!=0) {
+                            note += abs(stoi(itValEmp->second)-stoi(itMaladie->second.first))/(stoi(itMaladie->second.second));
+                        }
+                        else {
+
+                        }
+                        break;
+                    case 2:
+                        // cas int
+
+                        break;
+                    }
+
+                    nbAttr++;
 					++itMaladie;
 				}
+
+                // ajouter la maladie au diagnostic final
+
 			}
 			cout << endl;
 			// Affichage du diagnostic
-
+            
 		}
 	}
 }

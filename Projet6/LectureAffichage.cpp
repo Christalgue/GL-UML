@@ -23,6 +23,7 @@ using namespace std;
 #include <fstream>
 #include <iostream>
 #include <sstream>
+#include <algorithm>
 
 using std::string;
 //------------------------------------------------------------- Constantes
@@ -253,9 +254,9 @@ map<string, pair<string, string>> LectureAffichage::AfficherCaracteristiquesMala
 
 			// conteneur pour stocker chaque nom d'attribut et lui associer son nombre d'apparition
 			map<string, int> stringAttributs;
-
+                        
 			// calcul de l'index correspondant au type dans le tableau (string => 0 ; double => 1 ; int => 2)
-			int index = distance(types, find(types, types + 3, type));
+			int index = distance(types, find(std::begin(types), std::end(types), type));
 			//cout << "ind : " << index << endl;
 			for (multimap<string, Empreinte>::iterator it2 = it1; it2 != (monDictionnaire.upper_bound(it1->first)); ++it2) {
 				//cout << "Empreinte : " << it2->second.getID() << endl;

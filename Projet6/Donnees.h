@@ -1,7 +1,7 @@
 /************************************************************************************
 Donnees  -  description
 -------------------
-dï¿½but                : 10/01/2018
+dE½but                : 10/01/2018
 copyright            : (C) 2018 par
 e-mail               :
 *************************************************************************************/
@@ -10,7 +10,7 @@ e-mail               :
 #if ! defined ( Donnees_H )
 #define Donnees_H
 
-//--------------------------------------------------- Interfaces utilisï¿½es
+//--------------------------------------------------- Interfaces utilisE½es
 #include "Maladie.h"
 #include "Empreinte.h"
 #include <string>
@@ -23,7 +23,7 @@ e-mail               :
 //------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
-// Rï¿½le de la classe <Donnees>
+// RE½le de la classe <Donnees>
 //------------------------------------------------------------------------
 
 
@@ -34,25 +34,25 @@ class Donnees
 
 public:
 
-	//----------------------------------------------------- Mï¿½thodes publiques
+	//----------------------------------------------------- ME½thodes publiques
 
-	//------------------------------------------------- Surcharge d'opï¿½rateurs
+	//------------------------------------------------- Surcharge d'opE½rateurs
 	Donnees & operator = (const Donnees & unDonnees) = delete;
 	// Mode d'emploi :
-	// Il s'agit de la surcharge de l'opï¿½rateur = pour des objets Donnees.
+	// Il s'agit de la surcharge de l'opE½rateur = pour des objets Donnees.
 	// Contrat :
-	// dï¿½clarï¿½Emais non dï¿½fini pour intercepter son ï¿½ventuel appel.
+	// dE½clarE½Emais non dE½fini pour intercepter son E½ventuel appel.
 
 	//-------------------------------------------- Constructeurs - destructeur
 	Donnees(const Donnees & unDonnees) = delete;
 	// Mode d'emploi :
 	// Il s'agit du constructueur de copie du objet Donnees.
 	// Contrat :
-	// dï¿½clarï¿½Emais non dï¿½fini pour intercepter son ï¿½ventuel appel.
+	// dE½clarE½Emais non dE½fini pour intercepter son E½ventuel appel.
 
 	Donnees();
 	// Mode d'emploi :
-	// Il s'agit du constructueur (sans paramï¿½tre) par dï¿½faut des objets Donnees.
+	// Il s'agit du constructueur (sans paramE½tre) par dE½faut des objets Donnees.
 
 	virtual ~Donnees();
 	// Mode d'emploi :
@@ -67,13 +67,13 @@ public:
 
 	//------------------------------------------------------------------ PRIVE
 protected:
-	//----------------------------------------------------- Mï¿½thodes protï¿½gï¿½es
+	//----------------------------------------------------- ME½thodes protE½gE½es
 
-	//----------------------------------------------------- Attributs protï¿½gï¿½s
+	//----------------------------------------------------- Attributs protE½gE½s
     
 	
 };
 
-//-------------------------------- Autres dï¿½finitions dï¿½pendantes de <Donnees>
+//-------------------------------- Autres dE½finitions dE½pendantes de <Donnees>
 
 #endif // Donnees_H

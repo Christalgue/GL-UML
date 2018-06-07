@@ -1,5 +1,5 @@
 AttributeName;AttributeType
-AANoID;ID
+NoID;ID
 A1;string
 A2;double
 A3;double

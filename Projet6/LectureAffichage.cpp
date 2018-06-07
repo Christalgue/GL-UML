@@ -40,6 +40,8 @@ void LectureAffichage::LectureMetaDonnees(string nomFichier)
 		map<string, string>::iterator it = infoSysteme.metaDonnees.begin();
 		getline(infile, nomAttribut); // Pour sauter la 1�re ligne qui ne nous int�resse pas
 
+		getline(infile, nomAttribut); // La deuxieme ligne comprend l'id qui ne doit pas rentrer dans la metadonnee
+
 		while (getline(infile, nomAttribut, ';'))
 		{
 			getline(infile, typeAttribut);
@@ -216,15 +218,17 @@ void LectureAffichage::AfficherCaracteristiquesMaladie(string maladie, bool affi
 		// <nomAttribut,<Esperance,EcartType>>
 		map<string,pair<string,string>> attributsImportants;
 
-		double Esperance = 0;
 		map <string, string> uneEmpreinte = it1->second.getValeurEmpreinte();
-		for (map <string, string>::iterator itb = uneEmpreinte.begin(); itb != uneEmpreinte.end(); ++itb) {
+		//map <string, string>::iterator itb = uneEmpreinte.begin(); itb != uneEmpreinte.end(); ++itb
+		for (map <string, string>::iterator itb = infoSysteme.metaDonnees.begin(); itb != infoSysteme.metaDonnees.end(); ++itb) {
 			// nomAttribut => valeur
 			cout << "----------" << endl;
 			cout << itb->first << " => " << itb->second << endl;
+			string type = itb->second;
+
 			for (multimap<string, Empreinte>::iterator it2 = it1; it2 != (infoSysteme.dictionnaire.upper_bound(it1->first)); ++it2) {
 				cout << "Empreinte : " << it2->second.getID() << endl;
-				cout << "recherche sur : " << itb->first << endl;
+				//cout << "recherche sur : " << itb->first << endl;
 				map<string, string> mapValeur = it2->second.getValeurEmpreinte();
 				map <string, string>::iterator itValeur = mapValeur.find(itb->first);
 				if (itValeur != mapValeur.end()) {

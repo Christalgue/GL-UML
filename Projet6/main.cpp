@@ -164,7 +164,7 @@ static void Executer()
             case ANALYSE:
                 cout << "Veuillez entrez le nom du fichier des empreintes à analyser." << endl;
                 lA.LectureEmpreintes(entreeNomFichier());
-                //lA.TrouverMaladie();
+                lA.DemandeAnalyse();
                 break;
             case LISTE_MALADIES:
                 lA.AfficherMaladiesPrisesEnCompte();

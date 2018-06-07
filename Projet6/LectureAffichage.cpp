@@ -262,7 +262,7 @@ void LectureAffichage::AfficherCaracteristiquesMaladie(string maladie, bool affi
 				map <string, string>::iterator itValeur = mapValeur.find(itb->first);
 				// Si on trouve l'attribut, alors...
 				if (itValeur != mapValeur.end()) {
-					cout << itValeur->first << " =>> " << itValeur->second << endl;
+					//cout << itValeur->first << " =>> " << itValeur->second << endl;
 					switch (index) {
 					case 0:
 						// cas string

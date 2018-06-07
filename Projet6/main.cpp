@@ -17,7 +17,7 @@ int main()
 	LectureAffichage lA;
 	
 	// Test le chargement de la m・ｽta donn・ｽe
-	string nomFichierMetaDonnee = "HealthMeasurementDescription.txt";
+	string nomFichierMetaDonnee = "HealthMeasurementDescription2.txt";
 
 	lA.LectureMetaDonnees(nomFichierMetaDonnee);
 
@@ -25,7 +25,7 @@ int main()
 
 	// Test le chargement du dictionnaire
 	
-	string nomFichierDico = "HealthMeasurementsWithLabels.txt";
+	string nomFichierDico = "HealthMeasurementsWithLabels2.txt";
 
 	lA.LectureDictionnaire(nomFichierDico);
     
@@ -34,17 +34,17 @@ int main()
     lA.AfficherMaladiesPrisesEnCompte();
 
 	cout << "-------------------" << endl;
-	
+	/*
 	string nomFichierEmpreintes = "HealthMeasurements.txt";
 
 	lA.LectureEmpreintes(nomFichierEmpreintes);
-
+	*/
 	cout << "-------------------" << endl;
 	
 	string maladie1 = "Nevrose du pancreas";
-	string maladie2 = "M1";
+	string maladie2 = "M3";
 	string maladie3 = "Maladie1";
-	lA.AfficherCaracteristiquesMaladie(maladie3,true);
+	lA.AfficherCaracteristiquesMaladie(maladie2,true);
 	
 	//LectureAffichage::LectureMetaDonnees();
 

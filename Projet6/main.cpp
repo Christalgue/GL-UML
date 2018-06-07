@@ -15,11 +15,29 @@ static void afficheRepete(char c, unsigned int fois)
     }
 }
 
-static string saisieFichier()
+static string saisieClavier()
 {
-    string a;
-    cin >> a;
-    return a;
+    string ligne;
+    do
+    {
+        getline(cin,ligne);
+    } while (ligne.empty());
+    return ligne;
+}
+
+static bool fichierExiste (string nomFichier)
+{
+    ifstream infile(nomFichier);
+    if (infile)
+    {
+        return true;
+    }
+    else
+    {
+        cout << "Ce fichier n'existe pas.\n"
+                "Réessayez." << endl;
+        return false;
+    }
 }
 
 static void afficheCentre(char c, string msg, unsigned int largeur)
@@ -55,6 +73,39 @@ static unsigned int saisieChoix (unsigned int min, unsigned int max)
         cin >> choix;
     }
     return choix;
+}
+
+static string entreeNomFichier()
+{
+    string saisie;
+    do
+    {
+        saisie = saisieClavier();
+    }while (!fichierExiste(saisie));
+    return saisie;
+}
+
+static void choixDonneesEntrees(LectureAffichage &lA)
+{
+    string saisie;
+    cout << "Choix des données pour les tests : \n"
+            "1. Importer vos propres fichiers\n"
+            "2. Utiliser les fichiers pré-sélectionnés\n" << endl;
+    
+    switch (saisieChoix(1, 2))
+    {
+        case 1:
+            cout << "Veuillez entrer le nom du fichier contenant les méta données" << endl;
+            lA.LectureMetaDonnees(entreeNomFichier());
+
+            cout << "Veuillez entrer le nom du fichier contenant les maladies associées aux empreintes connues" << endl;
+            lA.LectureDictionnaire(entreeNomFichier());
+            break;
+        case 2:
+            lA.LectureMetaDonnees("HealthMeasurementDescription.txt");
+            lA.LectureDictionnaire("HealthMeasurementsWithLabels.txt");
+            break;
+    }    
 }
 
 enum Choix { ANALYSE, LISTE_MALADIES, CARACTERISTIQUES_MALADIE, SORTIE };
@@ -98,11 +149,9 @@ static void Executer()
     cout << endl;
     
     LectureAffichage lA;
-    cout << "Veuillez entrer le nom du fichier contenant les méta données" << endl;
-    lA.LectureMetaDonnees(saisieFichier());
-    cout << "Veuillez entrer le nom du fichier contenant les maladies associées aux empreintes connues" << endl;
-    lA.LectureDictionnaire(saisieFichier());
 
+    choixDonneesEntrees(lA);    
+    
     //Affichage du menu et sélection du choix
     Choix choix;
     do
@@ -114,7 +163,7 @@ static void Executer()
         {
             case ANALYSE:
                 cout << "Veuillez entrez le nom du fichier des empreintes à analyser." << endl;
-                lA.LectureEmpreintes(saisieFichier());
+                lA.LectureEmpreintes(entreeNomFichier());
                 //lA.TrouverMaladie();
                 break;
             case LISTE_MALADIES:
@@ -122,7 +171,7 @@ static void Executer()
                 break;
             case CARACTERISTIQUES_MALADIE:
                 cout << "Veuillez entrez le nom de la maladie que vous recherchez." << endl;
-                lA.AfficherCaracteristiquesMaladie(saisieFichier(), true);
+                lA.AfficherCaracteristiquesMaladie(saisieClavier(), true);
                 break;
             case SORTIE:
                 break;
@@ -140,7 +189,8 @@ int main()
 	Maladie hoi (a);
 	cout << hoi.getNom() << endl;*/
         
-    Executer();
+        // Lance le menu
+        Executer();
     
     
     
@@ -164,7 +214,7 @@ int main()
     lA.AfficherMaladiesPrisesEnCompte();
 
 	cout << "-------------------" << endl;
-	/*
+	
 	string nomFichierEmpreintes = "HealthMeasurements.txt";
 
 	lA.LectureEmpreintes(nomFichierEmpreintes);

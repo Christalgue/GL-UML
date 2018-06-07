@@ -235,7 +235,7 @@ map<string, pair<string, string>> LectureAffichage::AfficherCaracteristiquesMala
 		return attributsImportants;
 	}
 	else {
-		cout << "Recherche des caractéristiques de " << maladie << "..." << endl;
+		//cout << "Recherche des caractéristiques de " << maladie << "..." << endl;
 		// Map contenant uniquement les attributs caractéristiques de la maladie
 		// <nomAttribut,<Esperance,EcartType>>
 		
@@ -348,18 +348,33 @@ void LectureAffichage::DemandeAnalyse() {
 		cout << "Il n'y a pas d'empreintes à analyser!" << endl;
 	}
 	else {
+		multimap<double, string> diagnosticFinal;
+		map<string, string> valeursEmpreinte;
 		vector<Empreinte> mesEmpreintes = infoSysteme.getEnsembleEmpreinte();
 		multimap<string, Empreinte> monDictionnaire = infoSysteme.getDictionnaire();
 		// On analyse une à une les empreintes
-		for (vector < Empreinte>::iterator monEmpreinte = mesEmpreintes.begin(); monEmpreinte != mesEmpreintes.end(); ++monEmpreinte) {
+		for (vector<Empreinte>::iterator monEmpreinte = mesEmpreintes.begin(); monEmpreinte != mesEmpreintes.end(); ++monEmpreinte) {
+			// Réinitialisation du diagnostic
+			diagnosticFinal.clear();
 			cout << "Diagnostic de l'empreinte : "  << monEmpreinte->getID() << "(ID)" << endl;
+			valeursEmpreinte.clear();
+			valeursEmpreinte = monEmpreinte->getValeurEmpreinte();
+			// On compare l'empreinte à chaque maladie
 			for (multimap<string, Empreinte>::iterator itDico = monDictionnaire.begin(); itDico != monDictionnaire.end(); itDico = monDictionnaire.upper_bound(itDico->first))
 			{
-				cout << "" << endl;
 				// récupération des valeurs caractéristiques de chaque attribut (pour une maladie à la fois)
 				map<string, pair<string, string>> diagnosticUneMaladie = AfficherCaracteristiquesMaladie(itDico->first, false);
 				
+				map<string, pair<string, string>>::iterator itMaladie=diagnosticUneMaladie.begin();
+				for (map<string, string>::iterator itValEmp = valeursEmpreinte.begin(); itMaladie!=diagnosticUneMaladie.end() && itValEmp != valeursEmpreinte.end();++itValEmp) {
+					cout << "Val " << itValEmp->first << " - " << itValEmp->second << endl;
+					cout << "Maladie " << itMaladie->first << " : {" << itMaladie->second.first << "," << itMaladie->second.second << "}" << endl;
+					++itMaladie;
+				}
 			}
+			cout << endl;
+			// Affichage du diagnostic
+
 		}
 	}
 }

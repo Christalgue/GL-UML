@@ -38,7 +38,8 @@ public:
 	void LectureEmpreintes(string nomFichierEmpreintes);
 	
 	void AfficherMaladiesPrisesEnCompte();
-        
+    
+	void AfficherCaracteristiquesMaladie(string maladie, bool affichage);
         
 	//------------------------------------------------- Surcharge d'op�rateurs
 	LectureAffichage & operator = (const LectureAffichage & unLectureAffichage) = delete;

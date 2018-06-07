@@ -182,7 +182,7 @@ void LectureAffichage::LectureEmpreintes(string nomFichier)
 	}
 
 	// AFFICHAGE (A METTRE DANS LE TEST)
-	
+	/*
 	for (vector<Empreinte>::iterator ita = infoSysteme.ensembleEmpreinte.begin(); ita != infoSysteme.ensembleEmpreinte.end(); ++ita)
 	{
 		cout << "Id de l'empreinte : " << ita->getID() << endl;
@@ -191,7 +191,7 @@ void LectureAffichage::LectureEmpreintes(string nomFichier)
 			// nomAttribut => valeur
 			cout << itb->first << " => " << itb->second << endl;
 		}
-	}
+	}*/
 }
 
 void LectureAffichage::AfficherMaladiesPrisesEnCompte()
@@ -202,6 +202,41 @@ void LectureAffichage::AfficherMaladiesPrisesEnCompte()
     {
         cout << " - " << itDico->first << endl;
     }
+}
+
+void LectureAffichage::AfficherCaracteristiquesMaladie(string maladie, bool affichage) 
+{
+	multimap<string,Empreinte>::iterator it1 = infoSysteme.dictionnaire.find(maladie);
+	if (it1==infoSysteme.dictionnaire.end()) {
+		cout << "La maladie que vous recherchez n'existe pas!" << endl;
+	}
+	else {
+		cout << "Recherche des caractéristiques de : " << maladie << endl;
+		// Map contenant uniquement les attributs caractéristiques de la maladie
+		// <nomAttribut,<Esperance,EcartType>>
+		map<string,pair<string,string>> attributsImportants;
+
+		double Esperance = 0;
+		map <string, string> uneEmpreinte = it1->second.getValeurEmpreinte();
+		for (map <string, string>::iterator itb = uneEmpreinte.begin(); itb != uneEmpreinte.end(); ++itb) {
+			// nomAttribut => valeur
+			cout << "----------" << endl;
+			cout << itb->first << " => " << itb->second << endl;
+			for (multimap<string, Empreinte>::iterator it2 = it1; it2 != (infoSysteme.dictionnaire.upper_bound(it1->first)); ++it2) {
+				cout << "Empreinte : " << it2->second.getID() << endl;
+				cout << "recherche sur : " << itb->first << endl;
+				map<string, string> mapValeur = it2->second.getValeurEmpreinte();
+				map <string, string>::iterator itValeur = mapValeur.find(itb->first);
+				if (itValeur != mapValeur.end()) {
+					cout << itValeur->first << " =>> " << itValeur->second << endl;
+				}
+			}
+		}
+	}
+	// Affichage des caractéristiques
+	if (affichage) {
+		cout << "Affichage des caractéristiques de la maladie suivante : " << maladie << endl;
+	}
 }
 
 //------------------------------------------------- Surcharge d'op�rateurs

@@ -1,4 +1,4 @@
-using namespace std;
+Ôªøusing namespace std;
 #include "Maladie.h"
 #include "Empreinte.h"
 #include "LectureAffichage.h"
@@ -16,7 +16,7 @@ int main()
 
 	LectureAffichage lA;
 	
-	// Test le chargement de la mÅEΩta donnÅEΩe
+	// Test le chargement de la m„ÉªÔΩΩta donn„ÉªÔΩΩe
 	string nomFichierMetaDonnee = "HealthMeasurementDescription.txt";
 
 	lA.LectureMetaDonnees(nomFichierMetaDonnee);
@@ -25,7 +25,7 @@ int main()
 
 	// Test le chargement du dictionnaire
 
-	string nomFichierDico = "HealthMeasurementsWithLabels2.txt";
+	string nomFichierDico = "HealthMeasurementsWithLabels.txt";
 
 	lA.LectureDictionnaire(nomFichierDico);
     
@@ -39,6 +39,12 @@ int main()
 
 	lA.LectureEmpreintes(nomFichierEmpreintes);
 
+	cout << "-------------------" << endl;
+
+	string maladie1 = "Nevrose du pancreas";
+	string maladie2 = "M1";
+	string maladie3 = "Maladie1";
+	lA.AfficherCaracteristiquesMaladie(maladie3,true);
 
 	//LectureAffichage::LectureMetaDonnees();
 

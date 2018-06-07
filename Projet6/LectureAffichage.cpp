@@ -218,10 +218,13 @@ void LectureAffichage::AfficherCaracteristiquesMaladie(string maladie, bool affi
 		// <nomAttribut,<Esperance,EcartType>>
 		map<string,pair<string,string>> attributsImportants;
 
-		map <string, string> uneEmpreinte = it1->second.getValeurEmpreinte();
+		//map <string, string> uneEmpreinte = it1->second.getValeurEmpreinte();
 		//map <string, string>::iterator itb = uneEmpreinte.begin(); itb != uneEmpreinte.end(); ++itb
+
+		// Parcours selon les attributs de la métadonné : on prend un attribut et on regarde la valeur
+		// de chaque empreinte correspondant à la maladie sur cet attribut
 		for (map <string, string>::iterator itb = infoSysteme.metaDonnees.begin(); itb != infoSysteme.metaDonnees.end(); ++itb) {
-			// nomAttribut => valeur
+			// Affichage de l'attribut : nomAttribut => type
 			cout << "----------" << endl;
 			cout << itb->first << " => " << itb->second << endl;
 			string type = itb->second;
@@ -229,8 +232,11 @@ void LectureAffichage::AfficherCaracteristiquesMaladie(string maladie, bool affi
 			for (multimap<string, Empreinte>::iterator it2 = it1; it2 != (infoSysteme.dictionnaire.upper_bound(it1->first)); ++it2) {
 				cout << "Empreinte : " << it2->second.getID() << endl;
 				//cout << "recherche sur : " << itb->first << endl;
+				//Pour chaque empreinte de la maladie, on récupère ses données
 				map<string, string> mapValeur = it2->second.getValeurEmpreinte();
+				// On cherche l'attribut (nom+valeur) dans l'empreinte
 				map <string, string>::iterator itValeur = mapValeur.find(itb->first);
+				// Si on trouve l'attribut, alors....
 				if (itValeur != mapValeur.end()) {
 					cout << itValeur->first << " =>> " << itValeur->second << endl;
 				}

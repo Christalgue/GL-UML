@@ -141,7 +141,7 @@ int main()
 	cout << hoi.getNom() << endl;*/
         
         // Lance le menu
-        //Executer();
+        Executer();
     
     
     

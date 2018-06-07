@@ -50,12 +50,14 @@ void LectureAffichage::LectureMetaDonnees(string nomFichier)
 			infoSysteme.addMetaDonnees(make_pair(nomAttribut, typeAttribut));
 			//cout << nomAttribut << " => " << typeAttribut << endl;
 		}
-		map<string, string> maMap = infoSysteme.getMetaDonnees();
+		
 		// Pour regarder si la map est bien remplie
+		/*
+		map<string, string> maMap = infoSysteme.getMetaDonnees();
 		for (map<string, string>::iterator ita = maMap.begin(); ita != maMap.end(); ++ita)
 		{
 			cout << ita->first << " => " << ita->second << endl;
-		}
+		}*/
 	}
 	else {
 		cout << "Il n'y a pas de metadonn�es" << endl;
@@ -141,7 +143,8 @@ void LectureAffichage::LectureDictionnaire(string nomFichier)
 			// nomAttribut => valeur
 			cout << itb->first << " => " << itb->second << endl;
 		}
-	}*/
+	}
+	*/
 }
 
 void LectureAffichage::LectureEmpreintes(string nomFichier)
@@ -193,8 +196,9 @@ void LectureAffichage::LectureEmpreintes(string nomFichier)
 			}
 		}
 	}
-	/*
+	
 	// AFFICHAGE (A METTRE DANS LE TEST)
+	/*
 	vector<Empreinte> monEnsembleEmpreinte = infoSysteme.getEnsembleEmpreinte();
 	for (vector<Empreinte>::iterator ita = monEnsembleEmpreinte.begin(); ita != monEnsembleEmpreinte.end(); ++ita)
 	{
@@ -237,8 +241,8 @@ void LectureAffichage::AfficherCaracteristiquesMaladie(string maladie, bool affi
 		map<string, string> maMap = infoSysteme.getMetaDonnees();
 		for (map <string, string>::iterator itb = maMap.begin(); itb != maMap.end(); ++itb) {
 			// Affichage de l'attribut : nomAttribut => type
-			cout << "----------" << endl;
-			cout << itb->first << " => " << itb->second << endl;
+			//cout << "----------" << endl;
+			//cout << itb->first << " => " << itb->second << endl;
 			string type = itb->second;
 
 			double Esperance = 0;
@@ -248,8 +252,8 @@ void LectureAffichage::AfficherCaracteristiquesMaladie(string maladie, bool affi
 			// conteneur pour stocker chaque nom d'attribut et lui associer son nombre d'apparition
 			map<string, int> stringAttributs;
 
-			// calcul de l'index correspondant au type dans le tableau
-			int index = distance(types, std::find(types, types + 3, type));
+			// calcul de l'index correspondant au type dans le tableau (string => 0 ; double => 1 ; int => 2)
+			int index = distance(types, find(types, types + 3, type));
 			//cout << "ind : " << index << endl;
 			for (multimap<string, Empreinte>::iterator it2 = it1; it2 != (monDictionnaire.upper_bound(it1->first)); ++it2) {
 				//cout << "Empreinte : " << it2->second.getID() << endl;
@@ -295,7 +299,7 @@ void LectureAffichage::AfficherCaracteristiquesMaladie(string maladie, bool affi
 				// cas string
 				plusGrandeValeur = stringAttributs.begin();
 				for (itSA = stringAttributs.begin(); itSA != stringAttributs.end(); ++itSA) {
-					cout << itSA->first << " - - - - " << itSA->second << endl;
+					//cout << itSA->first << " - - - - " << itSA->second << endl;
 					if (itSA->second>plusGrandeValeur->second) {
 						plusGrandeValeur = itSA;
 					}
@@ -308,28 +312,32 @@ void LectureAffichage::AfficherCaracteristiquesMaladie(string maladie, bool affi
 				Esperance = Esperance / nbEmpreintesConsiderees;
 				Variance = Variance / nbEmpreintesConsiderees - pow(Esperance,2);
 				attributsImportants.insert(make_pair(itb->first,make_pair(to_string(Esperance),to_string(sqrt(Variance)))));
-				cout << "Esperance (D): " << Esperance << endl;
-				cout << "Ecart Type (D): " << sqrt(Variance) << endl;
+				//cout << "Esperance (D): " << Esperance << endl;
+				//cout << "Ecart Type (D): " << sqrt(Variance) << endl;
 				break;
 			case 2:
 				// cas int
 				Esperance = Esperance / nbEmpreintesConsiderees;
 				Variance = Variance / nbEmpreintesConsiderees - pow(Esperance, 2);
 				attributsImportants.insert(make_pair(itb->first, make_pair(to_string(Esperance), to_string(sqrt(Variance)))));
-				cout << "Esperance (I): " << Esperance << endl;
-				cout << "Ecart Type (I): " << sqrt(Variance) << endl;
+				//cout << "Esperance (I): " << Esperance << endl;
+				//cout << "Ecart Type (I): " << sqrt(Variance) << endl;
 				break;
 			}
-		}
-		map<string, pair<string, string>>::iterator iComplet;
-		for (iComplet = attributsImportants.begin(); iComplet != attributsImportants.end();++iComplet) {
-			cout << "ALORS CA ALORS : " << iComplet->first << " => ( " << iComplet->second.first << " , " << iComplet->second.second << " )" << endl;
 		}
 		// Affichage des caractéristiques
 		if (affichage) {
 			cout << "Affichage des caractéristiques de la maladie suivante : " << maladie << endl;
+			cout << endl;
+			map<string, pair<string, string>>::iterator iComplet;
+			for (iComplet = attributsImportants.begin(); iComplet != attributsImportants.end(); ++iComplet) {
+				cout << "Attribut :                " << iComplet->first << endl;
+				cout << "Moyenne                   " << iComplet->second.first << endl;
+				cout << "Ecart-type (/fréquence)   " << iComplet->second.second << endl;
+				cout << endl;
+			}
 		}
-
+		//return;
 	}
 }
 

@@ -24,17 +24,17 @@ using namespace std;
 
 //----------------------------------------------------- M�thodes publiques
 
-map<string, string> getMetaDonnees()
+map<string, string> Donnees::getMetaDonnees()
 {
     return metaDonnees;
 }
 
-multimap<string, Empreinte> getDictionnaire()
+multimap<string, Empreinte> Donnees::getDictionnaire()
 {
     return dictionnaire;
 }
 
-vector<Empreinte> getEnsembleEmpreinte()
+vector<Empreinte> Donnees::getEnsembleEmpreinte()
 {
     return ensembleEmpreinte;
 }

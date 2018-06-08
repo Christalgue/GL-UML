@@ -1,17 +1,23 @@
-﻿/*******************************************************************************************
+/*******************************************************************************************
 LectureAffichage  -  description
 -------------------
-d�but                : 10/01/2018
-copyright            : (C) 2018 par
-e-mail               :
-********************************************************************************************/
+début                : 10/01/2018
+copyright            : (C) 2018 par COCQUIO-LESBRENE Clementine
+                                    FERY Simon
+                                    GIBERT Christophe
+                                    SIMONIN Joseph
+e-mail               : clementine.coquio--lebresne@insa-lyon.fr
+                       simon.fery@insa-lyon.fr
+                       christophe.gibert@insa-lyon.fr
+                       joseph.simonin@insa-lyon.fr
+*************************************************************************************/
 
 
 //---------- R�alisation de la classe <LectureAffichage> (fichier LectureAffichage.cpp) ------------
 
 //---------------------------------------------------------------- INCLUDE
 
-//-------------------------------------------------------- Include syst�me
+//-------------------------------------------------------- Include système
 using namespace std;
 
 
@@ -19,7 +25,6 @@ using namespace std;
 #include "LectureAffichage.h"
 #include "Donnees.h"
 #include "Empreinte.h"
-#include "Maladie.h"
 #include <fstream>
 #include <iostream>
 #include <sstream>
@@ -27,25 +32,21 @@ using namespace std;
 #include <iomanip>
 
 using std::string;
-//------------------------------------------------------------- Constantes
-
 //----------------------------------------------------------------- PUBLIC
 
-//----------------------------------------------------- M�thodes publiques
+//----------------------------------------------------- Méthodes publiques
 
 void LectureAffichage::LectureMetaDonnees(string nomFichier) 
 {	
-    //cout << "Réinitialisation des métadonnées." << endl;
+    // Réinitialisation des métadonnées
     infoSysteme.clearMetaDonnees();
-    
 	ifstream infile(nomFichier);
 
 	if (infile)
 	{
 		string nomAttribut;
 		string typeAttribut;
-		map<string, string>::iterator it = infoSysteme.getMetaDonnees().begin();
-		getline(infile, nomAttribut); // Pour sauter la 1�re ligne qui ne nous int�resse pas
+		getline(infile, nomAttribut); // Pour sauter la 1ère ligne qui ne nous intéresse pas
 
 		getline(infile, nomAttribut); // La deuxieme ligne comprend l'id qui ne doit pas rentrer dans la metadonnee
 
@@ -53,7 +54,6 @@ void LectureAffichage::LectureMetaDonnees(string nomFichier)
 		{
 			getline(infile, typeAttribut);
 			infoSysteme.addMetaDonnees(make_pair(nomAttribut, typeAttribut));
-			//cout << nomAttribut << " => " << typeAttribut << endl;
 		}
 		
 		// Pour regarder si la map est bien remplie
@@ -71,7 +71,7 @@ void LectureAffichage::LectureMetaDonnees(string nomFichier)
 
 void LectureAffichage::LectureDictionnaire(string nomFichier)
 {
-    //cout << "Réinitialisation du dictionnaire de maladies." << endl;
+    // Réinitialisation du dictionnaire de maladies
     infoSysteme.clearDictionnaire();
     
 	ifstream infile(nomFichier);
@@ -87,40 +87,33 @@ void LectureAffichage::LectureDictionnaire(string nomFichier)
 
 		getline(infile,ligne);
                 
-                /* Comme c'est compliqué d'obtenir les valeurs d'attributs et de savoir en même temps si on est au niveau de la lecture du nom de
-                 la maladie, on lit la ligne du fichier, on transforme cette ligne en un flux pour le lire avec getline et comme on sait qu'après 
-                 le dernier ';' c'est la maladie, on récupère toute la ligne facilement. Le problème qui était posé par la lecture direct du fichier
-                 était que le dernier caractère était le retour à la ligne. Bref, ça marche bien comme ça :D*/
+        // Pour savoir si on est au niveau de la lecture du nom de la maladie et non plus dans la lecture des valeurs des attributs,
+        // on lit la ligne du fichier, on transforme cette ligne en un flux pour le lire avec getline car on sait qu'après 
+        // le dernier ';' on lit la maladie.
                 
 		stringstream fluxString(ligne);
 		
-                // On récupère d'abord le nom de tous les attributs via la 1ère ligne du fichier
+        // On récupère d'abord le nom de tous les attributs via la 1ère ligne du fichier
 		while (getline(fluxString, nomAttribut, ';'))
 		{
 			attributs.push_back(nomAttribut);
-			//cout << "Valeur : " << nomAttribut << endl;
 		}
-                
-                // On récupère maintenant les valeurs des attributs
+        // On récupère maintenant les valeurs des attributs
 		while (!infile.eof())
 		{
 			getline(infile, ligne);
 			if (!ligne.empty()) {
 				map <string, string> valeurs;
 				stringstream fluxString(ligne);
-
 				string id;
 				getline(fluxString, id, ';');
-
-				//cout << ligne << endl;
-				//cout << id << endl;
 				vector<string>::iterator it = attributs.begin();
 				++it;
+                
 				while (getline(fluxString, valeurAttribut, ';'))
 				{
 					// La maladie est stockée dans les valeurs
 					valeurs.insert(make_pair(*it, valeurAttribut));
-					//cout << "Valeur : " << *it << " => " << valeurAttribut << endl;
 					++it;
 				}
 				--it;
@@ -129,8 +122,6 @@ void LectureAffichage::LectureDictionnaire(string nomFichier)
 				valeurs.erase(mal);
 
 				string nomMaladie = valeurAttribut;
-				//getline(fluxString, nomMaladie);
-				//cout << "Valeur M : " << nomMaladie << endl;
 
 				if (!nomMaladie.empty()) {
 					Empreinte e(stoi(id), valeurs);
@@ -157,7 +148,7 @@ void LectureAffichage::LectureDictionnaire(string nomFichier)
 
 void LectureAffichage::LectureEmpreintes(string nomFichier)
 {
-    //cout << "Réinitialisation de l'ensemble des empreintes..." << endl;
+    //Réinitialisation de l'ensemble des empreintes
     infoSysteme.clearEnsembleEmpreinte();
 
 	ifstream infile(nomFichier);
@@ -175,7 +166,6 @@ void LectureAffichage::LectureEmpreintes(string nomFichier)
 		while (getline(fluxString, nomAttribut, ';'))
 		{
 			attributs.push_back(nomAttribut);
-			//cout << "Attribut : " << nomAttribut << endl;
 		}
 
 		while (!infile.eof())
@@ -186,28 +176,20 @@ void LectureAffichage::LectureEmpreintes(string nomFichier)
 				stringstream fluxString(ligne);
 
 				string id;
-				//getline(fluxString, ligne);
 				getline(fluxString, id, ';');
 
-				//cout << ligne << endl;
-				//cout << "ID : " << id << endl;
 				vector<string>::iterator it = attributs.begin();
 				++it;
 				while (getline(fluxString, valeurAttribut, ';'))
 				{
 					// La maladie est stockée dans les valeurs
 					valeurs.insert(make_pair(*it, valeurAttribut));
-					//cout << "Valeur : " << *it << " => " << valeurAttribut << endl;
 					++it;
 				}
-
 				Empreinte e(stoi(id), valeurs);
 				infoSysteme.addEnsembleEmpreinte(e);
-
-				//infoSysteme.getEnsembleEmpreinte().push_back(e);
 			}
 		}
-        //cout << "L'ensemble d'empreintes a été mis à jour!" << endl;
 	}
 	
 	// AFFICHAGE (A METTRE DANS LE TEST)
@@ -228,7 +210,6 @@ void LectureAffichage::LectureEmpreintes(string nomFichier)
 void LectureAffichage::AfficherMaladiesPrisesEnCompte()
 {
     cout << "Liste des maladies prises en compte dans l'analyse des empreintes : " << endl;
-    //vector<string> maladies;
 	multimap<string, Empreinte> monDictionnaire = infoSysteme.getDictionnaire();
     for (multimap<string, Empreinte>::iterator itDico = monDictionnaire.begin(); itDico != monDictionnaire.end(); itDico = monDictionnaire.upper_bound(itDico->first))
     {
@@ -247,7 +228,7 @@ map<string, pair<string, string>> LectureAffichage::AfficherCaracteristiquesMala
 		return attributsImportants;
 	}
 	else {
-		//cout << "Recherche des caractéristiques de " << maladie << "..." << endl;
+		// Recherche des caractéristiques de la maladie
 		// Map contenant uniquement les attributs caractéristiques de la maladie
 		// <nomAttribut,<Esperance,EcartType>>
 		
@@ -255,51 +236,45 @@ map<string, pair<string, string>> LectureAffichage::AfficherCaracteristiquesMala
 		// de chaque empreinte correspondant à la maladie sur cet attribut
 		map<string, string> maMap = infoSysteme.getMetaDonnees();
 		for (map <string, string>::iterator itb = maMap.begin(); itb != maMap.end(); ++itb) {
-			// Affichage de l'attribut : nomAttribut => type
-			//cout << "----------" << endl;
-			//cout << itb->first << " => " << itb->second << endl;
 			string type = itb->second;
 
 			double Esperance = 0;
 			int nbEmpreintesConsiderees = 0;
 			double Variance = 0;
 
-			// conteneur pour stocker chaque nom d'attribut et lui associer son nombre d'apparition
+			// Conteneur pour stocker chaque nom d'attribut et lui associer son nombre d'apparition
 			map<string, int> stringAttributs;
                         
-			// calcul de l'index correspondant au type dans le tableau (string => 0 ; double => 1 ; int => 2)
+			// Calcul de l'index correspondant au type dans le tableau (string => 0 ; double => 1 ; int => 2)
 			int index = distance(types, find(std::begin(types), std::end(types), type));
-			//cout << "ind : " << index << endl;
+            
 			for (multimap<string, Empreinte>::iterator it2 = it1; it2 != (monDictionnaire.upper_bound(it1->first)); ++it2) {
-				//cout << "Empreinte : " << it2->second.getID() << endl;
-				//cout << "recherche sur : " << itb->first << endl;
-				//Pour chaque empreinte de la maladie, on récupère ses données
+				// Pour chaque empreinte de la maladie, on récupère ses données
 				map<string, string> mapValeur = it2->second.getValeurEmpreinte();
 				// On cherche l'attribut (nom+valeur) dans l'empreinte
 				map <string, string>::iterator itValeur = mapValeur.find(itb->first);
 				// Si on trouve l'attribut, alors...
 				if (itValeur != mapValeur.end()) {
-					//cout << itValeur->first << " =>> " << itValeur->second << endl;
 					switch (index) {
 					case 0:
-						// cas string
+						// Cas string
 						if (stringAttributs.find(itValeur->second)!=stringAttributs.end()) {
-							// l'attribut existe deja dans stringAttributs
+							// L'attribut existe deja dans stringAttributs
 							stringAttributs.find(itValeur->second)->second++;
 						}
 						else {
-							// l'attribut n'existe pas encore dans stringAttributs
+							// L'attribut n'existe pas encore dans stringAttributs
 							stringAttributs.insert(make_pair(itValeur->second,1));
 						}
 						break;
 					case 1:
-						// cas double
+						// Cas double
 						Esperance += stod(itValeur->second);
 						Variance += pow(stod(itValeur->second),2);
 						nbEmpreintesConsiderees++;
 						break;
 					case 2:
-						// cas int
+						// Cas int
 						Esperance += stoi(itValeur->second);
 						Variance += pow(stoi(itValeur->second), 2);
 						nbEmpreintesConsiderees++;
@@ -311,32 +286,26 @@ map<string, pair<string, string>> LectureAffichage::AfficherCaracteristiquesMala
 			map<string, int>::iterator plusGrandeValeur;
 			switch (index) {
 			case 0:
-				// cas string
+				// Cas string
 				plusGrandeValeur = stringAttributs.begin();
 				for (itSA = stringAttributs.begin(); itSA != stringAttributs.end(); ++itSA) {
-					//cout << itSA->first << " - - - - " << itSA->second << endl;
 					if (itSA->second>plusGrandeValeur->second) {
 						plusGrandeValeur = itSA;
 					}
 				}
-				//cout << itb->first << " - - - - - - - - " << plusGrandeValeur->first << " - - - - - - - - " << plusGrandeValeur->second << endl;
 				attributsImportants.insert(make_pair(itb->first,make_pair(plusGrandeValeur->first, to_string(plusGrandeValeur->second))));
 				break;
 			case 1:
-				// cas double
+				// Cas double
 				Esperance = Esperance / nbEmpreintesConsiderees;
 				Variance = Variance / nbEmpreintesConsiderees - pow(Esperance,2);
 				attributsImportants.insert(make_pair(itb->first,make_pair(to_string(Esperance),to_string(sqrt(Variance)))));
-				//cout << "Esperance (D): " << Esperance << endl;
-				//cout << "Ecart Type (D): " << sqrt(Variance) << endl;
 				break;
 			case 2:
-				// cas int
+				// Cas int
 				Esperance = Esperance / nbEmpreintesConsiderees;
 				Variance = Variance / nbEmpreintesConsiderees - pow(Esperance, 2);
 				attributsImportants.insert(make_pair(itb->first, make_pair(to_string(Esperance), to_string(sqrt(Variance)))));
-				//cout << "Esperance (I): " << Esperance << endl;
-				//cout << "Ecart Type (I): " << sqrt(Variance) << endl;
 				break;
 			}
 		}
@@ -375,10 +344,10 @@ void LectureAffichage::DemandeAnalyse() {
 			// On compare l'empreinte à chaque maladie
 			for (multimap<string, Empreinte>::iterator itDico = monDictionnaire.begin(); itDico != monDictionnaire.end(); itDico = monDictionnaire.upper_bound(itDico->first))
 			{
-				// récupération des valeurs caractéristiques de chaque attribut (pour une maladie à la fois)
+				// Récupération des valeurs caractéristiques de chaque attribut (pour une maladie à la fois)
 				map<string, pair<string, string>> diagnosticUneMaladie = AfficherCaracteristiquesMaladie(itDico->first, false);
 				
-                // nombre d'attributs à traiter
+                // Nombre d'attributs à traiter
                 int nbAttr = 0;
                 double note=0;
 
@@ -388,19 +357,15 @@ void LectureAffichage::DemandeAnalyse() {
                     map<string,string>::iterator itMeta = maMetadonnee.find(itValEmp->first);
                     int index = distance(types, find(std::begin(types), std::end(types), itMeta->second));
 
-                    //cout << "Type : " << itMeta->second << " : " << index << endl;
-					//cout << "Val " << itValEmp->first << " - " << itValEmp->second << endl;
-					//cout << "Maladie " << itDico->first << " //// " << itMaladie->first << " : {" << itMaladie->second.first << "," << itMaladie->second.second << "}" << endl;
-
                     switch (index) {
                     case 0:
-                        // cas string
+                        // Cas string
                         if (itValEmp->second== itMaladie->second.first) {
                             note += 1;
                         }
                         break;
                     case 1:
-                        // cas double
+                        // Cas double
                         if (stod(itMaladie->second.second)!=0) {
                             // Translation qui donne selon l'ecart entre la moyenne de la maladie et la valeur de l'empreinte (sur un même attribut) un pourcentage
                             // Ecart de 0 (Esp=valeur de l'empreinte) => pourcentage = 1 ; Ecart de 3*ecart-type => pourcentage = 0
@@ -419,7 +384,7 @@ void LectureAffichage::DemandeAnalyse() {
                         }
                         break;
                     case 2:
-                        // cas int
+                        // Cas int
                         if (stoi(itMaladie->second.second) != 0) {
                             // Translation qui donne selon l'ecart entre la moyenne de la maladie et la valeur de l'empreinte (sur un même attribut) un pourcentage
                             // Ecart de 0 (Esp=valeur de l'empreinte) => pourcentage = 1 ; Ecart de 3*ecart-type => pourcentage = 0
@@ -441,7 +406,7 @@ void LectureAffichage::DemandeAnalyse() {
                     nbAttr++;
                     ++itMaladie;
 				}
-                // ajouter la maladie au diagnostic final
+                // Ajout de la maladie au diagnostic final
                 diagnosticFinal.insert(make_pair(note/nbAttr,itDico->first));
 
 			}
@@ -459,8 +424,6 @@ void LectureAffichage::DemandeAnalyse() {
 	}
 }
 
-//------------------------------------------------- Surcharge d'op�rateurs
-
 //-------------------------------------------- Constructeurs - destructeur
 
 LectureAffichage::LectureAffichage() : infoSysteme()
@@ -471,16 +434,9 @@ LectureAffichage::LectureAffichage() : infoSysteme()
 #endif
 } //----- Fin de LectureAffichage
 
-
 LectureAffichage::~LectureAffichage()
 {
 #ifdef MAP
 	cout << "Appel au destructeur de <LectureAffichage>" << endl;
 #endif
 } //----- Fin de ~LectureAffichage
-
-
-
-  //------------------------------------------------------------------ PRIVE
-
-  //----------------------------------------------------- M�thodes prot�g�es

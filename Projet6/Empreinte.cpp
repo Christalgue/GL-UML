@@ -1,29 +1,31 @@
 /*******************************************************************************************
 Empreinte  -  description
 -------------------
-début                : 10/01/2018
-copyright            : (C) 2018 par 
-e-mail               : 
-********************************************************************************************/
+dÃ©but                : 10/01/2018
+copyright            : (C) 2018 par COCQUIO-LESBRENE Clementine
+                                    FERY Simon
+                                    GIBERT Christophe
+                                    SIMONIN Joseph
+e-mail               : clementine.coquio--lebresne@insa-lyon.fr
+                       simon.fery@insa-lyon.fr
+                       christophe.gibert@insa-lyon.fr
+                       joseph.simonin@insa-lyon.fr
+*************************************************************************************/
 
 
-//---------- Réalisation de la classe <Empreinte> (fichier Empreinte.cpp) ------------
+//---------- RÃ©alisation de la classe <Empreinte> (fichier Empreinte.cpp) ------------
 
 //---------------------------------------------------------------- INCLUDE
 
-//-------------------------------------------------------- Include système
+//-------------------------------------------------------- Include systÃ¨me
 using namespace std;
-
 
 //------------------------------------------------------ Include personnel
 #include "Empreinte.h"
-#include <fstream>
-
-//------------------------------------------------------------- Constantes
 
 //----------------------------------------------------------------- PUBLIC
 
-//----------------------------------------------------- Méthodes publiques
+//----------------------------------------------------- MÃ©thodes publiques
 
 int Empreinte::getID() {
 	return ID;
@@ -32,12 +34,6 @@ int Empreinte::getID() {
 map <string, string> Empreinte::getValeurEmpreinte() {
 	return valeursAttributsEmpreinte;
 }
-
-/*Maladie* Empreinte::getMaladie() {
-	return maMaladie;
-}*/
-
-  //------------------------------------------------- Surcharge d'opérateurs
 
   //-------------------------------------------- Constructeurs - destructeur
 
@@ -49,8 +45,6 @@ Empreinte::Empreinte()
 #endif
 } //----- Fin de Empreinte
 
-
-
 Empreinte::Empreinte(int id, map <string, string> mesValeursAttributsEmpreinte)
 // Algorithme : 
 {
@@ -58,11 +52,8 @@ Empreinte::Empreinte(int id, map <string, string> mesValeursAttributsEmpreinte)
 	cout << "Appel au constructeur de <Empreinte>" << endl;
 #endif
 	ID = id;
-	//maMaladie = uneMaladie;
 	valeursAttributsEmpreinte = mesValeursAttributsEmpreinte;
 } //----- Fin de Empreinte
-
-
 
 Empreinte::~Empreinte()
 {
@@ -70,9 +61,3 @@ Empreinte::~Empreinte()
 	cout << "Appel au destructeur de <Empreinte>" << endl;
 #endif
 } //----- Fin de ~Empreinte
-
-
-
-//------------------------------------------------------------------ PRIVE
-
-//----------------------------------------------------- Méthodes protégées

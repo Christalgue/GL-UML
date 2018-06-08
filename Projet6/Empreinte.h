@@ -1,24 +1,29 @@
 /************************************************************************************
 EMPREINTE  -  description
 -------------------
-dÈbut                : 10/01/2018
-copyright            : (C) 2018 par 
-e-mail               : 
+d√©but                : 10/01/2018
+copyright            : (C) 2018 par COCQUIO-LESBRENE Clementine
+                                    FERY Simon
+                                    GIBERT Christophe
+                                    SIMONIN Joseph
+e-mail               : clementine.coquio--lebresne@insa-lyon.fr
+                       simon.fery@insa-lyon.fr
+                       christophe.gibert@insa-lyon.fr
+                       joseph.simonin@insa-lyon.fr
 *************************************************************************************/
 
 //---------- Interface de la classe <Empreinte> (fichier Empreinte.h) ----------------
 #if ! defined ( EMPREINTE_H )
 #define EMPREINTE_H
 
-//--------------------------------------------------- Interfaces utilisÈes
+//--------------------------------------------------- Interfaces utilis√©es
 #include <string>
 #include <map>
-//------------------------------------------------------------- Constantes
-
-//------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
-// RÙle de la classe <Empreinte>
+// R√¥le de la classe <Empreinte>
+// Repr√©sente une empreinte √† analyser avec son ID et un vecteur de string 
+// repr√©sentant les valeurs de chaque attributs.
 //------------------------------------------------------------------------
 
 class Empreinte
@@ -27,50 +32,39 @@ class Empreinte
 
 public:
 	
-
-	//----------------------------------------------------- MÈthodes publiques
-
+	//----------------------------------------------------- M√©thodes publiques
 	int getID();
 
 	map <string,string> getValeurEmpreinte();
-	//Maladie* getMaladie();
 
-	//------------------------------------------------- Surcharge d'opÈrateurs
+	//------------------------------------------------- Surcharge d'op√©rateurs
 	Empreinte & operator = (const Empreinte & unEmpreinte) = delete;
 	// Mode d'emploi :
-	// Il s'agit de la surcharge de l'opÈrateur = pour des objets Empreinte.
+	// Il s'agit de la surcharge de l'op√©rateur = pour des objets Empreinte.
 	// Contrat :
-	// dÈclarÅEmais non dÈfini pour intercepter son Èventuel appel.
+	// D√©clar√© mais non d√©fini pour intercepter son √©ventuel appel.
 
 	//-------------------------------------------- Constructeurs - destructeur
 	Empreinte(const Empreinte & unEmpreinte) = default;
 	// Mode d'emploi :
 	// Il s'agit du constructueur de copie du objet Empreinte.
 	// Contrat :
-	// dÈclarÅEmais non dÈfini pour intercepter son Èventuel appel.
+	// D√©clar√© mais non d√©fini pour intercepter son √©ventuel appel.
 
-	Empreinte(int id, /*Maladie * maMaladie,*/ map<string,string> mesValeurs);
+	Empreinte(int id, map<string,string> mesValeurs);
 
 	Empreinte();
 	// Mode d'emploi :
-	// Il s'agit du constructueur (sans paramËtre) par dÈfaut des objets Empreinte.
+	// Il s'agit du constructueur (sans param√®tre) par d√©faut des objets Empreinte.
 
 	virtual ~Empreinte();
 	// Mode d'emploi :
 	// Il s'agit du destructeur des objets Empreinte.
-
-	//------------------------------------------------------------------ PRIVE
-
+    
 protected:
-	//----------------------------------------------------- MÈthodes protÈgÈes
-
-	//----------------------------------------------------- Attributs protÈgÈs
-
+	//----------------------------------------------------- Attributs prot√©g√©s
 	int ID;
-	//Maladie *maMaladie;
+    
 	map <string,string> valeursAttributsEmpreinte;	
 };
-
-//-------------------------------- Autres dÈfinitions dÈpendantes de <Empreinte>
-
 #endif // EMPREINTE_H

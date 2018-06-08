@@ -363,7 +363,7 @@ void LectureAffichage::DemandeAnalyse() {
 		for (vector<Empreinte>::iterator monEmpreinte = mesEmpreintes.begin(); monEmpreinte != mesEmpreintes.end(); ++monEmpreinte) {
 			// Réinitialisation du diagnostic
 			diagnosticFinal.clear();
-			cout << "Diagnostic de l'empreinte uméro "  << monEmpreinte->getID() << endl;
+			cout << "Diagnostic de l'empreinte numero "  << monEmpreinte->getID() << endl;
 			valeursEmpreinte.clear();
 			valeursEmpreinte = monEmpreinte->getValeurEmpreinte();
 			// On compare l'empreinte à chaque maladie
@@ -439,12 +439,14 @@ void LectureAffichage::DemandeAnalyse() {
                 diagnosticFinal.insert(make_pair(note/nbAttr,itDico->first));
 
 			}
-			
+            int nbAffichages = 5;
+            int nbAffichagesEnCours = 0;
 			// Affichage du diagnostic
             cout << "Vos risques d'attraper des maladies sont les suivants :" << endl;
-            for (multimap<double, string>::iterator itDiagnostic = diagnosticFinal.begin(); itDiagnostic != diagnosticFinal.end(); ++itDiagnostic)
+            for (multimap<double, string>::reverse_iterator itDiagnostic = diagnosticFinal.rbegin(); (nbAffichages>nbAffichagesEnCours)&&(itDiagnostic != diagnosticFinal.rend()); ++itDiagnostic)
             {
                 cout << "   " << setprecision(3) << 100 * itDiagnostic->first << "% de pour la maladie suivante : " << itDiagnostic->second << endl;
+                nbAffichagesEnCours++;
             }
             cout << endl;
 		}

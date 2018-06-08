@@ -17,7 +17,6 @@ using namespace std;
 
 //------------------------------------------------------ Include personnel
 #include "Donnees.h"
-#include <iostream>
 
 //------------------------------------------------------------- Constantes
 
@@ -42,7 +41,6 @@ void Donnees::addEnsembleEmpreinte(Empreinte e)
 
 void Donnees::clearEnsembleEmpreinte() {
     ensembleEmpreinte.clear();
-    cout << "HEYRO FENWDSK" << endl;
 }
 
 map<string, string> Donnees::getMetaDonnees()

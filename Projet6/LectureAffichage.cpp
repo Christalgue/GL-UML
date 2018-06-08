@@ -151,7 +151,7 @@ void LectureAffichage::LectureDictionnaire(string nomFichier)
 
 void LectureAffichage::LectureEmpreintes(string nomFichier)
 {
-    cout << "Réinitialisation de l'ensemble des empreintes..." << endl;
+    //cout << "Réinitialisation de l'ensemble des empreintes..." << endl;
     infoSysteme.clearEnsembleEmpreinte();
 
 	ifstream infile(nomFichier);
@@ -201,7 +201,7 @@ void LectureAffichage::LectureEmpreintes(string nomFichier)
 				//infoSysteme.getEnsembleEmpreinte().push_back(e);
 			}
 		}
-        cout << "L'ensemble d'empreintes a été mis à jour!" << endl;
+        //cout << "L'ensemble d'empreintes a été mis à jour!" << endl;
 	}
 	
 	// AFFICHAGE (A METTRE DANS LE TEST)
@@ -363,7 +363,7 @@ void LectureAffichage::DemandeAnalyse() {
 		for (vector<Empreinte>::iterator monEmpreinte = mesEmpreintes.begin(); monEmpreinte != mesEmpreintes.end(); ++monEmpreinte) {
 			// Réinitialisation du diagnostic
 			diagnosticFinal.clear();
-			cout << "Diagnostic de l'empreinte : "  << monEmpreinte->getID() << "(ID)" << endl;
+			cout << "Diagnostic de l'empreinte uméro "  << monEmpreinte->getID() << endl;
 			valeursEmpreinte.clear();
 			valeursEmpreinte = monEmpreinte->getValeurEmpreinte();
 			// On compare l'empreinte à chaque maladie
@@ -441,9 +441,10 @@ void LectureAffichage::DemandeAnalyse() {
 			}
 			
 			// Affichage du diagnostic
+            cout << "Vos risques d'attraper des maladies sont les suivants :" << endl;
             for (multimap<double, string>::iterator itDiagnostic = diagnosticFinal.begin(); itDiagnostic != diagnosticFinal.end(); ++itDiagnostic)
             {
-                cout << "Vous avez " << setprecision(3) << 100 * itDiagnostic->first << "% de chance d'avoir la maladie suivante : " << itDiagnostic->second << endl;
+                cout << "   " << setprecision(3) << 100 * itDiagnostic->first << "% de pour la maladie suivante : " << itDiagnostic->second << endl;
             }
             cout << endl;
 		}

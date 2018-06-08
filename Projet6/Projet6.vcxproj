@@ -112,7 +112,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Empreinte.cpp" />
-    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Interface.cpp" />
     <ClCompile Include="Maladie.cpp" />
     <ClCompile Include="LectureAffichage.cpp" />
     <ClCompile Include="Donnees.cpp" />

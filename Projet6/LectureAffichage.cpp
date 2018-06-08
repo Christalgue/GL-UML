@@ -314,9 +314,9 @@ map<string, pair<string, string>> LectureAffichage::AfficherCaracteristiquesMala
 			cout << endl;
 			map<string, pair<string, string>>::iterator iComplet;
 			for (iComplet = attributsImportants.begin(); iComplet != attributsImportants.end(); ++iComplet) {
-				cout << "Attribut :                " << iComplet->first << endl;
-				cout << "Moyenne                   " << iComplet->second.first << endl;
-				cout << "Ecart-type (/fréquence)   " << iComplet->second.second << endl;
+				cout << "Attribut :                  " << iComplet->first << endl;
+				cout << "Moyenne                     " << iComplet->second.first << endl;
+				cout << "Ecart-type (/fréquence)     " << iComplet->second.second << endl;
 				cout << endl;
 			}
 		}
@@ -325,6 +325,7 @@ map<string, pair<string, string>> LectureAffichage::AfficherCaracteristiquesMala
 }
 
 void LectureAffichage::DemandeAnalyse() {
+    cout << endl;
 	if (infoSysteme.getEnsembleEmpreinte().empty()) {
 		cout << "Il n'y a pas d'empreintes à analyser!" << endl;
 	}

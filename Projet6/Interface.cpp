@@ -80,6 +80,7 @@ static string entreeNomFichier()
     do
     {
         saisie = saisieClavier();
+        saisie = "DataFiles/" + saisie + ".txt";
     }while (!fichierExiste(saisie));
     return saisie;
 }
@@ -87,7 +88,7 @@ static string entreeNomFichier()
 static void choixDonneesEntrees(LectureAffichage &lA)
 {
     string saisie;
-    cout << "Choix des données pour les tests : \n"
+    cout << "Choix des données pour les tests (n'entrez que le nom du fichier sans le '.txt') : \n"
             "1. Importer vos propres fichiers\n"
             "2. Utiliser les fichiers pré-sélectionnés suivants : \n"
             "   - Métadonnées : HealthMeasurementDescription.txt\n"
@@ -103,8 +104,8 @@ static void choixDonneesEntrees(LectureAffichage &lA)
             lA.LectureDictionnaire(entreeNomFichier());
             break;
         case 2:
-            lA.LectureMetaDonnees("HealthMeasurementDescription.txt");
-            lA.LectureDictionnaire("HealthMeasurementsWithLabels.txt");
+            lA.LectureMetaDonnees("DataFiles/HealthMeasurementDescription.txt");
+            lA.LectureDictionnaire("DataFiles/HealthMeasurementsWithLabels.txt");
             break;
     }    
 }

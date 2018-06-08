@@ -39,6 +39,14 @@ void Donnees::addEnsembleEmpreinte(Empreinte e)
 	ensembleEmpreinte.push_back(e);
 }
 
+void Donnees::clearMetaDonnees() {
+    metaDonnees.clear();
+}
+
+void Donnees::clearDictionnaire() {
+    dictionnaire.clear();
+}
+
 void Donnees::clearEnsembleEmpreinte() {
     ensembleEmpreinte.clear();
 }

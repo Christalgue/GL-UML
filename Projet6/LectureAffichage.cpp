@@ -35,6 +35,9 @@ using std::string;
 
 void LectureAffichage::LectureMetaDonnees(string nomFichier) 
 {	
+    //cout << "Réinitialisation des métadonnées." << endl;
+    infoSysteme.clearMetaDonnees();
+    
 	ifstream infile(nomFichier);
 
 	if (infile)
@@ -68,6 +71,9 @@ void LectureAffichage::LectureMetaDonnees(string nomFichier)
 
 void LectureAffichage::LectureDictionnaire(string nomFichier)
 {
+    //cout << "Réinitialisation du dictionnaire de maladies." << endl;
+    infoSysteme.clearDictionnaire();
+    
 	ifstream infile(nomFichier);
 
 	if (infile)

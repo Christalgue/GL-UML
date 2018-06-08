@@ -40,6 +40,8 @@ public:
 
 	void addEnsembleEmpreinte(Empreinte e);
 
+    void clearEnsembleEmpreinte();
+
     map<string, string> getMetaDonnees();
 	
 	multimap<string, Empreinte> getDictionnaire();

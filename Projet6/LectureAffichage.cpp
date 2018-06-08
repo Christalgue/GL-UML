@@ -24,6 +24,7 @@ using namespace std;
 #include <iostream>
 #include <sstream>
 #include <algorithm>
+#include <iomanip>
 
 using std::string;
 //------------------------------------------------------------- Constantes
@@ -150,6 +151,9 @@ void LectureAffichage::LectureDictionnaire(string nomFichier)
 
 void LectureAffichage::LectureEmpreintes(string nomFichier)
 {
+    cout << "Réinitialisation de l'ensemble des empreintes..." << endl;
+    infoSysteme.clearEnsembleEmpreinte();
+
 	ifstream infile(nomFichier);
 	if (infile)
 	{
@@ -193,9 +197,11 @@ void LectureAffichage::LectureEmpreintes(string nomFichier)
 
 				Empreinte e(stoi(id), valeurs);
 				infoSysteme.addEnsembleEmpreinte(e);
+
 				//infoSysteme.getEnsembleEmpreinte().push_back(e);
 			}
 		}
+        cout << "L'ensemble d'empreintes a été mis à jour!" << endl;
 	}
 	
 	// AFFICHAGE (A METTRE DANS LE TEST)
@@ -392,7 +398,11 @@ void LectureAffichage::DemandeAnalyse() {
                         if (stod(itMaladie->second.second)!=0) {
                             // Translation qui donne selon l'ecart entre la moyenne de la maladie et la valeur de l'empreinte (sur un même attribut) un pourcentage
                             // Ecart de 0 (Esp=valeur de l'empreinte) => pourcentage = 1 ; Ecart de 3*ecart-type => pourcentage = 0
-                            note += abs(1 - ( 1/( 2 * stod( itMaladie->second.second ) ) ) * abs( stod(itValEmp->second) - stod(itMaladie->second.first) ) );
+                            double chanceD = 1 - (1 / (2 * stod(itMaladie->second.second))) * abs(stod(itValEmp->second) - stod(itMaladie->second.first));
+                            // Dans le cas où la valeur est trop éloignée (val-esp > 2 ecarts types), on ne considère pas l'attribut
+                            if (chanceD>0) {
+                                note += abs(chanceD);
+                            }
                         }
                         else {
                             // Si l'ecart type est de 0, alors on a soit une empreinte unique, soit plusieurs empreinte tous parfaitement réparties sur une unique valeur
@@ -407,7 +417,11 @@ void LectureAffichage::DemandeAnalyse() {
                         if (stoi(itMaladie->second.second) != 0) {
                             // Translation qui donne selon l'ecart entre la moyenne de la maladie et la valeur de l'empreinte (sur un même attribut) un pourcentage
                             // Ecart de 0 (Esp=valeur de l'empreinte) => pourcentage = 1 ; Ecart de 3*ecart-type => pourcentage = 0
-                            note += abs(1 - (1 / (2 * stoi(itMaladie->second.second))) * abs(stoi(itValEmp->second) - stoi(itMaladie->second.first)));
+                            double chanceI = 1 - (1 / (2 * stod(itMaladie->second.second))) * abs(stoi(itValEmp->second) - stod(itMaladie->second.first));
+                            // Dans le cas où la valeur est trop éloignée (val-esp > 2 ecarts types), on ne considère pas l'attribut
+                            if (chanceI>0) {
+                                note += abs(chanceI);
+                            }
                         }
                         else {
                             // Si l'ecart type est de 0, alors on a soit une empreinte unique, soit plusieurs empreinte tous parfaitement réparties sur une unique valeur
@@ -421,13 +435,17 @@ void LectureAffichage::DemandeAnalyse() {
                     nbAttr++;
                     ++itMaladie;
 				}
-                cout << "CHANCE D'ETRE MALADE de " << itDico->first << " : " << note / nbAttr << endl;
                 // ajouter la maladie au diagnostic final
+                diagnosticFinal.insert(make_pair(note/nbAttr,itDico->first));
 
 			}
-			cout << endl;
+			
 			// Affichage du diagnostic
-            
+            for (multimap<double, string>::iterator itDiagnostic = diagnosticFinal.begin(); itDiagnostic != diagnosticFinal.end(); ++itDiagnostic)
+            {
+                cout << "Vous avez " << setprecision(3) << 100 * itDiagnostic->first << "% de chance d'avoir la maladie suivante : " << itDiagnostic->second << endl;
+            }
+            cout << endl;
 		}
 	}
 }

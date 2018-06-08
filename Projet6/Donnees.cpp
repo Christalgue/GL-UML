@@ -17,6 +17,7 @@ using namespace std;
 
 //------------------------------------------------------ Include personnel
 #include "Donnees.h"
+#include <iostream>
 
 //------------------------------------------------------------- Constantes
 
@@ -37,6 +38,11 @@ void Donnees::addDictionnaire(pair<string, Empreinte> paire)
 void Donnees::addEnsembleEmpreinte(Empreinte e)
 {
 	ensembleEmpreinte.push_back(e);
+}
+
+void Donnees::clearEnsembleEmpreinte() {
+    ensembleEmpreinte.clear();
+    cout << "HEYRO FENWDSK" << endl;
 }
 
 map<string, string> Donnees::getMetaDonnees()

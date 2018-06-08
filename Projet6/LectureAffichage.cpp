@@ -13,7 +13,7 @@ e-mail               : clementine.coquio--lebresne@insa-lyon.fr
 *************************************************************************************/
 
 
-//---------- R�alisation de la classe <LectureAffichage> (fichier LectureAffichage.cpp) ------------
+//---------- Réalisation de la classe <LectureAffichage> (fichier LectureAffichage.cpp) ------------
 
 //---------------------------------------------------------------- INCLUDE
 

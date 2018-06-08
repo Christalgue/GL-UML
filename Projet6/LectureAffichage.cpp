@@ -282,8 +282,8 @@ map<string, pair<string, string>> LectureAffichage::AfficherCaracteristiquesMala
 						break;
 					case 1:
 						// cas double
-						Esperance += stoi(itValeur->second);
-						Variance += pow(stoi(itValeur->second),2);
+						Esperance += stod(itValeur->second);
+						Variance += pow(stod(itValeur->second),2);
 						nbEmpreintesConsiderees++;
 						break;
 					case 2:
@@ -376,34 +376,52 @@ void LectureAffichage::DemandeAnalyse() {
                     map<string,string>::iterator itMeta = maMetadonnee.find(itValEmp->first);
                     int index = distance(types, find(std::begin(types), std::end(types), itMeta->second));
 
-                    cout << "Type : " << itMeta->second << " : " << index << endl;
-					cout << "Val " << itValEmp->first << " - " << itValEmp->second << endl;
-					cout << "Maladie " << itMaladie->first << " : {" << itMaladie->second.first << "," << itMaladie->second.second << "}" << endl;
+                    //cout << "Type : " << itMeta->second << " : " << index << endl;
+					//cout << "Val " << itValEmp->first << " - " << itValEmp->second << endl;
+					//cout << "Maladie " << itDico->first << " //// " << itMaladie->first << " : {" << itMaladie->second.first << "," << itMaladie->second.second << "}" << endl;
 
                     switch (index) {
                     case 0:
                         // cas string
-
+                        if (itValEmp->second== itMaladie->second.first) {
+                            note += 1;
+                        }
                         break;
                     case 1:
                         // cas double
-                        if (stoi(itMaladie->second.second)!=0) {
-                            note += abs(stoi(itValEmp->second)-stoi(itMaladie->second.first))/(stoi(itMaladie->second.second));
+                        if (stod(itMaladie->second.second)!=0) {
+                            // Translation qui donne selon l'ecart entre la moyenne de la maladie et la valeur de l'empreinte (sur un même attribut) un pourcentage
+                            // Ecart de 0 (Esp=valeur de l'empreinte) => pourcentage = 1 ; Ecart de 3*ecart-type => pourcentage = 0
+                            note += abs(1 - ( 1/( 2 * stod( itMaladie->second.second ) ) ) * abs( stod(itValEmp->second) - stod(itMaladie->second.first) ) );
                         }
                         else {
-
+                            // Si l'ecart type est de 0, alors on a soit une empreinte unique, soit plusieurs empreinte tous parfaitement réparties sur une unique valeur
+                            // ==> match parfait ou rien
+                            if (stod(itValEmp->second) == stod(itMaladie->second.first)) {
+                                note += 1;
+                            }
                         }
                         break;
                     case 2:
                         // cas int
-
+                        if (stoi(itMaladie->second.second) != 0) {
+                            // Translation qui donne selon l'ecart entre la moyenne de la maladie et la valeur de l'empreinte (sur un même attribut) un pourcentage
+                            // Ecart de 0 (Esp=valeur de l'empreinte) => pourcentage = 1 ; Ecart de 3*ecart-type => pourcentage = 0
+                            note += abs(1 - (1 / (2 * stoi(itMaladie->second.second))) * abs(stoi(itValEmp->second) - stoi(itMaladie->second.first)));
+                        }
+                        else {
+                            // Si l'ecart type est de 0, alors on a soit une empreinte unique, soit plusieurs empreinte tous parfaitement réparties sur une unique valeur
+                            // ==> match parfait ou rien
+                            if (stoi(itValEmp->second) == stoi(itMaladie->second.first)) {
+                                note += 1;
+                            }
+                        }
                         break;
                     }
-
                     nbAttr++;
-					++itMaladie;
+                    ++itMaladie;
 				}
-
+                cout << "CHANCE D'ETRE MALADE de " << itDico->first << " : " << note / nbAttr << endl;
                 // ajouter la maladie au diagnostic final
 
 			}

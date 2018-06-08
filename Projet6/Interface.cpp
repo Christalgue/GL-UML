@@ -90,7 +90,9 @@ static void choixDonneesEntrees(LectureAffichage &lA)
     string saisie;
     cout << "Choix des données pour les tests : \n"
             "1. Importer vos propres fichiers\n"
-            "2. Utiliser les fichiers pré-sélectionnés\n" << endl;
+            "2. Utiliser les fichiers pré-sélectionnés suivants : \n"
+            "   - Métadonnées : HealthMeasurementDescription.txt\n"
+            "   - Dictionnaire de maladies : HealthMeasurementsWithLabels.txt\n" << endl;
     
     switch (saisieChoix(1, 2))
     {
@@ -102,8 +104,6 @@ static void choixDonneesEntrees(LectureAffichage &lA)
             lA.LectureDictionnaire(entreeNomFichier());
             break;
         case 2:
-            cout << "Les fichiers par défaut sont \"HealthMeasurementDescription.txt\" pour les métadonnées "
-                    "et \"HealthMeasurementsWithLabels.txt\" pour le dictionnaire des maladies." << endl;
             lA.LectureMetaDonnees("HealthMeasurementDescription.txt");
             lA.LectureDictionnaire("HealthMeasurementsWithLabels.txt");
             break;

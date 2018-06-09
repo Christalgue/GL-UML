@@ -32,6 +32,8 @@ e-mail               : clementine.coquio--lebresne@insa-lyon.fr
 // l'affichage.
 //------------------------------------------------------------------------
 
+using namespace std;
+
 class LectureAffichage
 {
 	//----------------------------------------------------------------- PUBLIC

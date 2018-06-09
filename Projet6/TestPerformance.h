@@ -21,6 +21,8 @@ e-mail               :
 // Rôle de la classe <TestPerformance>
 //------------------------------------------------------------------------
 
+using namespace std;
+
 class TestPerformance
 {
     //----------------------------------------------------------------- PUBLIC

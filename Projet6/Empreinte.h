@@ -26,6 +26,8 @@ e-mail               : clementine.coquio--lebresne@insa-lyon.fr
 // représentant les valeurs de chaque attributs.
 //------------------------------------------------------------------------
 
+using namespace std;
+
 class Empreinte
 {
 	//----------------------------------------------------------------- PUBLIC

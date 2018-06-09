@@ -30,6 +30,8 @@ e-mail               : clementine.coquio--lebresne@insa-lyon.fr
 // vider les structures.
 //------------------------------------------------------------------------
 
+using namespace std;
+
 class Donnees
 {
 	//----------------------------------------------------------------- PUBLIC

@@ -34,7 +34,7 @@ void TestPerformance::Tester() {
 
 
     // Notre test de performance s'étale sur 8 échelons
-    for (int i = 1; i < 6;i++) {
+    for (int i = 1; i < 8;i++) {
         cout << endl;
         cout << "Echelon : " << i << endl;
 
@@ -42,24 +42,23 @@ void TestPerformance::Tester() {
         cheminDictionnaire = folder + to_string(i) +  dictionnaire;
         cheminEmpreintes = folder + to_string(i) + mesures;
 
-        cout << cheminMetaDonnee  << endl;
-        cout << cheminDictionnaire << endl;
-        cout << cheminEmpreintes << endl;
-
         leTest.LectureMetaDonnees(cheminMetaDonnee);
+
+        clock_t beginD = clock();
         leTest.LectureDictionnaire(cheminDictionnaire);
-        //leTest.LectureEmpreintes(cheminEmpreintes);
+        clock_t endD = clock();
 
-        cout << "YAY" << endl;
+        leTest.LectureEmpreintes(cheminEmpreintes);
 
-        clock_t begin = clock();
+        clock_t beginA = clock();
+        leTest.DemandeAnalyse();
+        clock_t endA = clock();
 
-        //leTest.DemandeAnalyse();
-
-        clock_t end = clock();
-
-        double elapsed_secs = double(end - begin) / CLOCKS_PER_SEC;
-        cout << "Temps (s): " << elapsed_secs << endl;
+        double elapsed_secsD = double(endD - beginD) / CLOCKS_PER_SEC;
+        double elapsed_secsA = double(endA - beginA) / CLOCKS_PER_SEC;
+        cout << endl;
+        cout << "Temps de lecture du dictionnaire (s): " << elapsed_secsD << endl;
+        cout << "Temps d'analayse (s): " << elapsed_secsA << endl;
         cout << endl;
     }
 

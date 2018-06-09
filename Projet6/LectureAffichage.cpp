@@ -330,6 +330,7 @@ void LectureAffichage::DemandeAnalyse() {
 		cout << "Il n'y a pas d'empreintes à analyser!" << endl;
 	}
 	else {
+        // multimap associant à une maladie, le pourcentage de chance de développer cette maladie
 		multimap<double, string> diagnosticFinal;
 		map<string, string> valeursEmpreinte;
 		vector<Empreinte> mesEmpreintes = infoSysteme.getEnsembleEmpreinte();

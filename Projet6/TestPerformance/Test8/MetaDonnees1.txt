@@ -1,7 +1,0 @@
-AttributName;AttributType
-NoID,ID
-A0;string
-A1;double
-A2;int
-A3;int
-A4;double

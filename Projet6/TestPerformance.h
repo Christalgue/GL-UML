@@ -59,7 +59,7 @@ protected:
 
     //----------------------------------------------------- Attributs protégés
 
-    const string folder = "TestPerformance/Test";
+    const string folder = "TestPerformance/TestDico";
 
     const string dictionnaire = "/Dictionnaire1.txt";
     const string mesures = "/HealthMesure1.txt";

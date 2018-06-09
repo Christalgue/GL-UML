@@ -1,7 +1,7 @@
 AttributName;AttributType
 NoID,ID
-A0;string
-A1;string
+A0;int
+A1;double
 A2;int
 A3;string
-A4;double
+A4;int

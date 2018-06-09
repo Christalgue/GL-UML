@@ -34,7 +34,7 @@ void TestPerformance::Tester() {
 
 
     // Notre test de performance s'étale sur 8 échelons
-    for (int i = 1; i < 8;i++) {
+    for (int i = 1; i < 11;i++) {
         cout << endl;
         cout << "Echelon : " << i << endl;
 

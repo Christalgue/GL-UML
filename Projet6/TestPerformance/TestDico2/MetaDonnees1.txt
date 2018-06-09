@@ -2,6 +2,6 @@ AttributName;AttributType
 NoID,ID
 A0;int
 A1;double
-A2;int
+A2;string
 A3;int
-A4;string
+A4;double

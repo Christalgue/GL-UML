@@ -1,0 +1,11 @@
+NoID;A0;A1;A2;A3;A4
+0;619;226;876;None;False
+1;601;469;30;False;False
+2;33;66;598;False;None
+3;28;743;1397;False;None
+4;1076;630;775;None;True
+5;268;627;233;False;None
+6;1101;993;1308;True;False
+7;972;134;154;True;False
+8;34;383;1401;None;False
+9;129;889;1205;False;True

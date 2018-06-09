@@ -1,4 +1,4 @@
-NoID;A0;A1;A2;A3;A4
+NoID;A0;A1;A2;A3;A4;Disease
 0;False;333.789;AA;False;253;Maladie0
 0;False;299.895;AA;None;855;Maladie0
 1;False;199.947;TT;False;1176;Maladie1

@@ -1,0 +1,11 @@
+NoID;A0;A1;A2;A3;A4
+0;True;995.105;GT;True;64
+1;False;1404.11;AA;True;359
+2;None;690.579;AA;None;1163
+3;True;1052.11;AG;True;324
+4;False;945.368;AA;True;770
+5;None;1186.79;AA;True;554
+6;False;661.842;GT;True;892
+7;False;1599.89;AA;False;903
+8;None;709.632;AC;False;1336
+9;False;280.579;CA;None;516

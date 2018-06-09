@@ -1,6 +1,7 @@
 using namespace std;
 #include "Empreinte.h"
 #include "LectureAffichage.h"
+#include "TestPerformance.h"
 #include <string>
 #include <iostream>
 #include <fstream>
@@ -88,7 +89,7 @@ static string entreeNomFichier()
 static void choixDonneesEntrees(LectureAffichage &lA)
 {
     string saisie;
-    cout << "Choix des données pour les tests (n'entrez que le nom du fichier sans le '.txt') : \n"
+    cout << "Choix des données pour les tests : \n"
             "1. Importer vos propres fichiers\n"
             "2. Utiliser les fichiers pré-sélectionnés suivants : \n"
             "   - Métadonnées : HealthMeasurementDescription.txt\n"
@@ -97,10 +98,10 @@ static void choixDonneesEntrees(LectureAffichage &lA)
     switch (saisieChoix(1, 2))
     {
         case 1:
-            cout << "Veuillez entrer le nom du fichier contenant les méta données" << endl;
+            cout << "Veuillez entrer le nom du fichier contenant les méta données (ex : HealthMeasurementDescription)" << endl;
             lA.LectureMetaDonnees(entreeNomFichier());
 
-            cout << "Veuillez entrer le nom du fichier contenant les maladies associées aux empreintes connues" << endl;
+            cout << "Veuillez entrer le nom du fichier contenant les maladies associées aux empreintes connues (ex : HealthMeasurementsWithLabels)" << endl;
             lA.LectureDictionnaire(entreeNomFichier());
             break;
         case 2:
@@ -110,7 +111,7 @@ static void choixDonneesEntrees(LectureAffichage &lA)
     }    
 }
 
-enum Choix { ANALYSE, LISTE_MALADIES, CARACTERISTIQUES_MALADIE, SORTIE, CHANGER_METADONNEES_DICTIONNAIRE };
+enum Choix { ANALYSE, LISTE_MALADIES, CARACTERISTIQUES_MALADIE, SORTIE, CHANGER_METADONNEES_DICTIONNAIRE, TESTS_UNITAIRES, TEST_PERFORMANCE};
 
 static Choix afficherMenu()
 {
@@ -121,10 +122,13 @@ static Choix afficherMenu()
                        "4. Choisir une autre métadonnées et un autre dictionnaire de maladies\n"
                        "5. Quitter\n"
                        "\n"
+                       "(6. Exécuter les tests unitaires) \n"
+                       "(7. Exécuter les tests de performance) \n"
+                       "\n"
                        "Votre choix : ";
     cout << menu;
 
-    switch (saisieChoix(1, 5))
+    switch (saisieChoix(1, 7))
     {
         case 1:
             return ANALYSE;
@@ -136,6 +140,10 @@ static Choix afficherMenu()
             return CHANGER_METADONNEES_DICTIONNAIRE;
         case 5:
             return SORTIE;
+        case 6:
+            return TESTS_UNITAIRES;
+        case 7:
+            return TEST_PERFORMANCE;
         default:
             cerr << "Choix impossible !" << endl;
             return SORTIE;
@@ -154,6 +162,7 @@ static void Executer()
     cout << endl;
     
     LectureAffichage lA;
+    TestPerformance TP;
 
     choixDonneesEntrees(lA);    
     
@@ -167,7 +176,7 @@ static void Executer()
         switch (choix)
         {
             case ANALYSE:
-                cout << "Veuillez entrez le nom du fichier des empreintes à analyser." << endl;
+                cout << "Veuillez entrez le nom du fichier des empreintes à analyser. (ex : HealthMeasurements)" << endl;
                 lA.LectureEmpreintes(entreeNomFichier());
                 lA.DemandeAnalyse();
                 break;
@@ -182,6 +191,12 @@ static void Executer()
                 choixDonneesEntrees(lA);
                 break;
             case SORTIE:
+                break;
+            case TESTS_UNITAIRES:
+                cout << "Tests unitaires." << endl;
+                break;
+            case TEST_PERFORMANCE:
+                TP.Tester();
                 break;
             default:
                 cout << "Choix non implémenté !" << endl;

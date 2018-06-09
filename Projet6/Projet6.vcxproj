@@ -116,10 +116,12 @@
     <ClCompile Include="Maladie.cpp" />
     <ClCompile Include="LectureAffichage.cpp" />
     <ClCompile Include="Donnees.cpp" />
+    <ClCompile Include="TestPerformance.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Empreinte.h" />
     <ClInclude Include="Donnees.h" />
+    <ClInclude Include="TestPerformance.h" />
     <ClInclude Include="LectureAffichage.h" />
     <ClInclude Include="Maladie.h" />
   </ItemGroup>

@@ -111,7 +111,7 @@ static void choixDonneesEntrees(LectureAffichage &lA)
     }    
 }
 
-enum Choix { ANALYSE, LISTE_MALADIES, CARACTERISTIQUES_MALADIE, SORTIE, CHANGER_METADONNEES_DICTIONNAIRE, TESTS_UNITAIRES, TEST_PERFORMANCE};
+enum Choix { ANALYSE, LISTE_MALADIES, CARACTERISTIQUES_MALADIE, SORTIE, CHANGER_METADONNEES_DICTIONNAIRE, TEST_PERFORMANCE};
 
 static Choix afficherMenu()
 {
@@ -122,13 +122,10 @@ static Choix afficherMenu()
                        "4. Choisir une autre métadonnées et un autre dictionnaire de maladies\n"
                        "5. Quitter\n"
                        "\n"
-                       "(6. Exécuter les tests unitaires) \n"
-                       "(7. Exécuter les tests de performance) \n"
-                       "\n"
                        "Votre choix : ";
     cout << menu;
 
-    switch (saisieChoix(1, 7))
+    switch (saisieChoix(1, 6))
     {
         case 1:
             return ANALYSE;
@@ -141,8 +138,6 @@ static Choix afficherMenu()
         case 5:
             return SORTIE;
         case 6:
-            return TESTS_UNITAIRES;
-        case 7:
             return TEST_PERFORMANCE;
         default:
             cerr << "Choix impossible !" << endl;
@@ -191,9 +186,6 @@ static void Executer()
                 choixDonneesEntrees(lA);
                 break;
             case SORTIE:
-                break;
-            case TESTS_UNITAIRES:
-                cout << "Tests unitaires." << endl;
                 break;
             case TEST_PERFORMANCE:
                 TP.Tester();

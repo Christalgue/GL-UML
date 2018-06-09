@@ -1,3 +1,0 @@
-HealthMeasurementDescription2.txt
-HealthMeasurementsWithLabels2.txt
-HealthMeasurements2.txt

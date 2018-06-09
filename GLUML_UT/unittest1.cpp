@@ -36,30 +36,62 @@ namespace GLUML_UT
 
 		TEST_METHOD(TestAddMetaDonees)
 		{
-			// Verifier qu'une paire pair<string,string>
-			// est ajoutée à la map 
-			// map<string, string> metaDonnees;
+			pair <string, string> maPaire = make_pair("anyString1", "anyString2");
+			Donnees mesDonnees;
+			mesDonnees.addMetaDonnees(maPaire);
+			map<string, string> mesMetaDonnees = mesDonnees.getMetaDonnees();
+			Assert::AreEqual(1, (int)mesMetaDonnees.size());
 		}
 
 		TEST_METHOD(TestAddEnsembleEmpreinte)
 		{
-			// Verifier qu'une Empreinte e
-			// est ajoutée à  vector<Empreinte> ensembleEmpreinte;
+			Empreinte monEmpreinte;
+			Donnees mesDonnees;
+			mesDonnees.addEnsembleEmpreinte(monEmpreinte);
+			vector <Empreinte> ensembleEmpreinte = mesDonnees.getEnsembleEmpreinte();
+			Assert::AreEqual(1, (int)ensembleEmpreinte.size());
 		}
 
 		TEST_METHOD(TestClearMetaDonnees)
 		{
-			// Verifier que vide meta map<string, string> metaDonnees;
+			Donnees mesDonnees;
+
+			mesDonnees.addMetaDonnees(make_pair("anyString1", "anyString2"));
+			map<string, string> mesMetaDonnees1 = mesDonnees.getMetaDonnees();
+			Assert::AreEqual(1, (int)mesMetaDonnees1.size());
+
+			mesDonnees.clearMetaDonnees();
+			map<string, string> mesMetaDonnees2 = mesDonnees.getMetaDonnees();
+			Assert::AreEqual(0, (int)mesMetaDonnees2.size());
 		}
 
 		TEST_METHOD(TestClearDictionnaire)
 		{
-			// Verifier vide multimap<string, Empreinte> dictionnaire;
+			Donnees mesDonnees;
+			Empreinte test;
+			pair <string, Empreinte> maPaire = make_pair("anyString", test);
+
+			mesDonnees.addDictionnaire(maPaire);
+			multimap <string, Empreinte> dictionnaire1 = mesDonnees.getDictionnaire();
+			Assert::AreEqual(1, (int)dictionnaire1.size());
+
+			mesDonnees.clearDictionnaire();
+			multimap <string, Empreinte> dictionnaire2 = mesDonnees.getDictionnaire();
+			Assert::AreEqual(0, (int)dictionnaire2.size());
 		}
 
 		TEST_METHOD(TestClearEnsembleEmpreinte)
 		{
-			// Verifier vide vector<Empreinte> ensembleEmpreinte;
+			Empreinte monEmpreinte;
+			Donnees mesDonnees;
+
+			mesDonnees.addEnsembleEmpreinte(monEmpreinte);
+			vector <Empreinte> ensembleEmpreinte1 = mesDonnees.getEnsembleEmpreinte();
+			Assert::AreEqual(1, (int)ensembleEmpreinte1.size());
+
+			mesDonnees.clearEnsembleEmpreinte();
+			vector <Empreinte> ensembleEmpreinte2 = mesDonnees.getEnsembleEmpreinte();
+			Assert::AreEqual(0, (int)ensembleEmpreinte2.size());
 		}
 
 	};
@@ -69,33 +101,39 @@ namespace GLUML_UT
 	public:
 		TEST_METHOD(TestLectureMetaDonnees)
 		{
+			Assert::AreEqual(1, 0);
 			// void LectureMetaDonnees(string nomFichierMetaDonnee);
 		}
 
 		TEST_METHOD(TestLectureDictionnaire)
 		{
+			Assert::AreEqual(1, 0);
 			// void LectureDictionnaire(string nomFichierDictionnaire);
 		}
 
 		TEST_METHOD(TestLectureEmpreintes)
 		{
+			Assert::AreEqual(1, 0);
 			// void LectureEmpreintes(string nomFichierEmpreintes);
 		}
 		
 		TEST_METHOD(TestAfficherMaladiesPrisesEnCompte)
 		{
+			Assert::AreEqual(1, 0);
 			// void AfficherMaladiesPrisesEnCompte();
 		}
 
 		
 		TEST_METHOD(TestAfficherCaracteristiquesMaladie)
 		{
+			Assert::AreEqual(1, 0);
 			// map<string, pair<string, string>> AfficherCaracteristiquesMaladie(string maladie, bool affichage);
 
 		}
 
 		TEST_METHOD(TestDemandeAnalyse)
 		{
+			Assert::AreEqual(1, 0);
 			// void DemandeAnalyse();
 		}
 		

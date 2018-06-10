@@ -4,6 +4,8 @@
 #include "Donnees.h"
 #include "LectureAffichage.h"
 
+#include <iostream>
+
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 using namespace std;
 namespace GLUML_UT
@@ -101,7 +103,24 @@ namespace GLUML_UT
 	public:
 		TEST_METHOD(TestLectureMetaDonnees)
 		{
-			Assert::AreEqual(1, 0);
+			LectureAffichage monTest;
+
+			//monTest.LectureMetaDonnees("DataFiles/MetaDonnees1.txt");
+			monTest.LectureMetaDonnees("DataFiles/../Projet6/TestPerformance/TestDico1/MetaDonnees1.txt");
+	
+
+
+			map<string, string> maMap = monTest.getLAMetaDonnees();
+			Assert::AreEqual(0, (int)maMap.size());
+			//Assert::AreEqual((string)"int", maMap["A0"]);
+			
+			/*
+			for (map<string, string>::iterator ita = maMap.begin(); ita != maMap.end(); ++ita)
+			{
+				cout << ita->first << " => " << ita->second << endl;
+				
+			}
+			*/
 			// void LectureMetaDonnees(string nomFichierMetaDonnee);
 		}
 

@@ -426,6 +426,22 @@ void LectureAffichage::DemandeAnalyse() {
 	}
 }
 
+
+map<string, string> LectureAffichage::getLAMetaDonnees()
+{
+	return infoSysteme.getMetaDonnees();
+}
+
+multimap<string, Empreinte> LectureAffichage::getLADictionnaire()
+{
+	return infoSysteme.getDictionnaire();
+}
+
+vector<Empreinte> LectureAffichage::getLAEnsembleEmpreinte()
+{
+	return infoSysteme.getEnsembleEmpreinte();
+}
+
 //-------------------------------------------- Constructeurs - destructeur
 
 LectureAffichage::LectureAffichage() : infoSysteme()

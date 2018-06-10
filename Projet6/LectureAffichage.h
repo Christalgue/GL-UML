@@ -51,6 +51,14 @@ public:
 	map<string, pair<string, string>> AfficherCaracteristiquesMaladie(string maladie, bool affichage);
 
 	void DemandeAnalyse();
+
+
+
+	map<string, string> getLAMetaDonnees();
+
+	multimap<string, Empreinte> getLADictionnaire();
+
+	vector<Empreinte> getLAEnsembleEmpreinte();
         
 	//------------------------------------------------- Surcharge d'opérateurs
 	LectureAffichage & operator = (const LectureAffichage & unLectureAffichage) = delete;

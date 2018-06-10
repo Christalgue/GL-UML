@@ -130,20 +130,7 @@ void LectureAffichage::LectureDictionnaire(string nomFichier)
 			}
 		}
 	}
-	// AFFICHAGE (A METTRE DANS LE TEST)
-	/*
-	multimap<string, Empreinte> monDictionnaire = infoSysteme.getDictionnaire();
-	for (multimap<string, Empreinte>::iterator ita = monDictionnaire.begin(); ita != monDictionnaire.end(); ++ita)
-	{
-		// Maladie => id de l'empreinte
-		cout << ita->first << " => " << ita->second.getID() << endl;
-		map <string, string> val = ita->second.getValeurEmpreinte();
-		for (map <string, string>::iterator itb = val.begin(); itb != val.end(); ++itb) {
-			// nomAttribut => valeur
-			cout << itb->first << " => " << itb->second << endl;
-		}
-	}
-	*/
+
 }
 
 void LectureAffichage::LectureEmpreintes(string nomFichier)

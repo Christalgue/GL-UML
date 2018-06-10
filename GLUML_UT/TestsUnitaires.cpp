@@ -4,14 +4,6 @@
 #include "Donnees.h"
 #include "LectureAffichage.h"
 
-#include <iostream>
-
-#include <fstream>
-#include <iostream>
-#include <sstream>
-#include <algorithm>
-#include <iomanip>
-
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 using namespace std;
 namespace GLUML_UT
@@ -109,70 +101,62 @@ namespace GLUML_UT
 	public:
 		TEST_METHOD(TestLectureMetaDonnees)
 		{
-			//LectureAffichage monTest;
-			//monTest.LectureMetaDonnees();
-			//monTest.LectureMetaDonnees("../Projet6/TestPerformance/TestDico1/MetaDonnees1.txt");
-	
+			LectureAffichage monTest;
 			Donnees mesDonnees;
-			//map<string, string> maMap = monTest.getLAMetaDonnees();
-			//Assert::AreEqual(0, (int)maMap.size());
-			ifstream infile("../GLUML_UT/MetaDonnees.txt");
-			Assert::AreEqual(1, 1);
-			/*
-			if (infile)
-			{
-				string nomAttribut;
-				string typeAttribut;
-				getline(infile, nomAttribut); // Pour sauter la 1ère ligne qui ne nous intéresse pas
-				getline(infile, nomAttribut); // La deuxieme ligne comprend l'id qui ne doit pas rentrer dans la metadonnee
-				while (getline(infile, nomAttribut, ';'))
-				{
-					getline(infile, typeAttribut);
-					mesDonnees.addMetaDonnees(make_pair(nomAttribut, typeAttribut));
-				}
-				Assert::AreEqual(1, 1);
-			}
-			else {
-				Assert::AreEqual(0,1);
-			}
-			*/
-			//Assert::AreEqual((string)"int", maMap["A0"]);
+			map<string, string> maMap;
+
+			// Lecture d'un fichier existant
+			monTest.LectureMetaDonnees("../../GLUML_UT/DataFiles/MetaDonnees1.txt");
+			maMap = monTest.getLAMetaDonnees();
+			Assert::AreEqual(5, (int)maMap.size());
+			Assert::AreEqual((string)"int", maMap["A0"]);
+			Assert::AreEqual((string)"string", maMap["A1"]);
+			Assert::AreEqual((string)"int", maMap["A2"]);
+			Assert::AreEqual((string)"string", maMap["A3"]);
+			Assert::AreEqual((string)"int", maMap["A4"]);
 			
-			// void LectureMetaDonnees(string nomFichierMetaDonnee);
+			// Lecture d'un fichier inexistant
+			monTest.LectureMetaDonnees("x");
+			maMap = monTest.getLAMetaDonnees();
+			Assert::AreEqual(0, (int)maMap.size());
 		}
 
 		TEST_METHOD(TestLectureDictionnaire)
 		{
-			Assert::AreEqual(1, 0);
-			// void LectureDictionnaire(string nomFichierDictionnaire);
+			LectureAffichage monTest;
+			Donnees mesDonnees;
+			multimap<string, Empreinte> monDictionnaire;
+
+			// Lecture d'un fichier existant
+			monTest.LectureDictionnaire("../../GLUML_UT/DataFiles/Dictionnaire1.txt");
+			monDictionnaire = monTest.getLADictionnaire();
+			Assert::AreEqual(4, (int)monDictionnaire.size());
+
+			// Lecture d'un fichier inexistant
+			monTest.LectureDictionnaire("x");
+			monDictionnaire = monTest.getLADictionnaire();
+			Assert::AreEqual(0, (int)monDictionnaire.size());
 		}
 
 		TEST_METHOD(TestLectureEmpreintes)
 		{
-			Assert::AreEqual(1, 0);
-			// void LectureEmpreintes(string nomFichierEmpreintes);
-		}
-		
-		TEST_METHOD(TestAfficherMaladiesPrisesEnCompte)
-		{
-			Assert::AreEqual(1, 0);
-			// void AfficherMaladiesPrisesEnCompte();
-		}
 
-		
-		TEST_METHOD(TestAfficherCaracteristiquesMaladie)
-		{
-			Assert::AreEqual(1, 0);
-			// map<string, pair<string, string>> AfficherCaracteristiquesMaladie(string maladie, bool affichage);
+			LectureAffichage monTest;
+			Donnees mesDonnees;
+
+			vector<Empreinte> ensembleEmpreinte;
+
+			// Lecture d'un fichier existant
+			monTest.LectureEmpreintes("../../GLUML_UT/DataFiles/HealthMesure1.txt");
+			ensembleEmpreinte = monTest.getLAEnsembleEmpreinte();
+			Assert::AreEqual(10, (int)ensembleEmpreinte.size());
+
+			// Lecture d'un fichier inexistant
+			monTest.LectureEmpreintes("x");
+			ensembleEmpreinte = monTest.getLAEnsembleEmpreinte();
+			Assert::AreEqual(0, (int)ensembleEmpreinte.size());
 
 		}
-
-		TEST_METHOD(TestDemandeAnalyse)
-		{
-			Assert::AreEqual(1, 0);
-			// void DemandeAnalyse();
-		}
-		
 	};
 
 }

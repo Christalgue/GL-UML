@@ -1,0 +1,5 @@
+NoID;A0;A1;A2;A3;A4;Disease
+0;1113;AA;528;False;1617;Maladie0
+1;823;AA;687;False;1525;Maladie1
+2;731;AA;1294;False;1280;Maladie2
+3;68;TC;1081;True;1025;Maladie3

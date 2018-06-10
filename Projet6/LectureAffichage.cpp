@@ -55,14 +55,6 @@ void LectureAffichage::LectureMetaDonnees(string nomFichier)
 			getline(infile, typeAttribut);
 			infoSysteme.addMetaDonnees(make_pair(nomAttribut, typeAttribut));
 		}
-		
-		// Pour regarder si la map est bien remplie
-		/*
-		map<string, string> maMap = infoSysteme.getMetaDonnees();
-		for (map<string, string>::iterator ita = maMap.begin(); ita != maMap.end(); ++ita)
-		{
-			cout << ita->first << " => " << ita->second << endl;
-		}*/
 	}
 	else {
 		cout << "Il n'y a pas de metadonn�es" << endl;
@@ -178,20 +170,6 @@ void LectureAffichage::LectureEmpreintes(string nomFichier)
 			}
 		}
 	}
-	
-	// AFFICHAGE (A METTRE DANS LE TEST)
-	/*
-	vector<Empreinte> monEnsembleEmpreinte = infoSysteme.getEnsembleEmpreinte();
-	for (vector<Empreinte>::iterator ita = monEnsembleEmpreinte.begin(); ita != monEnsembleEmpreinte.end(); ++ita)
-	{
-		cout << "Id de l'empreinte : " << ita->getID() << endl;
-		map <string, string> uneEmpreinte = ita->getValeurEmpreinte();
-		for (map <string, string>::iterator itb = uneEmpreinte.begin(); itb != uneEmpreinte.end(); ++itb) {
-			// nomAttribut => valeur
-			cout << itb->first << " => " << itb->second << endl;
-		}
-	}
-	*/
 }
 
 void LectureAffichage::AfficherMaladiesPrisesEnCompte()

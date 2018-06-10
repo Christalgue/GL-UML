@@ -6,6 +6,12 @@
 
 #include <iostream>
 
+#include <fstream>
+#include <iostream>
+#include <sstream>
+#include <algorithm>
+#include <iomanip>
+
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 using namespace std;
 namespace GLUML_UT
@@ -103,24 +109,35 @@ namespace GLUML_UT
 	public:
 		TEST_METHOD(TestLectureMetaDonnees)
 		{
-			LectureAffichage monTest;
-
-			//monTest.LectureMetaDonnees("DataFiles/MetaDonnees1.txt");
-			monTest.LectureMetaDonnees("DataFiles/../Projet6/TestPerformance/TestDico1/MetaDonnees1.txt");
+			//LectureAffichage monTest;
+			//monTest.LectureMetaDonnees();
+			//monTest.LectureMetaDonnees("../Projet6/TestPerformance/TestDico1/MetaDonnees1.txt");
 	
-
-
-			map<string, string> maMap = monTest.getLAMetaDonnees();
-			Assert::AreEqual(0, (int)maMap.size());
-			//Assert::AreEqual((string)"int", maMap["A0"]);
-			
+			Donnees mesDonnees;
+			//map<string, string> maMap = monTest.getLAMetaDonnees();
+			//Assert::AreEqual(0, (int)maMap.size());
+			ifstream infile("../GLUML_UT/MetaDonnees.txt");
+			Assert::AreEqual(1, 1);
 			/*
-			for (map<string, string>::iterator ita = maMap.begin(); ita != maMap.end(); ++ita)
+			if (infile)
 			{
-				cout << ita->first << " => " << ita->second << endl;
-				
+				string nomAttribut;
+				string typeAttribut;
+				getline(infile, nomAttribut); // Pour sauter la 1ère ligne qui ne nous intéresse pas
+				getline(infile, nomAttribut); // La deuxieme ligne comprend l'id qui ne doit pas rentrer dans la metadonnee
+				while (getline(infile, nomAttribut, ';'))
+				{
+					getline(infile, typeAttribut);
+					mesDonnees.addMetaDonnees(make_pair(nomAttribut, typeAttribut));
+				}
+				Assert::AreEqual(1, 1);
+			}
+			else {
+				Assert::AreEqual(0,1);
 			}
 			*/
+			//Assert::AreEqual((string)"int", maMap["A0"]);
+			
 			// void LectureMetaDonnees(string nomFichierMetaDonnee);
 		}
 
